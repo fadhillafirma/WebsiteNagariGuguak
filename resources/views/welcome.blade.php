@@ -18,7 +18,7 @@
             <div class="text-white max-w-4xl">
             <h1 class="text-6xl md:text-8xl font-bold mb-4 typewriter">Selamat Datang</h1>
             <h2 class="text-4xl md:text-6xl">di <span class="text-greenVill font-semibold">Nagari Guguak</span> </h2>
-            <p class="text-lg md:text-2xl mt-4 text-gray-200">
+            <p class="text-lg md:text-2xl mt-5 text-gray-200 ">
                 Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.
             </p>
 
@@ -65,7 +65,7 @@
     <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
 
       <div class="text-8xl text-greenDark text-center font-bold">
-        <span class="count-up" data-target="90">0</span>
+        <span class="count-up" data-target="23.90">0</span>
         <div class="text-2xl">Luas Wilayah</div>
       </div>
 
@@ -75,12 +75,12 @@
       </div>
 
       <div class="text-8xl text-greenDark text-center font-bold">
-        <span class="count-up" data-target="90">0</span>
+        <span class="count-up" data-target="603">0</span>
         <div class="text-2xl">Kepala Keluarga</div>
       </div>
 
       <div class="text-8xl text-greenDark text-center font-bold">
-        <span class="count-up" data-target="100">0</span>
+        <span class="count-up" data-target="2337">0</span>
         <div class="text-2xl">Penduduk</div>
       </div>
 
@@ -158,19 +158,21 @@
     </section>
 
 
-    {{-- <section class="max-w-7xl mx-auto py-20 px-8 bg-white">
-        <h2>Galeri</h2>
-        <div class="columns-1 sm:columns-2 md:columns-3 gap-4 space-y-2">
-      <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4" />
-      <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-1.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4" />
-      <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-2.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4" />
-      <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-3.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4" />
-      <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-4.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4" />
-      <img src="https://flowbite.s3.amazonaws.com/docs/gallery/masonry/image-5.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4" />
-    </div>
+    <section class="max-w-7xl mx-auto py-20 px-8 bg-white">
+        <div class="text-center mb-4">
+            <h2 class="text-3xl font-bold fade-in-left animate-on-scroll">Galeri</h2>
+            <div class="h-[3px] w-[10%] bg-greenDark mt-2 mx-auto fade-in-left animate-on-scroll"></div>
+        </div>
+        <div class="grid grid-cols-3 gap-4 space-y-2 flex justify-center mt-10">
+            <img src="/desa.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4 ml-14 " />
+            <img src="/desa.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4 ml-14" />
+            <img src="/desa.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4 ml-14" />
+            <img src="/desa.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4 ml-14" />
+            <img src="/desa.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4 ml-14" />
+            <img src="/desa.jpg" alt="" class="max-w-[200px] w-full rounded-lg shadow-md mb-4 ml-14" />
+        </div>
 
-
-    </section> --}}
+    </section>
 
 
 
@@ -230,8 +232,8 @@
     <div class="absolute inset-0 bg-black/50 z-0 backdrop-blur-sm "></div>
 
     <div class="relative z-10 flex flex-col justify-center items-center text-white text-center px-4 py-16">
-            <h2 class="text-4xl font-bold mb-4">Menuju Nagari Cerdas & Terhubung</h2>
-
+            <h2 class="text-4xl font-bold mb-4">Menuju Nagari <span class="text-greenVill">Cerdas & Terhubung</span> </h2>
+            <p class="text-xl">Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.</p>
     </div>
 </section>
 
@@ -241,15 +243,16 @@
             <div class="h-[3px] w-[5%] bg-greenDark mt-2 mx-auto"></div>
             <div class="mt-10">
             <div class="w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg border-2 border-greenDark">
-                <iframe
-  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7383653182793!2d101.0737576!3d-0.6685665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fdc88789c7e07b1%3A0x5fb5a6c9e6972ef2!2sNagari%20Guguak!5e0!3m2!1sen!2sid!4v1721101112345!5m2!1sen!2sid"
-  width="100%"
-  height="450"
-  style="border:0;"
-  allowfullscreen
-  loading="lazy"
-  referrerpolicy="no-referrer-when-downgrade">
-</iframe>
+               <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7383653182793!2d101.0737576!3d-0.6685665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fdc88789c7e07b1%3A0x5fb5a6c9e6972ef2!2sNagari%20Guguak!5e0!3m2!1sen!2sid!4v1721101112345!5m2!1sen!2sid&t=k"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    allowfullscreen
+                    loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade">
+                </iframe>
+
 
             </div>
         </div>
@@ -257,6 +260,7 @@
 </section>
 
 @include('layout.footer')
+@include('layout.navbar')
 
 
 
@@ -287,7 +291,7 @@
     const animateCount = (el) => {
       const target = +el.dataset.originalTarget;
       let current = 0;
-      const duration = 2000;
+      const duration = 500;
       const stepTime = Math.max(Math.floor(duration / target), 30);
 
       const step = () => {

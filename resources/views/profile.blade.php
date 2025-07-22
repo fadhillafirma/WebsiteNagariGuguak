@@ -12,16 +12,16 @@
 
 <body class='m-0 p-0'>
     <div class="bg-gray-100 w-full h-[100vh] content-center pt-10" id="profile">
-        <div class="max-w-6xl mx-auto flex">
+        <div class="max-w-6xl mx-auto flex mt-20">
             <div class="grid grid-cols-2">
                 <div class="text-start p-5">
                     <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4">Sejarah</h2>
-                    <h3 class="text-justify mt-10 indent-8">Nagari Guguak pada awalnya merupakan bagian dari Nagari Padang Laweh dan dipimpin secara adat oleh para Ninik Mamak dari berbagai suku, seperti Suku Caniago, Tigo Suku, Piliang, dan lainnya. Wilayah ini berkembang seiring dengan arus perantauan dan pemukiman masyarakat di sekitar Batang Sinamar dan Batang Ombilin, yang kemudian bermuara di daerah bernama Polak Loweh. </h3>
+                    <h3 class="text-justify mt-10 indent-8"> <span class="font-bold text-greenDark">Nagari Guguak</span>  pada awalnya merupakan bagian dari Nagari Padang Laweh dan dipimpin secara adat oleh para Ninik Mamak dari berbagai suku, seperti Suku Caniago, Tigo Suku, Piliang, dan lainnya. Wilayah ini berkembang seiring dengan arus perantauan dan pemukiman masyarakat di sekitar Batang Sinamar dan Batang Ombilin, yang kemudian bermuara di daerah bernama Polak Loweh. </h3>
                     <h3 class="text-justify mt-5 indent-8">Setelah melalui musyawarah adat, para Ninik Mamak sepakat mendirikan Nagari sendiri yang bertempat di pemuntaran dataran tinggi. Tempat tersebut akhirnya diberi nama Guguak, dan kini menjadi wilayah mandiri.
                     Nagari Guguak resmi berdiri sebagai nagari tersendiri sejak tahun 1979 berdasarkan Undang-Undang Nomor 5 tentang Pemerintahan Desa. Wilayahnya terdiri dari dua desa: Desa Koto Guguak dan Desa Bulu Rotan yang berdiri selama 22 tahun. Seiring perubahan kebijakan pemerintahan, pada tahun 2002 Nagari Guguak kembali menerapkan sistem Pemerintahan Nagari sesuai peraturan daerah dan ketentuan provinsi.</h3>
                 </div>
                 <div class="flex justify-center p-3">
-                    <img src="/sawah.jpg" alt="">
+                    <img src="/sungai.jpg" alt="" class="rounded-xl">
                 </div>
             </div>
         </div>
@@ -77,11 +77,24 @@
                             </div>
                             <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Meningkatkan Kualitas Sumber Daya Manusia (SDM)</h5>
                         </div>
+                </div>
+            </div>
+        </section>
 
 
+        <section class="bg-white pt-5 pb-5 ">
+              <div class="max-w-6xl mx-auto text-center  justify-content-center">
+                <h1 class="font-bold text-greenDark text-4xl underline underline-offset-4 mt-10">Struktur Perangkat Nagari</h1>
+                <img src="/dummyStruktur.png" alt="" class="mt-10 flex justify-center">
+
+              </div>
+        </section>
 
 
-
+        <section class="bg-white">
+            <div class="max-w-6xl">
+                <div class="">
+                    test
                 </div>
 
             </div>
@@ -89,6 +102,9 @@
         </section>
 
     </div>
+
+@include('layout.navbar')
+
 
      <script>
      lucide.createIcons();
