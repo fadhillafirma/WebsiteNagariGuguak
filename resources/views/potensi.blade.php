@@ -10,7 +10,7 @@
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
 
-<body class="m-0 p-0">
+<body class="m-0 ">
     <!-- Kontak Section -->
     <section class="bg-gray-100 w-full min-h-screen flex items-center justify-center" id="profile">
         <div class="max-w-6xl w-full grid grid-cols-2 gap-10 place-items-center mt-10">

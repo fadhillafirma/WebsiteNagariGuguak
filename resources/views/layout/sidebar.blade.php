@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@yield('title', 'Admin Panel')</title>
+    @vite(['resources/css/app.css', 'resources/js/app.js'])
+</head>
+<body class="bg-gray-100 font-sans antialiased">
+
+    <div class="flex min-h-screen">
+        <!-- Sidebar -->
+        <aside class="w-64 bg-white border-r border-gray-200 shadow-md">
+            <div class="flex flex-col h-full">
+                <!-- Header -->
+                <div class="p-5 border-b border-gray-200">
+                    <h1 class="text-xl font-bold text-gray-800">Admin Panel</h1>
+                </div>
+
+                <!-- Navigation -->
+                <nav class="flex-1 overflow-y-auto p-3">
+                    <ul class="space-y-1">
+                        <!-- Dashboard -->
+                        <li>
+                            <a href="{{ route('dashboard') }}"
+                               class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                               {{ request()->routeIs('dashboard') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M3 12l2-2m0 0l7-7 7 7m-9 2v8m-4 4h8"></path>
+                                </svg>
+                                Dashboard
+                            </a>
+                        </li>
+
+                        <!-- Galeri -->
+                        <li>
+                            <a href="{{ route('galeri.index') }}"
+                               class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                               {{ request()->routeIs('galeri.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                                </svg>
+                                Galeri
+                            </a>
+                        </li>
+
+                        <!-- Publikasi -->
+                        <li>
+                            <a href="{{ route('publikasi.index') }}"
+                               class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                               {{ request()->routeIs('publikasi.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                                Publikasi
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('demografi-pekerjaan.index') }}"
+                            class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                            {{ request()->routeIs('demografi-pekerjaan.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M3 3h18v4H3z"></path>
+                                    <path d="M3 11h18v10H3z"></path>
+                                </svg>
+                                Demografi Pekerjaan
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('demografi-sekolah.index') }}"
+                            class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                            {{ request()->routeIs('demografi-sekolah.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M4 6h16M4 12h16M4 18h16"></path>
+                                </svg>
+                                Demografi Sekolah
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="{{ route('demografi-penduduk-jorong.index') }}"
+                            class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                            {{ request()->routeIs('demografi-penduduk-jorong.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                    fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M3 10h4v11H3zM10 3h4v18h-4zM17 14h4v7h-4z"/>
+                                </svg>
+                                Penduduk Jorong
+                            </a>
+                        </li>
+
+                        <li>
+                        <a href="{{ route('demografi-lahan.index') }}"
+                            class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                            {{ request()->routeIs('demografi-lahan.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg"
+                                fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M3 10h4v11H3zM10 3h4v18h-4zM17 14h4v7h-4z"/>
+                            </svg>
+                            Demografi Lahan
+                        </a>
+                        </li>
+
+
+
+                    </ul>
+                </nav>
+
+                <!-- Logout -->
+                <div class="p-4 border-t border-gray-200">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+                        <button class="w-full flex items-center gap-x-2 px-3 py-2 text-sm text-black rounded-lg hover:bg-red-500 hover:text-white">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2h6a2 2 0 0 1 2 2v1"></path>
+                            </svg>
+                            Logout
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </aside>
+        <!-- End Sidebar -->
+
+        <!-- Content -->
+        <main class="flex-1 p-6">
+            @yield('content')
+        </main>
+    </div>
+
+</body>
+</html>
