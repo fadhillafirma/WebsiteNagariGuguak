@@ -30,7 +30,7 @@
             <div class="absolute inset-0 bg-black/50 z-0 backdrop-blur-sm "></div>
             <div class="relative z-10 flex flex-col justify-center items-center text-white text-center px-4 py-16 max-w-6xl mx-auto">
                     <h1 class="font-bold text-white text-4xl underline underline-offset-4 ">Visi</h1>
-                    <h2 class="text-white mt-10 font-semibold text-2xl">"Mewujudkan masyarakat yang mandiri, sejahtera, berakhlakul karimah, dan berlandaskan adat basandi syarak, syarak basandi kitabullah, serta didukung oleh tata kelola pemerintahan yang baik"</h2>
+                    <h2 class="text-white mt-10 font-semibold text-2xl">"Terwujudnya Pemerintahan Pembangunan yang Profesional Berbasis Pada Nilai-nilai Agama Sosial dan Adat Istiadat"</h2>
             </div>
         </section>
 
@@ -39,44 +39,33 @@
         <section class="bg-white pt-5 pb-5 ">
             <div class="max-w-6xl mx-auto text-center ">
                 <h1 class="font-bold text-greenDark text-4xl underline underline-offset-4 mt-10">Misi</h1>
-                <div class="grid grid-cols-6 gap-3 mt-10 mb-10">
+                <div class="grid grid-cols-4 gap-5 mt-10 mb-10 ml-10 mr-10">
 
                         <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
                             <div class="flex justify-center">
-                               <i data-lucide="map-pin" class="w-8 h-8 text-greenDark text-center m-2"></i>
+                               <i data-lucide="house" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Meningkatkan Kualitas Sumber Daya Manusia (SDM)</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Melaksanakan Pembangunan Disegala Bidang Sesuai Kaidah Pembangunan Nagari dengan Nilai Partisipasi Masyarakat</h5>
                         </div>
                         <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
                             <div class="flex justify-center">
-                               <i data-lucide="map-pin" class="w-8 h-8 text-greenDark text-center m-2"></i>
+                               <i data-lucide="file-check" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Meningkatkan Kualitas Sumber Daya Manusia (SDM)</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Menjalankan Administrasi Pemerintahan Nagari berdasarkan Prinsip-prinsip Tata Kelola Pemerintahan Nagari yang Baik</h5>
                         </div>
                         <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
                             <div class="flex justify-center">
-                               <i data-lucide="map-pin" class="w-8 h-8 text-greenDark text-center m-2"></i>
+                               <i data-lucide="handshake" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Meningkatkan Kualitas Sumber Daya Manusia (SDM)</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Mendorong dan Memelihara Komitmen Semua Pihak dalam Rangka Pembangunan Masyarakat Nagari Seutuhnya</h5>
                         </div>
                         <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
                             <div class="flex justify-center">
-                               <i data-lucide="map-pin" class="w-8 h-8 text-greenDark text-center m-2"></i>
+                               <i data-lucide="hand-platter" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Meningkatkan Kualitas Sumber Daya Manusia (SDM)</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Menciptakan Iklim yang Kondusif Pelayanan yang Baik dan Menjamin Kepastian Hukum dalam Menjaga dan Meningkatkan Potensi Nagari</h5>
                         </div>
-                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
-                            <div class="flex justify-center">
-                               <i data-lucide="map-pin" class="w-8 h-8 text-greenDark text-center m-2"></i>
-                            </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Meningkatkan Kualitas Sumber Daya Manusia (SDM)</h5>
-                        </div>
-                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
-                            <div class="flex justify-center">
-                               <i data-lucide="map-pin" class="w-8 h-8 text-greenDark text-center m-2"></i>
-                            </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Meningkatkan Kualitas Sumber Daya Manusia (SDM)</h5>
-                        </div>
+
                 </div>
             </div>
         </section>
