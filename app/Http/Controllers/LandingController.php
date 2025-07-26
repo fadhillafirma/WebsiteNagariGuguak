@@ -4,8 +4,15 @@ namespace App\Http\Controllers;
 use App\Models\Publikasi;
 use Illuminate\Http\Request;
 use App\Models\Galeri;
+use App\Models\Jorong;
+
 use App\Models\DemografiSekolah;
 use App\Models\DemografiPekerjaan;
+use App\Models\DemografiPendudukJorong;
+use App\Models\LahanData;
+
+
+
 
 
 
@@ -81,6 +88,93 @@ public function demografiPekerjaan ()
 
         return view('demografiPekerjaan', compact('data', 'tahunTerbaru'));
     }
+
+
+    public function demografiPenduduk()
+    {
+        $data = DemografiPendudukJorong::with('jorong')
+            ->orderByDesc('tahun')
+            ->paginate(20);
+
+        // Mengambil tahun terbaru dari data yang sudah dipaginasi atau tahun saat ini
+        $tahunTerbaru = $data->first()?->tahun ?? date('Y');
+
+        // ======== Bagian Tambahan untuk Grafik =========
+
+        // Mengambil semua tahun unik yang ada dalam data demografi, diurutkan secara menaik
+        $labels = DemografiPendudukJorong::select('tahun')
+            ->distinct()
+            ->orderBy('tahun')
+            ->pluck('tahun')
+            ->toArray();
+
+        // Mengambil semua jorong yang ada
+        $jorongs = Jorong::all();
+
+        // Daftar warna untuk setiap dataset (jorong). Tambah lebih banyak jika perlu.
+        $colors = [
+            '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6',
+            '#14b8a6', '#ec4899', '#6d28d9', '#ca8a04', '#0891b2'
+        ];
+
+        $datasets = [];
+
+        // Pastikan ada labels (tahun) sebelum mencoba membuat datasets
+        if (!empty($labels)) {
+            foreach ($jorongs as $index => $jorong) {
+                $dataPerTahun = [];
+                foreach ($labels as $tahun) {
+                    // Ambil jumlah laki-laki + perempuan untuk jorong dan tahun tertentu
+                    $jumlah = DemografiPendudukJorong::where('jorong_id', $jorong->id_jorong)
+                        ->where('tahun', $tahun)
+                        ->sum(DemografiPendudukJorong::raw('laki_laki + perempuan'));
+
+                    // Pastikan $jumlah adalah integer. Jika null (tidak ada data), anggap 0.
+                    $dataPerTahun[] = (int) $jumlah;
+                }
+
+                $datasets[] = [
+                    'label' => $jorong->nama_jorong, // Ganti 'nama' menjadi 'label' untuk Chart.js
+                    'data' => $dataPerTahun,
+                    'borderColor' => $colors[$index % count($colors)],
+                    'backgroundColor' => $colors[$index % count($colors)],
+                ];
+            }
+        } else {
+            // Jika tidak ada data tahun sama sekali, kirim array kosong untuk labels dan datasets
+            $labels = [];
+            $datasets = [];
+        }
+
+        // ================================================
+
+        return view('demografiPenduduk', compact('data', 'tahunTerbaru', 'labels', 'datasets'));
+    }
+
+    public function demografiLahan()
+    {
+        // Ambil tahun terbaru dari data lahan
+        $tahunTerbaru = LahanData::max('tahun'); // <-- PERBAIKAN DI SINI: Ubah dari DemografiLahanData ke LahanData
+
+        // Jika tidak ada tahun terbaru, set ke tahun saat ini atau default
+        if (is_null($tahunTerbaru)) {
+            $tahunTerbaru = date('Y');
+            $dataLahan = collect(); // Kembalikan koleksi kosong jika tidak ada data
+        } else {
+            // Ambil semua data lahan untuk tahun terbaru, dengan eager loading 'lahanJenis'
+            $dataLahan = LahanData::with('lahanJenis') // <-- PERBAIKAN DI SINI: Ubah dari DemografiLahanData ke LahanData
+                                 ->where('tahun', $tahunTerbaru)
+                                 ->orderBy('lahan_jenis_id') // Urutkan agar konsisten
+                                 ->get();
+        }
+
+        return view('demografiLahan', compact('dataLahan', 'tahunTerbaru'));
+    }
+
+
+
+
+
 
 
 
