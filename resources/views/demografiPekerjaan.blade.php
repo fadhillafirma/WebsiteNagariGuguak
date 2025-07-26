@@ -19,6 +19,11 @@
             Tahun: <strong>{{ $tahunTerbaru }}</strong>
         </p>
 
+        <p class="text-gray-700 text-justify mb-6">
+    Data demografi pekerjaan di Nagari Guguak pada tahun 2026 memberikan gambaran tentang ragam mata pencaharian masyarakat. Informasi ini mencerminkan peran berbagai sektor, mulai dari pertanian, pemerintahan, hingga profesi lainnya, dalam mendukung kehidupan ekonomi di nagari. 
+</p>
+
+
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-200 rounded-lg">
                 <thead class="bg-greenDark text-white text-sm">
@@ -29,7 +34,7 @@
                 </thead>
                 <tbody>
                     @if ($data)
-                        <tr class="border-t hover:bg-gray-50">
+                        <tr class="border-t hover:bg-gray-50 ">
                             <td class="px-6 py-3 text-center">Petani</td>
                             <td class="px-6 py-3 font-semibold text-center">{{ $data->petani }}</td>
                         </tr>

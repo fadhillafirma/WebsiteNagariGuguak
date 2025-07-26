@@ -54,7 +54,7 @@
 
                     <button
                         type="submit"
-                        class="w-full bg-blue-600 text-white font-semibold py-2 px-4  rounded-lg hover:bg-blue-700 transition duration-200"
+                        class="w-full bg-greenDark focus:outline-none focus:ring-greenVill text-white font-semibold py-2 px-4  rounded-lg hover:bg-blue-700 transition duration-200"
                     >
                         Login
                     </button>

@@ -13,12 +13,13 @@
 <body class="m-0 p-0">
 
             <section class=" py-20 px-8 bg-white max-w-7xl mx-auto">
-                        <h1 class="text-3xl text-center font-semibold mb-8 text-gray-900 mt-10 animate-on-scroll">Berita</h1>
+                        <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4 text-center text-center mt-10">Berita</h2>
+
 
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10">
                     @foreach ($beritas as $berita)
-                        <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
+                        <div class="bg-white shadow rounded-lg overflow-hidden">
                             <a href="#">
                                 <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('storage/' . $berita->foto) }}" alt="{{ $berita->judul }}" />
                             </a>
