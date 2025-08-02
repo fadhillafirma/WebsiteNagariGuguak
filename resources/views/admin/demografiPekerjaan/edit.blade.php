@@ -25,7 +25,7 @@
                    class="w-full rounded border-gray-300 focus:ring-blue-500 focus:border-blue-500" required>
         </div>
 
-        @include('demografi.pekerjaan._fields', ['row' => $row])
+        @include('admin.demografiPekerjaan._fields', ['row' => $row])
 
         <div class="flex justify-end gap-3 pt-4">
             <a href="{{ route('demografi-pekerjaan.index') }}"

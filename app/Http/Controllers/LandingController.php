@@ -71,14 +71,44 @@ public function showArtikel($id)
 
 public function demografiSekolah()
 {
-    // Ambil tahun terbaru
     $tahunTerbaru = DemografiSekolah::max('tahun');
-
-    // Ambil semua data dengan tahun tersebut
     $data = DemografiSekolah::where('tahun', $tahunTerbaru)->get();
 
-    return view('demografiSekolah', compact('data', 'tahunTerbaru'));
+    $jumlahPaud = $data->sum('jumlah_paud');
+    $jumlahSd = $data->sum('jumlah_sd');
+    $jumlahSmp = $data->sum('jumlah_smp');
+    $jumlahSma = $data->sum('jumlah_sma');
+
+    // Tambahkan warna (opsional bisa dari DB, config, dll)
+    $warnaChart = [
+        '#004225',
+        '#037946',
+        '#05cb76ff',
+        '#71efb9ff'
+    ];
+
+
+    //  greenDark: '#004225',
+    //     green: '#015b34ff',
+    //     green1: '#027a46ff',
+    //     green2: '#029656ff',
+    //     green3: '#02b869ff',
+
+
+
+
+
+    return view('demografiSekolah', compact(
+        'data',
+        'tahunTerbaru',
+        'jumlahPaud',
+        'jumlahSd',
+        'jumlahSmp',
+        'jumlahSma',
+        'warnaChart'
+    ));
 }
+
 
 public function demografiPekerjaan ()
     {
@@ -91,85 +121,90 @@ public function demografiPekerjaan ()
 
 
     public function demografiPenduduk()
-    {
-        $data = DemografiPendudukJorong::with('jorong')
-            ->orderByDesc('tahun')
-            ->paginate(20);
+{
+    // Ambil tahun terbaru dari seluruh data (bukan dari hasil paginate)
+    $tahunTerbaru = DemografiPendudukJorong::max('tahun');
 
-        // Mengambil tahun terbaru dari data yang sudah dipaginasi atau tahun saat ini
-        $tahunTerbaru = $data->first()?->tahun ?? date('Y');
+    // Ambil data hanya untuk tahun terbaru
+    $data = DemografiPendudukJorong::with('jorong')
+        ->where('tahun', $tahunTerbaru)
+        ->paginate(20);
 
-        // ======== Bagian Tambahan untuk Grafik =========
+    // Ambil semua jorong
+    $jorongs = Jorong::all();
 
-        // Mengambil semua tahun unik yang ada dalam data demografi, diurutkan secara menaik
-        $labels = DemografiPendudukJorong::select('tahun')
-            ->distinct()
-            ->orderBy('tahun')
-            ->pluck('tahun')
-            ->toArray();
+    // Warna grafik
+    $colors = [
+        '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6',
+        '#14b8a6', '#ec4899', '#6d28d9', '#ca8a04', '#0891b2'
+    ];
 
-        // Mengambil semua jorong yang ada
-        $jorongs = Jorong::all();
+    $labels = []; // label jorong
+    $dataJumlah = []; // data penduduk per jorong
 
-        // Daftar warna untuk setiap dataset (jorong). Tambah lebih banyak jika perlu.
-        $colors = [
-            '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6',
-            '#14b8a6', '#ec4899', '#6d28d9', '#ca8a04', '#0891b2'
-        ];
+    foreach ($jorongs as $jorong) {
+        $jumlah = DemografiPendudukJorong::where('jorong_id', $jorong->id_jorong)
+            ->where('tahun', $tahunTerbaru)
+            ->sum(DemografiPendudukJorong::raw('laki_laki + perempuan'));
 
-        $datasets = [];
-
-        // Pastikan ada labels (tahun) sebelum mencoba membuat datasets
-        if (!empty($labels)) {
-            foreach ($jorongs as $index => $jorong) {
-                $dataPerTahun = [];
-                foreach ($labels as $tahun) {
-                    // Ambil jumlah laki-laki + perempuan untuk jorong dan tahun tertentu
-                    $jumlah = DemografiPendudukJorong::where('jorong_id', $jorong->id_jorong)
-                        ->where('tahun', $tahun)
-                        ->sum(DemografiPendudukJorong::raw('laki_laki + perempuan'));
-
-                    // Pastikan $jumlah adalah integer. Jika null (tidak ada data), anggap 0.
-                    $dataPerTahun[] = (int) $jumlah;
-                }
-
-                $datasets[] = [
-                    'label' => $jorong->nama_jorong, // Ganti 'nama' menjadi 'label' untuk Chart.js
-                    'data' => $dataPerTahun,
-                    'borderColor' => $colors[$index % count($colors)],
-                    'backgroundColor' => $colors[$index % count($colors)],
-                ];
-            }
-        } else {
-            // Jika tidak ada data tahun sama sekali, kirim array kosong untuk labels dan datasets
-            $labels = [];
-            $datasets = [];
+        if ($jumlah > 0) {
+            $labels[] = $jorong->nama_jorong;
+            $dataJumlah[] = (int) $jumlah;
         }
-
-        // ================================================
-
-        return view('demografiPenduduk', compact('data', 'tahunTerbaru', 'labels', 'datasets'));
     }
 
-    public function demografiLahan()
-    {
-        // Ambil tahun terbaru dari data lahan
-        $tahunTerbaru = LahanData::max('tahun'); // <-- PERBAIKAN DI SINI: Ubah dari DemografiLahanData ke LahanData
+    $datasets = [
+        [
+            'label' => 'Jumlah Penduduk Tahun ' . $tahunTerbaru,
+            'data' => $dataJumlah,
+            'backgroundColor' => array_slice($colors, 0, count($dataJumlah)),
+            'borderColor' => array_slice($colors, 0, count($dataJumlah)),
+            'borderWidth' => 1,
+        ]
+    ];
 
-        // Jika tidak ada tahun terbaru, set ke tahun saat ini atau default
-        if (is_null($tahunTerbaru)) {
-            $tahunTerbaru = date('Y');
-            $dataLahan = collect(); // Kembalikan koleksi kosong jika tidak ada data
-        } else {
-            // Ambil semua data lahan untuk tahun terbaru, dengan eager loading 'lahanJenis'
-            $dataLahan = LahanData::with('lahanJenis') // <-- PERBAIKAN DI SINI: Ubah dari DemografiLahanData ke LahanData
-                                 ->where('tahun', $tahunTerbaru)
-                                 ->orderBy('lahan_jenis_id') // Urutkan agar konsisten
-                                 ->get();
-        }
+    return view('demografiPenduduk', compact('data', 'tahunTerbaru', 'labels', 'datasets'));
+}
 
-        return view('demografiLahan', compact('dataLahan', 'tahunTerbaru'));
+
+  public function demografiLahan()
+{
+    $tahunTerbaru = LahanData::max('tahun');
+
+    if (is_null($tahunTerbaru)) {
+        $tahunTerbaru = date('Y');
+        $dataLahan = collect();
+        $sawah = collect();
+        $kebun = collect();
+        $lainnya = collect();
+
+
+    } else {
+        $dataLahan = LahanData::with('lahanJenis')
+            ->where('tahun', $tahunTerbaru)
+            ->orderBy('lahan_jenis_id')
+            ->get();
+
+       $sawah = $dataLahan->filter(function ($item) {
+            return $item->lahanJenis->kategori === 'sawah';
+        });
+
+        $kebun = $dataLahan->filter(function ($item) {
+            return $item->lahanJenis->kategori === 'perkebunan';
+        });
+
+         $lainnya = $dataLahan->filter(function ($item) {
+            return $item->lahanJenis->kategori === 'lainnya';
+        });
+
     }
+
+    $luasSawah = $sawah->sum('luas_ha');
+    $luasKebun = $kebun->sum('luas_ha');
+
+    return view('demografiLahan', compact('dataLahan', 'tahunTerbaru', 'luasSawah', 'luasKebun'));
+}
+
 
 
 
