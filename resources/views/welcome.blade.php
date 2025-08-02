@@ -40,24 +40,28 @@
 
 
     <section id="profil" class="bg-white text-black px-8 py-12 max-w-7xl mx-auto">
-        <div class="grid grid-cols-2 gap-10  mx-auto mt-10">
-            <div class="text-greenDark text-4xl font-bold font-montserrat fade-in-left animate-on-scroll">
-                Bersama <span class='bg-greenVill p-1'>Nagari Guguak</span>, kita wujudkan masyarakat mandiri, berbudaya, dan berdaya saing.
-            </div>
-            <div class="grid text-justify fade-in-right animate-on-scroll">
-                <p>
-                    <span class="text-greenDark font-bold">Nagari Guguak</span> adalah salah satu nagari yang berada di wilayah Kabupaten Sijunjung, Sumatera Barat, yang memiliki nilai historis dan budaya yang kuat. Berasal dari pemekaran Nagari Padang Laweh, Nagari Guguak berkembang melalui musyawarah para ninik mamak dan masyarakat adat yang menetapkan kawasan pemukiman di dataran tinggi bernama “Guguak.” Kini, Nagari Guguak berdiri sebagai wilayah administratif yang mandiri, kaya akan tradisi, potensi sumber daya alam, serta semangat gotong royong yang masih terjaga dalam kehidupan masyarakatnya.
-                </p>
-                <a href="/profile" class="text-greenDark font-semibold mt-5">Tentang Kami →</a>
-            </div>
-
-
+    <!-- Grid teks -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 mt-10">
+        <div class="text-greenDark text-4xl font-bold font-montserrat fade-in-left animate-on-scroll">
+            Bersama <span class="bg-greenVill p-1">Nagari Guguak</span>, kita wujudkan masyarakat mandiri, berbudaya, dan berdaya saing.
         </div>
-        <div class="text-center flex justify-center mt-10">
-            <img src="/sawahGuguk.jpg" alt="" class="w-full rounded-3xl">
+        <div class="text-justify fade-in-right animate-on-scroll">
+            <p>
+                <span class="text-greenDark font-bold">Nagari Guguak</span> adalah salah satu nagari yang berada di wilayah Kabupaten Sijunjung, Sumatera Barat, yang memiliki nilai historis dan budaya yang kuat. Berasal dari pemekaran Nagari Padang Laweh, Nagari Guguak berkembang melalui musyawarah para ninik mamak dan masyarakat adat yang menetapkan kawasan pemukiman di dataran tinggi bernama “Guguak.” Kini, Nagari Guguak berdiri sebagai wilayah administratif yang mandiri, kaya akan tradisi, potensi sumber daya alam, serta semangat gotong royong yang masih terjaga dalam kehidupan masyarakatnya.
+            </p>
+            <a href="/profile" class="text-greenDark font-semibold mt-5 inline-block">Tentang Kami →</a>
         </div>
+    </div>
 
-    </section>
+    <!-- Carousel -->
+    <div class="relative w-full mt-10 overflow-hidden rounded-3xl h-[900px]">
+        <div id="carousel" class="flex w-full h-full transition-transform duration-1000 ease-in-out">
+            <img src="/kerbau.jpg" alt="Kerbau" class="w-full h-full object-cover flex-shrink-0">
+            <img src="/sawahKoto.jpg" alt="Sawah Koto" class="w-full h-full object-cover flex-shrink-0">
+            <img src="/sawahGuguk.jpg" alt="Sawah Guguk" class="w-full h-full object-cover flex-shrink-0">
+        </div>
+    </div>
+</section>
 
 
    <section class="relative text-gray-900 py-20 px-8 max-w-full mx-auto bg-cream overflow-hidden">
@@ -144,9 +148,19 @@
         <h2 class="text-3xl font-bold fade-in-left animate-on-scroll">Galeri</h2>
         <div class="h-[3px] w-[10%] bg-greenDark mt-2 mx-auto fade-in-left animate-on-scroll"></div>
     </div>
-    <div class="grid grid-cols-3 gap-4 mt-10">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-10">
         @foreach ($galeris as $item)
-            <img src="{{ asset('storage/galeri' . $item->gambar) }}" alt="{{ $item->judul ?? '' }}" class="max-w-[200px] w-full rounded-lg shadow-md ml-14 mb-4" />
+            {{-- Pastikan $item->gambar tidak kosong dan benar-benar ada --}}
+            @if ($item->gambar)
+                <div class="flex justify-center"> {{-- Tambahkan div untuk centering --}}
+                    <img
+                        src="{{ asset('storage/' . $item->gambar) }}"
+                        alt="{{ $item->judul ?? 'Gambar Galeri' }}"
+                        class="max-w-full h-auto w-full max-h-[300px] object-cover rounded-lg shadow-md"
+                        onerror="this.onerror=null;this.src='{{ asset('images/placeholder.png') }}';" {{-- Tambahkan fallback gambar --}}
+                    />
+                </div>
+            @endif
         @endforeach
     </div>
 </section>
@@ -204,8 +218,8 @@
 
 <section class=" py-20 px-8 bg-white max-w-7xl mx-auto">
     <div class="text-center mb-4">
-            <h2 class="text-3xl font-bold">Lokasi</h2>
-            <div class="h-[3px] w-[5%] bg-greenDark mt-2 mx-auto"></div>
+            <h2 class="text-3xl font-bold fade-in-left animate-on-scroll">Lokasi</h2>
+            <div class="h-[3px] w-[5%] bg-greenDark mt-2 mx-auto fade-in-left animate-on-scroll"></div>
             <div class="mt-10">
             <div class="w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg border-2 border-greenDark">
                <iframe
@@ -232,6 +246,17 @@
 
 
 <script>
+
+   const carousel = document.getElementById('carousel');
+    const totalSlides = carousel.children.length;
+    let index = 0;
+
+    setInterval(() => {
+        index = (index + 1) % totalSlides;
+        carousel.style.transform = `translateX(-${index * 100}%)`;
+    }, 3000);
+
+
   const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {

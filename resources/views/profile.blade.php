@@ -16,7 +16,7 @@
             <div class="grid grid-cols-2">
                 <div class="text-start p-5">
                     <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4">Sejarah</h2>
-                    <h3 class="text-justify mt-10 indent-8"> <span class="font-bold text-greenDark">Nagari Guguak</span>  pada awalnya merupakan bagian dari Nagari Padang Laweh dan dipimpin secara adat oleh para Ninik Mamak dari berbagai suku, seperti Suku Caniago, Tigo Suku, Piliang, dan lainnya. Wilayah ini berkembang seiring dengan arus perantauan dan pemukiman masyarakat di sekitar Batang Sinamar dan Batang Ombilin, yang kemudian bermuara di daerah bernama Polak Loweh. </h3>
+                    <h3 class="text-justify mt-10 indent-8"> <span class="font-bold text-greenDark ">Nagari Guguak</span>  pada awalnya merupakan bagian dari Nagari Padang Laweh dan dipimpin secara adat oleh para Ninik Mamak dari berbagai suku, seperti Suku Caniago, Tigo Suku, Piliang, dan lainnya. Wilayah ini berkembang seiring dengan arus perantauan dan pemukiman masyarakat di sekitar Batang Sinamar dan Batang Ombilin, yang kemudian bermuara di daerah bernama Polak Loweh. </h3>
                     <h3 class="text-justify mt-5 indent-8">Setelah melalui musyawarah adat, para Ninik Mamak sepakat mendirikan Nagari sendiri yang bertempat di pemuntaran dataran tinggi. Tempat tersebut akhirnya diberi nama Guguak, dan kini menjadi wilayah mandiri.
                     Nagari Guguak resmi berdiri sebagai nagari tersendiri sejak tahun 1979 berdasarkan Undang-Undang Nomor 5 tentang Pemerintahan Desa. Wilayahnya terdiri dari dua desa: Desa Koto Guguak dan Desa Bulu Rotan yang berdiri selama 22 tahun. Seiring perubahan kebijakan pemerintahan, pada tahun 2002 Nagari Guguak kembali menerapkan sistem Pemerintahan Nagari sesuai peraturan daerah dan ketentuan provinsi.</h3>
                 </div>
@@ -74,21 +74,51 @@
         <section class="bg-white pt-5 pb-5 ">
               <div class="max-w-6xl mx-auto text-center  justify-content-center">
                 <h1 class="font-bold text-greenDark text-4xl underline underline-offset-4 mt-10">Struktur Perangkat Nagari</h1>
-                <img src="/dummyStruktur.png" alt="" class="mt-10 flex justify-center">
+                <img src="/strukturOrganisasi.jpg" alt="" class="mt-10 flex justify-center ml-2 mr-3">
 
               </div>
         </section>
 
 
-        <section class="bg-white">
-            <div class="max-w-6xl">
-                <div class="">
-                    test
-                </div>
 
+
+        <section id="jorong" class="bg-white pt-5 pb-5">
+            <div class="max-w-6xl mx-auto text-center">
+                <p class="font-bold text-greenDark text-4xl underline underline-offset-4">Jorong</p>
+            </div>
+            <div class="gri grid-cols-3 ">
+                <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-105">
+                        <a href="#">
+                            <img class="rounded-t-lg w-full h-48 object-cover"
+                                src="/sawahGuguk.jpg" />
+                        </a>
+                        <div class="p-5">
+                            <a href="#">
+                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                    Jorong Koto
+                                </h5>
+                            </a>
+                            <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">
+                                dipimpin
+                            </p>
+
+                           <a href="#" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white border-2 bg-greenDark rounded-lg hover:bg-white hover:text-greenDark hover:border-greenDark focus:ring-4 focus:outline-none focus:ring-greenVill dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-greenVill">
+
+                                Read more
+                                <svg class="rtl:rotate-180 w-3.5 h-3.5 ms-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 10">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 5h12m0 0L9 1m4 4L9 9"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
             </div>
 
         </section>
+
+        <div class="watermark-footer">
+            <p>2025 Nagari Guguak.</p>
+            <p>Powered by KKN Guguak Unand 2025.</p>
+        </div>
 
     </div>
 

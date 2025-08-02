@@ -8,6 +8,8 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 </head>
 <body class="">
 
@@ -72,10 +74,56 @@
 
                 </table>
             </div>
+
+             <div class="mt-12 bg-white p-6 shadow-md rounded-lg">
+                <h2 class="text-xl font-semibold mb-4 text-center">Distribusi Total Sekolah per Jenjang</h2>
+                <canvas id="sekolahChart" height="150"></canvas>
+            </div>
         </div>
     </section>
 
     @include('layout.navbar')
+
+    <script>
+    const ctx = document.getElementById('sekolahChart').getContext('2d');
+
+    new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: ['PAUD', 'SD', 'SMP', 'SMA'],
+            datasets: [{
+                label: 'Jumlah Sekolah',
+                data: [
+                    {{ $jumlahPaud }},
+                    {{ $jumlahSd }},
+                    {{ $jumlahSmp }},
+                    {{ $jumlahSma }}
+                ],
+                backgroundColor: {!! json_encode($warnaChart) !!},
+                borderColor: '#22543d',
+                borderWidth: 1
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: {
+                legend: { display: false },
+                title: {
+                    display: true,
+
+                    font: { size: 18 }
+                }
+            },
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { stepSize: 1 }
+                }
+            }
+        }
+    });
+</script>
+
 
 
 </body>

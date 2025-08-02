@@ -9,7 +9,17 @@ export default {
     extend: {
       colors: {
         greenVill: '#DEE791',
+        greenOlive: '#a6b14aff',
+
         greenDark: '#004225',
+        green: '#037946ff',
+        green1: '#04b569ff',
+        green2: '#35e79aff',
+        green3: '#DEE791',
+
+
+
+
         olive: '#034b2cff',
         khaki: '#dfd7abff',
 

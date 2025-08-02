@@ -7,6 +7,9 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/bar.js"></script>
+
 </head>
 <body>
 
@@ -20,7 +23,7 @@
         </p>
 
         <p class="text-gray-700 text-justify mb-6">
-    Data demografi pekerjaan di Nagari Guguak pada tahun 2026 memberikan gambaran tentang ragam mata pencaharian masyarakat. Informasi ini mencerminkan peran berbagai sektor, mulai dari pertanian, pemerintahan, hingga profesi lainnya, dalam mendukung kehidupan ekonomi di nagari. 
+    Data demografi pekerjaan di Nagari Guguak pada tahun 2026 memberikan gambaran tentang ragam mata pencaharian masyarakat. Informasi ini mencerminkan peran berbagai sektor, mulai dari pertanian, pemerintahan, hingga profesi lainnya, dalam mendukung kehidupan ekonomi di nagari.
 </p>
 
 
@@ -78,10 +81,79 @@
                 </tbody>
             </table>
         </div>
+        <div class="mt-10">
+            <h2 class="text-xl font-bold text-center mb-4 text-greenDark">Peringkat Profesi Berdasarkan Jumlah</h2>
+            <div id="pekerjaanBarChart" style="height: 500px; width: 100%;"></div>
+        </div>
+
     </div>
 </section>
 
+
 @include('layout.navbar')
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const dataPekerjaan = [
+            { name: 'Petani', y: {{ $data->petani }} },
+            { name: 'Pegawai Negeri', y: {{ $data->pegawai_negeri }} },
+            { name: 'Karyawan Swasta', y: {{ $data->karyawan_swasta }} },
+            { name: 'Pedagang', y: {{ $data->pedagang }} },
+            { name: 'TNI', y: {{ $data->tni }} },
+            { name: 'Pensiunan', y: {{ $data->pensiunan }} },
+            { name: 'Aparat Pemerintahan', y: {{ $data->aparat_pemerintahan }} },
+            { name: 'Pekerjaan Lain', y: {{ $data->pekerjaan_lain }} }
+        ];
+
+        // Urutkan dari terbesar ke terkecil
+        dataPekerjaan.sort((a, b) => b.y - a.y);
+
+        Highcharts.chart('pekerjaanBarChart', {
+            chart: {
+                type: 'bar'
+            },
+            title: {
+                text: null
+            },
+            xAxis: {
+                categories: dataPekerjaan.map(item => item.name),
+                title: {
+                    text: null
+                }
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Jumlah Orang',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' orang'
+            },
+            plotOptions: {
+                bar: {
+                    dataLabels: {
+                        enabled: true
+                    },
+                    colorByPoint: true,
+                    colors: ['#004225', '#015b34', '#027a46', '#029656', '#02b869', '#38b48e', '#64c9a4', '#9ae5c0']
+                }
+            },
+            credits: {
+                enabled: false
+            },
+            series: [{
+                name: 'Jumlah',
+                data: dataPekerjaan
+            }]
+        });
+    });
+</script>
+
 
 </body>
 </html>

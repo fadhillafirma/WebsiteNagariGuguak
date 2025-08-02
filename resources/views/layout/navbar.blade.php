@@ -13,34 +13,34 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex space-x-8 text-lg font-medium items-center" id="navbar-menu">
-          <a href="/" class="menu-link hover:text-greenVill transition">Home</a>
-          <a href="/profile" class="menu-link hover:text-greenVill transition">Profile</a>
+          <a href="/" class="menu-link hover:text-greenOlive transition">Home</a>
+          <a href="/profile" class="menu-link hover:text-greenOlive transition">Profile</a>
 
           <!-- Dropdown Demografis -->
-          <div class="relative group">
-            <button class="hover:text-greenVill transition focus:outline-none py-1">Demografis</button>
-            <div class="absolute hidden group-hover:block bg-white/20 backdrop-blur-sm shadow-lg rounded-lg pt-2 min-w-[180px] z-50">
-              <a href="/demografiSekolah" class="menu-link block px-4 py-2 hover:bg-green-50">Sekolah</a>
-              <a href="/demografiPekerjaan" class="menu-link block px-4 py-2 hover:bg-green-50">Pekerjaan</a>
-              <a href="/demografiPenduduk" class="menu-link block px-4 py-2 hover:bg-green-50">Penduduk</a>
-              <a href="/demografiLahan" class="menu-link block px-4 py-2 hover:bg-green-50">Lahan</a>
+          <div class="relative group ">
+            <button class="hover:text-greenOlive transition focus:outline-none py-1">Demografis</button>
+            <div class="absolute hidden group-hover:block bg-white backdrop-blur-sm shadow-lg rounded-lg pt-2 min-w-[180px] z-50">
+              <a href="/demografiSekolah" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Sekolah</a>
+              <a href="/demografiPekerjaan" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Pekerjaan</a>
+              <a href="/demografiPenduduk" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Penduduk</a>
+              <a href="/demografiLahan" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Lahan</a>
 
 
             </div>
           </div>
 
-          <a href="/potensi" class="menu-link hover:text-greenVill transition">Potensi</a>
+          <a href="/potensi" class="menu-link hover:text-greenOlive transition">Potensi</a>
 
           <!-- Dropdown Publikasi -->
           <div class="relative group">
-            <button class="hover:text-greenVill transition focus:outline-none py-1">Publikasi</button>
-            <div class="absolute hidden group-hover:block bg-white/20 backdrop-blur-sm shadow-lg rounded-lg pt-2 min-w-[150px] z-50">
-              <a href="/artikel" class="menu-link block px-4 py-2 hover:bg-green-50">Artikel</a>
-              <a href="/berita" class="menu-link block px-4 py-2 hover:bg-green-50">Berita</a>
+            <button class="hover:text-greenOlive transition focus:outline-none py-1">Publikasi</button>
+            <div class="absolute hidden group-hover:block bg-white  shadow-lg rounded-lg pt-2 min-w-[150px] z-50">
+              <a href="/artikel" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Artikel</a>
+              <a href="/berita" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Berita</a>
             </div>
           </div>
 
-          <a href="/kontak" class="menu-link hover:text-greenVill transition">Kontak</a>
+          <a href="/kontak" class="menu-link hover:text-greenOlive transition">Kontak</a>
         </div>
 
         <!-- Mobile Hamburger Button -->
@@ -57,33 +57,33 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all">
-      <a href="/" class="block py-2 hover:text-greenVill menu-link">Home</a>
-      <a href="/profile" class="block py-2 hover:text-greenVill menu-link">Profile</a>
+      <a href="/" class="block py-2 hover:text-greenOlive menu-link">Home</a>
+      <a href="/profile" class="block py-2 hover:text-greenOlive menu-link">Profile</a>
 
       <!-- Mobile Dropdown: Demografis -->
       <div class="block py-2">
         <span class="font-semibold">Demografis</span>
         <div class="pl-4">
-          <a href="/demografiSekolah" class="block py-1 hover:text-greenVill menu-link">Sekolah</a>
-          <a href="/demografiPekerjaan" class="block py-1 hover:text-greenVill menu-link">Pekerjaan</a>
-          <a href="/demografiPenduduk" class="block py-1 hover:text-greenVill menu-link">Penduduk</a>
-          <a href="/demografiPenduduk" class="menu-link block py-1 hover:text-greenVill">Penduduk</a>
+          <a href="/demografiSekolah" class="block py-1 hover:text-greenOlive menu-link">Sekolah</a>
+          <a href="/demografiPekerjaan" class="block py-1 hover:text-greenOlive menu-link">Pekerjaan</a>
+          <a href="/demografiPenduduk" class="block py-1 hover:text-greenOlive menu-link">Penduduk</a>
+          <a href="/demografiPenduduk" class="menu-link block py-1 hover:text-greenOlive">Penduduk</a>
 
         </div>
       </div>
 
-      <a href="/potensi" class="block py-2 hover:text-greenVill menu-link">Potensi</a>
+      <a href="/potensi" class="block py-2 hover:text-greenOlive menu-link">Potensi</a>
 
       <!-- Mobile Dropdown: Publikasi -->
       <div class="block py-2">
         <span class="font-semibold">Publikasi</span>
         <div class="pl-4">
-          <a href="/artikel" class="block py-1 hover:text-greenVill menu-link">Artikel</a>
-          <a href="/berita" class="block py-1 hover:text-greenVill menu-link">Berita</a>
+          <a href="/artikel" class="block py-1 hover:text-greenOlive menu-link">Artikel</a>
+          <a href="/berita" class="block py-1 hover:text-greenOlive menu-link">Berita</a>
         </div>
       </div>
 
-      <a href="/kontak" class="block py-2 hover:text-greenVill menu-link">Kontak</a>
+      <a href="/kontak" class="block py-2 hover:text-greenOlive menu-link">Kontak</a>
     </div>
   </div>
 </nav>
@@ -113,9 +113,9 @@
     }
 
     if (isActive) {
-      link.classList.add("text-greenVill", "font-semibold");
+      link.classList.add("text-greenOlive", "font-semibold");
     } else {
-      link.classList.remove("text-greenVill", "font-semibold");
+      link.classList.remove("text-greenOlive", "font-semibold");
     }
   });
 </script>

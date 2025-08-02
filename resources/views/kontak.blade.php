@@ -34,7 +34,7 @@
                     <div class="bg-white border border-gray-200 rounded-lg shadow-md transition duration-300 hover:-translate-y-1 hover:scale-105">
                         <div class="p-5">
                             <h5 class="mb-2 text-2xl font-bold text-greenDark">WhatsApp</h5>
-                            <p class="text-gray-700">08261762</p>
+                            <p class="text-gray-700">085191064962</p>
                         </div>
                     </div>
                     <!-- Email -->
