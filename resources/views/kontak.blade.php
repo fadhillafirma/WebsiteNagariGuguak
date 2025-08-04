@@ -31,19 +31,25 @@
                 <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4 text-center md:text-left">Kontak</h2>
                 <div class="grid gap-8 mt-10">
                     <!-- WhatsApp -->
-                    <div class="bg-white border border-gray-200 rounded-lg shadow-md transition duration-300 hover:-translate-y-1 hover:scale-105">
+                    <a href="/wa.me/6285191064962">
+                         <div class="bg-white border border-gray-200 rounded-lg shadow-md transition duration-300 hover:-translate-y-1 hover:scale-105">
                         <div class="p-5">
                             <h5 class="mb-2 text-2xl font-bold text-greenDark">WhatsApp</h5>
                             <p class="text-gray-700">085191064962</p>
                         </div>
                     </div>
+                    </a>
+
                     <!-- Email -->
+                    <a href="mailto:nagariguguak7@gmail.com">
                     <div class="bg-white border border-gray-200 rounded-lg shadow-md transition duration-300 hover:-translate-y-1 hover:scale-105">
                         <div class="p-5">
                             <h5 class="mb-2 text-2xl font-bold text-greenDark">Email</h5>
                             <p class="text-gray-700">nagariguguak7@gmail.com</p>
                         </div>
                     </div>
+                    </a>
+
                     <!-- Lokasi -->
                     <div class="bg-white border border-gray-200 rounded-lg shadow-md transition duration-300 hover:-translate-y-1 hover:scale-105">
                         <div class="p-5">

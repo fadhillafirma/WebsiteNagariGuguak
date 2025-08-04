@@ -16,8 +16,8 @@
             <div class="grid grid-cols-2">
                 <div class="text-start p-5">
                     <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4">Sejarah</h2>
-                    <h3 class="text-justify mt-10 indent-8"> <span class="font-bold text-greenDark ">Nagari Guguak</span>  pada awalnya merupakan bagian dari Nagari Padang Laweh dan dipimpin secara adat oleh para Ninik Mamak dari berbagai suku, seperti Suku Caniago, Tigo Suku, Piliang, dan lainnya. Wilayah ini berkembang seiring dengan arus perantauan dan pemukiman masyarakat di sekitar Batang Sinamar dan Batang Ombilin, yang kemudian bermuara di daerah bernama Polak Loweh. </h3>
-                    <h3 class="text-justify mt-5 indent-8">Setelah melalui musyawarah adat, para Ninik Mamak sepakat mendirikan Nagari sendiri yang bertempat di pemuntaran dataran tinggi. Tempat tersebut akhirnya diberi nama Guguak, dan kini menjadi wilayah mandiri.
+                    <h3 class="text-justify mt-10 indent-8 "> <span class="font-bold text-greenDark ">Nagari Guguak</span>  pada awalnya merupakan bagian dari Nagari Padang Laweh dan dipimpin secara adat oleh para Ninik Mamak dari berbagai suku, seperti Suku Caniago, Tigo Suku, Piliang, dan lainnya. Wilayah ini berkembang seiring dengan arus perantauan dan pemukiman masyarakat di sekitar Batang Sinamar dan Batang Ombilin, yang kemudian bermuara di daerah bernama Polak Loweh. </h3>
+                    <h3 class="text-justify mt-5 indent-8 ">Setelah melalui musyawarah adat, para Ninik Mamak sepakat mendirikan Nagari sendiri yang bertempat di pemuntaran dataran tinggi. Tempat tersebut akhirnya diberi nama Guguak, dan kini menjadi wilayah mandiri.
                     Nagari Guguak resmi berdiri sebagai nagari tersendiri sejak tahun 1979 berdasarkan Undang-Undang Nomor 5 tentang Pemerintahan Desa. Wilayahnya terdiri dari dua desa: Desa Koto Guguak dan Desa Bulu Rotan yang berdiri selama 22 tahun. Seiring perubahan kebijakan pemerintahan, pada tahun 2002 Nagari Guguak kembali menerapkan sistem Pemerintahan Nagari sesuai peraturan daerah dan ketentuan provinsi.</h3>
                 </div>
                 <div class="flex justify-center p-3">
@@ -38,32 +38,32 @@
 
         <section class="bg-white pt-5 pb-5 ">
             <div class="max-w-6xl mx-auto text-center ">
-                <h1 class="font-bold text-greenDark text-4xl underline underline-offset-4 mt-10">Misi</h1>
-                <div class="grid grid-cols-4 gap-5 mt-10 mb-10 ml-10 mr-10">
+                <h1 class="font-bold text-greenDark text-4xl underline underline-offset-4 mt-10 ">Misi</h1>
+                <div class="grid lg:grid-cols-4 md:grid-cols-2 justify-center  gap-8 mt-10 mb-10 ml-10 mr-10">
 
-                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
+                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-greenVill hover:text-white hover:border-gray-700">
                             <div class="flex justify-center">
                                <i data-lucide="house" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Melaksanakan Pembangunan Disegala Bidang Sesuai Kaidah Pembangunan Nagari dengan Nilai Partisipasi Masyarakat</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap hover:text-greenDark">Melaksanakan Pembangunan Disegala Bidang Sesuai Kaidah Pembangunan Nagari dengan Nilai Partisipasi Masyarakat</h5>
                         </div>
-                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
+                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-greenVill hover:text-white hover:border-gray-700">
                             <div class="flex justify-center">
                                <i data-lucide="file-check" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Menjalankan Administrasi Pemerintahan Nagari berdasarkan Prinsip-prinsip Tata Kelola Pemerintahan Nagari yang Baik</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap hover:text-greenDark">Menjalankan Administrasi Pemerintahan Nagari berdasarkan Prinsip-prinsip Tata Kelola Pemerintahan Nagari yang Baik</h5>
                         </div>
-                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
+                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-greenVill hover:text-white hover:border-gray-700">
                             <div class="flex justify-center">
                                <i data-lucide="handshake" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Mendorong dan Memelihara Komitmen Semua Pihak dalam Rangka Pembangunan Masyarakat Nagari Seutuhnya</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap hover:text-greenDark">Mendorong dan Memelihara Komitmen Semua Pihak dalam Rangka Pembangunan Masyarakat Nagari Seutuhnya</h5>
                         </div>
-                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
+                        <div class="max-w-sm p-6 bg-white border border-greenVill rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110 hover:bg-greenVill hover:text-white hover:border-gray-700">
                             <div class="flex justify-center">
                                <i data-lucide="hand-platter" class="w-8 h-8 text-greenDark text-center m-2"></i>
                             </div>
-                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap">Menciptakan Iklim yang Kondusif Pelayanan yang Baik dan Menjamin Kepastian Hukum dalam Menjaga dan Meningkatkan Potensi Nagari</h5>
+                            <h5 class="mb-2 text-md font-semibold tracking-tight text-gray-900 dark:text-white text-wrap hover:text-greenDark">Menciptakan Iklim yang Kondusif Pelayanan yang Baik dan Menjamin Kepastian Hukum dalam Menjaga dan Meningkatkan Potensi Nagari</h5>
                         </div>
 
                 </div>
@@ -71,10 +71,10 @@
         </section>
 
 
-        <section class="bg-white pt-5 pb-5 ">
+        <section class="bg-white pt-5 pb-5 mb-5">
               <div class="max-w-6xl mx-auto text-center  justify-content-center">
                 <h1 class="font-bold text-greenDark text-4xl underline underline-offset-4 mt-10">Struktur Perangkat Nagari</h1>
-                <img src="/strukturOrganisasi.jpg" alt="" class="mt-10 flex justify-center ml-2 mr-3">
+                <img src="/strukturOrganisasi.jpg" alt="" class="mt-10 mb-5 flex justify-center ml-2 mr-3">
 
               </div>
         </section>
@@ -82,7 +82,7 @@
 
 
 
-        <section id="jorong" class="bg-white pt-5 pb-5">
+        {{-- <section id="jorong" class="bg-white pt-5 pb-5">
             <div class="max-w-6xl mx-auto text-center">
                 <p class="font-bold text-greenDark text-4xl underline underline-offset-4">Jorong</p>
             </div>
@@ -113,12 +113,12 @@
                     </div>
             </div>
 
-        </section>
+        </section> --}}
 
-        <div class="watermark-footer">
+        {{-- <div class="watermark-footer">
             <p>2025 Nagari Guguak.</p>
             <p>Powered by KKN Guguak Unand 2025.</p>
-        </div>
+        </div> --}}
 
     </div>
 

@@ -13,20 +13,20 @@
         <div>
             <label class="block text-gray-700 mb-1">Judul</label>
             <input type="text" name="judul" value="{{ old('judul', $publikasi->judul) }}"
-                   class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                   class="w-full rounded-lg border border-gray-300 py-2 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                    required>
         </div>
 
         <div>
             <label class="block text-gray-700 mb-1">Deskripsi</label>
             <textarea name="deskripsi" rows="4"
-                      class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      class="w-full rounded-lg border border-gray-300 py-2 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       required>{{ old('deskripsi', $publikasi->deskripsi) }}</textarea>
         </div>
 
         <div>
             <label class="block text-gray-700 mb-1">Jenis</label>
-            <select name="jenis" class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
+            <select name="jenis" class="w-full rounded-lg border border-gray-300 py-2 p-2 shadow-sm focus:border-blue-500 focus:ring-blue-500" required>
                 <option value="artikel" {{ $publikasi->jenis == 'artikel' ? 'selected' : '' }}>Artikel</option>
                 <option value="berita" {{ $publikasi->jenis == 'berita' ? 'selected' : '' }}>Berita</option>
             </select>
@@ -43,7 +43,7 @@
             @if($publikasi->foto)
                 <img src="{{ asset('storage/'.$publikasi->foto) }}" class="w-32 h-20 object-cover rounded-md mb-2">
             @endif
-            <input type="file" name="foto" class="w-full border-gray-300 rounded-lg">
+            <input type="file" name="foto" class="w-full rounded-lg border border-gray-300 py-2 p-2">
         </div>
 
         <div class="flex justify-end gap-3">

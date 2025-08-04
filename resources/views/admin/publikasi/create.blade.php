@@ -12,7 +12,7 @@
         <div>
             <label class="block text-gray-700 mb-1">Judul</label>
             <input type="text" name="judul" value="{{ old('judul') }}"
-                   class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                   class="w-full rounded-lg border border-gray-300 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                    required>
             @error('judul') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
@@ -20,7 +20,7 @@
         <div>
             <label class="block text-gray-700 mb-1">Deskripsi</label>
             <textarea name="deskripsi" rows="4"
-                      class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                      class="w-full rounded-lg border border-gray-300 py-2 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                       required>{{ old('deskripsi') }}</textarea>
             @error('deskripsi') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
@@ -28,7 +28,7 @@
         <div>
             <label class="block text-gray-700 mb-1">Jenis</label>
             <select name="jenis"
-                    class="w-full border-gray-300 rounded-lg shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    class="w-full rounded-lg border border-gray-300 py-2  shadow-sm focus:border-blue-500 focus:ring-blue-500"
                     required>
                 <option value="">-- Pilih Jenis --</option>
                 <option value="artikel" {{ old('jenis') == 'artikel' ? 'selected' : '' }}>Artikel</option>
@@ -36,16 +36,16 @@
             </select>
             @error('jenis') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
-        
+
         <div class="mb-4">
             <label for="penulis" class="block text-sm font-medium text-gray-700">Penulis</label>
-            <input type="text" name="penulis" id="penulis" class="mt-1 block w-full border-gray-300 rounded-md shadow-sm" value="{{ old('penulis', $publikasi->penulis ?? '') }}">
+            <input type="text" name="penulis" id="penulis" class="mt-1 block w-full rounded-lg border border-gray-300 py-2 rounded-md shadow-sm" value="{{ old('penulis', $publikasi->penulis ?? '') }}">
         </div>
 
 
         <div>
             <label class="block text-gray-700 mb-1">Foto (Opsional)</label>
-            <input type="file" name="foto" class="w-full border-gray-300 rounded-lg">
+            <input type="file" name="foto" class="w-full rounded-lg border border-gray-300 py-2 rounded-lg p-2">
             @error('foto') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 

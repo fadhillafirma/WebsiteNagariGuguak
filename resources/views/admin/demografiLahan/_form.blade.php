@@ -11,7 +11,7 @@
     </select>
 </div>
 
-{{-- JENIS LAHAN --}}
+{{-- LAHAN --}}
 <div class="mb-3">
     <label for="lahan_jenis_id" class="form-label">Jenis Lahan</label>
     <select name="lahan_jenis_id" id="lahan_jenis_id" class="form-control" required>

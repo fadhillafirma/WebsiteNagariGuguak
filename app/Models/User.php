@@ -61,4 +61,20 @@ class User extends Authenticatable
     {
         return $this->hasMany(LahanJenis::class);
     }
+
+    public function lembagas()
+    {
+        return $this->hasMany(Lembaga::class);
+    }
+
+    public function kalenders()
+    {
+        return $this->hasMany(Kalender::class);
+    }
+    public function potensis()
+    {
+        return $this->hasMany(Potensi::class);
+    }
+
+
 }
