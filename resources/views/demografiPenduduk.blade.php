@@ -50,6 +50,7 @@
                                 <td colspan="5" class="px-6 py-6 text-center text-gray-500">Data tidak ditemukan.</td>
                             </tr>
                         @endforelse
+                        @if ($data->count() > 0)
                         <tr class="bg-gray-100 font-bold border-t-2">
                             <td class="px-6 py-3 text-gray-800">Total</td>
                             <td class="px-6 py-3 text-green-700">{{ $data->sum('laki_laki') }}</td>
@@ -57,6 +58,7 @@
                             <td class="px-6 py-3 text-green-700">{{ $data->sum('kk') }}</td>
                             <td class="px-6 py-3 text-green-800">{{ $data->sum('laki_laki') + $data->sum('perempuan') }}</td>
                         </tr>
+                        @endif
                     </tbody>
                 </table>
             </div>
@@ -84,15 +86,14 @@
         const labels = {!! json_encode($labels) !!};
         const datasetsRaw = {!! json_encode($datasets) !!};
 
-        // Hanya inisialisasi chart jika ada data
         if (labels.length > 0 && datasetsRaw.length > 0) {
             const data = {
                 labels: labels,
                 datasets: datasetsRaw.map(item => ({
-                    label: item.label, // Menggunakan 'label' sesuai perubahan di controller
+                    label: item.label,
                     data: item.data,
-                    borderColor: item.borderColor, // Menggunakan 'borderColor' sesuai perubahan di controller
-                    backgroundColor: item.backgroundColor, // Menggunakan 'backgroundColor' sesuai perubahan di controller
+                    borderColor: item.borderColor,
+                    backgroundColor: item.backgroundColor,
                     fill: false,
                     tension: 0.3
                 }))
@@ -129,7 +130,6 @@
             };
 
             const ctx = document.getElementById("pendudukChart");
-            // Pastikan elemen canvas ditemukan sebelum mencoba membuat chart
             if (ctx) {
                 new Chart(ctx.getContext("2d"), config);
             }

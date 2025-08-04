@@ -9,6 +9,8 @@ use App\Http\Controllers\DemografiSekolahController;
 use App\Http\Controllers\DemografiPendudukJorongController;
 use App\Http\Controllers\LahanDataController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\KalenderController;
+use App\Http\Controllers\LembagaController;
 
 
 
@@ -38,6 +40,7 @@ Route::get('/demografiSekolah', [LandingController::class, 'demografiSekolah'])-
 Route::get('/demografiPekerjaan', [LandingController::class, 'demografiPekerjaan'])->name('demografi.pekerjaan');
 Route::get('/demografiPenduduk', [LandingController::class, 'demografiPenduduk'])->name('demografi.penduduk');
 Route::get('/demografiLahan', [LandingController::class, 'demografiLahan'])->name('demografi.lahan'); // Rute baru
+Route::get('/kalender-agenda', [LandingController::class, 'kalenderAgenda'])->name('kalender.agenda');
 
 
 
@@ -91,6 +94,14 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('demografi-lahan', LahanDataController::class)
         ->parameters(['demografi-lahan' => 'lahan_data'])
+        ->middleware('auth');
+
+     Route::resource('kalender', KalenderController::class)
+        ->parameters(['kalender' => 'kalender_data'])
+        ->middleware('auth');
+
+    Route::resource('lembaga', LembagaController::class)
+        ->parameters(['lembaga' => 'lembaga'])
         ->middleware('auth');
 
 

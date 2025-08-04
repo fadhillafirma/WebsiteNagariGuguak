@@ -17,7 +17,7 @@
             <label class="block text-gray-700 mb-1">{{ $label }}</label>
             <input type="number" min="0" name="{{ $name }}"
                    value="{{ old($name, $row?->$name ?? 0) }}"
-                   class="w-full rounded border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+                   class="w-full rounded-lg border border-gray-300 py-2 p-2  focus:ring-blue-500 focus:border-blue-500">
         </div>
     @endforeach
 </div>

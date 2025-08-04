@@ -22,7 +22,7 @@
         <div>
             <label class="block text-gray-700 mb-1">Tahun</label>
             <input type="number" name="tahun" value="{{ old('tahun') }}" min="1900" max="{{ date('Y')+1 }}"
-                   class="w-full rounded border-gray-300 focus:ring-blue-500 focus:border-blue-500" required>
+                   class="w-full rounded-lg border border-gray-300 py-2 p-2  focus:ring-blue-500 focus:border-blue-500" required>
         </div>
 
         @include('admin.demografiPekerjaan._fields', ['prefix' => '', 'row' => null])

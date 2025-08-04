@@ -19,13 +19,12 @@
             Data Demografi Pekerjaan
         </h1>
         <p class="text-center text-gray-600 text-sm mb-8">
-            Tahun: <strong>{{ $tahunTerbaru }}</strong>
+            Tahun: <strong>{{ $tahunTerbaru ?? '-' }}</strong>
         </p>
 
         <p class="text-gray-700 text-justify mb-6">
-    Data demografi pekerjaan di Nagari Guguak pada tahun 2026 memberikan gambaran tentang ragam mata pencaharian masyarakat. Informasi ini mencerminkan peran berbagai sektor, mulai dari pertanian, pemerintahan, hingga profesi lainnya, dalam mendukung kehidupan ekonomi di nagari.
-</p>
-
+            Data demografi pekerjaan di Nagari Guguak pada tahun 2026 memberikan gambaran tentang ragam mata pencaharian masyarakat. Informasi ini mencerminkan peran berbagai sektor, mulai dari pertanian, pemerintahan, hingga profesi lainnya, dalam mendukung kehidupan ekonomi di nagari.
+        </p>
 
         <div class="overflow-x-auto">
             <table class="w-full text-sm text-gray-700 border border-gray-200 rounded-lg">
@@ -81,17 +80,20 @@
                 </tbody>
             </table>
         </div>
+
+        @if ($data)
         <div class="mt-10">
             <h2 class="text-xl font-bold text-center mb-4 text-greenDark">Peringkat Profesi Berdasarkan Jumlah</h2>
             <div id="pekerjaanBarChart" style="height: 500px; width: 100%;"></div>
         </div>
+        @endif
 
     </div>
 </section>
 
-
 @include('layout.navbar')
 
+@if ($data)
 <script>
     document.addEventListener('DOMContentLoaded', function () {
         const dataPekerjaan = [
@@ -105,55 +107,34 @@
             { name: 'Pekerjaan Lain', y: {{ $data->pekerjaan_lain }} }
         ];
 
-        // Urutkan dari terbesar ke terkecil
         dataPekerjaan.sort((a, b) => b.y - a.y);
 
         Highcharts.chart('pekerjaanBarChart', {
-            chart: {
-                type: 'bar'
-            },
-            title: {
-                text: null
-            },
+            chart: { type: 'bar' },
+            title: { text: null },
             xAxis: {
                 categories: dataPekerjaan.map(item => item.name),
-                title: {
-                    text: null
-                }
+                title: { text: null }
             },
             yAxis: {
                 min: 0,
-                title: {
-                    text: 'Jumlah Orang',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
+                title: { text: 'Jumlah Orang', align: 'high' },
+                labels: { overflow: 'justify' }
             },
-            tooltip: {
-                valueSuffix: ' orang'
-            },
+            tooltip: { valueSuffix: ' orang' },
             plotOptions: {
                 bar: {
-                    dataLabels: {
-                        enabled: true
-                    },
+                    dataLabels: { enabled: true },
                     colorByPoint: true,
                     colors: ['#004225', '#015b34', '#027a46', '#029656', '#02b869', '#38b48e', '#64c9a4', '#9ae5c0']
                 }
             },
-            credits: {
-                enabled: false
-            },
-            series: [{
-                name: 'Jumlah',
-                data: dataPekerjaan
-            }]
+            credits: { enabled: false },
+            series: [{ name: 'Jumlah', data: dataPekerjaan }]
         });
     });
 </script>
-
+@endif
 
 </body>
 </html>

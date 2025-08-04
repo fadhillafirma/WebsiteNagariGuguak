@@ -58,17 +58,18 @@
 
                                 <td class="px-6 py-3 font-semibold">{{ $item->jumlah_sma }}</td>
                             </tr>
-                        @empty
-                            <tr>
-                                <td colspan="2" class="px-6 py-6 text-center text-gray-500">Data tidak ditemukan.</td>
-                            </tr>
-                        @endforelse
-                        <tr class="bg-gray-100 font-bold border-t-2">
+                            <tr class="bg-gray-100 font-bold border-t-2">
                             <td class="px-6 py-3 text-gray-800 text-center">Total</td>
                             <td class="px-6 py-3 text-green-700">
                                 {{ $item->jumlah_paud + $item->jumlah_sd + $item->jumlah_smp + $item->jumlah_sma }}
                             </td>
                         </tr>
+                        @empty
+                            <tr>
+                                <td colspan="2" class="px-6 py-6 text-center text-gray-500">Data tidak ditemukan.</td>
+                            </tr>
+                        @endforelse
+
 
                     </tbody>
 
@@ -84,7 +85,8 @@
 
     @include('layout.navbar')
 
-    <script>
+    @if(count($data) > 0)
+<script>
     const ctx = document.getElementById('sekolahChart').getContext('2d');
 
     new Chart(ctx, {
@@ -110,7 +112,6 @@
                 legend: { display: false },
                 title: {
                     display: true,
-
                     font: { size: 18 }
                 }
             },
@@ -123,6 +124,8 @@
         }
     });
 </script>
+@endif
+
 
 
 

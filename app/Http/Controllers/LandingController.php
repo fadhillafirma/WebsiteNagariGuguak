@@ -11,7 +11,8 @@ use App\Models\DemografiPekerjaan;
 use App\Models\DemografiPendudukJorong;
 use App\Models\LahanData;
 
-
+use App\Models\Kalender;
+use Carbon\Carbon;
 
 
 
@@ -23,13 +24,28 @@ class LandingController extends Controller
      */
     public function index()
 {
-    // Ambil semua data galeri (bisa difilter jika perlu, misal hanya yang aktif/tampil)
-    $galeris = Galeri::latest()->take(6)->get(); // ambil 6 galeri
-    $beritas = Publikasi::where('jenis', 'berita')->latest()->take(6)->get(); // ambil 6 berita terbaru
-    $artikels = Publikasi::where('jenis', 'artikel')->latest()->take(6)->get(); // ambil 6 berita terbaru
+    // Galeri, berita, artikel
+    $galeris = Galeri::latest()->take(6)->get();
+    $beritas = Publikasi::where('jenis', 'berita')->latest()->take(6)->get();
+    $artikels = Publikasi::where('jenis', 'artikel')->latest()->take(6)->get();
 
-    return view('welcome', compact('galeris', 'beritas', 'artikels'));
+    // Kalender kegiatan bulan ini
+    $now = Carbon::now();
+    $kalender = Kalender::whereMonth('tanggal', $now->month)
+                        ->whereYear('tanggal', $now->year)
+                        ->get();
+
+    // Format event untuk FullCalendar
+    $events = $kalender->map(function ($item) {
+        return [
+            'title' => $item->judul,
+            'start' => $item->tanggal,
+        ];
+    });
+
+    return view('welcome', compact('galeris', 'beritas', 'artikels', 'events'));
 }
+
 
 
 public function showDetail($id)
@@ -207,13 +223,6 @@ public function demografiPekerjaan ()
 
 
 
-
-
-
-
-
-
-
 public function artikel()
 {
     $artikels = Publikasi::where('jenis', 'artikel')
@@ -222,6 +231,14 @@ public function artikel()
 
     return view('artikel', compact('artikels'));
 }
+
+
+
+
+
+
+
+
 
 
     /**

@@ -15,6 +15,9 @@ class Jorong extends Model
     protected $fillable = [
         'user_id',
         'nama_jorong',
+        'kepala_jorong',
+        'deskripsi_jorong',
+        'foto_kepala_jorong',
     ];
 
     public function user()
