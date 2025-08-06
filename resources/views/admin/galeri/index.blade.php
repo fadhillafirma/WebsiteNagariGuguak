@@ -28,7 +28,7 @@
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th scope="col" class="px-6 py-3">Foto</th>
-                    <th scope="col" class="px-6 py-3">Deskripsi</th>
+                    <th scope="col" class="px-6 py-3">Judul</th>
                     <th scope="col" class="px-6 py-3">Dibuat</th>
                     <th scope="col" class="px-6 py-3 text-center">Aksi</th>
                 </tr>

@@ -13,6 +13,7 @@ use App\Models\LahanData;
 
 use App\Models\Kalender;
 use Carbon\Carbon;
+use App\Models\Potensi;
 
 
 
@@ -23,28 +24,29 @@ class LandingController extends Controller
      * Display a listing of the resource.
      */
     public function index()
-{
-    // Galeri, berita, artikel
-    $galeris = Galeri::latest()->take(6)->get();
-    $beritas = Publikasi::where('jenis', 'berita')->latest()->take(6)->get();
-    $artikels = Publikasi::where('jenis', 'artikel')->latest()->take(6)->get();
+        {
+            // Galeri, berita, artikel
+            $galeris = Galeri::latest()->take(6)->get();
+            $beritas = Publikasi::where('jenis', 'berita')->latest()->take(6)->get();
+            $artikels = Publikasi::where('jenis', 'artikel')->latest()->take(6)->get();
 
-    // Kalender kegiatan bulan ini
-    $now = Carbon::now();
-    $kalender = Kalender::whereMonth('tanggal', $now->month)
-                        ->whereYear('tanggal', $now->year)
-                        ->get();
+            // Kalender kegiatan bulan ini
+            $now = Carbon::now();
+            $kalender = Kalender::whereMonth('tanggal', $now->month)
+                                ->whereYear('tanggal', $now->year)
+                                ->get();
 
-    // Format event untuk FullCalendar
-    $events = $kalender->map(function ($item) {
-        return [
-            'title' => $item->judul,
-            'start' => $item->tanggal,
-        ];
-    });
+            // Format event untuk FullCalendar
+            $events = $kalender->map(function ($item) {
+                return [
+                    'title' => $item->nama_kegiatan,
+                    'start' => $item->tanggal . 'T' . $item->jam_mulai,
+                    'end' => $item->tanggal . 'T' . $item->jam_akhir,
+                ];
+            });
 
-    return view('welcome', compact('galeris', 'beritas', 'artikels', 'events'));
-}
+            return view('welcome', compact('galeris', 'beritas', 'artikels', 'events'));
+        }
 
 
 
@@ -83,6 +85,23 @@ public function showArtikel($id)
     $artikel = Publikasi::where('jenis', 'artikel')->findOrFail($id);
     return view('admin.publikasi.artikelShow', compact('artikel'));
 }
+
+    public function showPotensi($id)
+    {
+        $potensi = Potensi::findOrFail($id);
+
+        return view('admin.potensi.show', compact('potensi'));
+    }
+
+
+
+    public function potensi()
+    {
+        $potensis = Potensi::all()->groupBy('jenis_potensi');
+          $jenisPotensiList = $potensis->keys();
+        return view('potensi', compact('potensis', 'jenisPotensiList'));
+    }
+
 
 
 public function demografiSekolah()

@@ -11,6 +11,7 @@ use App\Http\Controllers\LahanDataController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KalenderController;
 use App\Http\Controllers\LembagaController;
+use App\Http\Controllers\PotensiController;
 
 
 
@@ -30,7 +31,7 @@ Route::get('/', [LandingController::class, 'index']);
 // Route::view('/', 'welcome')->name('home');
 Route::view('/profile', 'profile')->name('profile');
 Route::view('/kontak', 'kontak')->name('kontak');
-Route::view('/potensi', 'potensi')->name('potensi');
+Route::view('/potensiNagari', 'potensi')->name('potensi');
 Route::get('/berita', [LandingController::class, 'berita'])->name('berita');
 Route::get('/berita/{id}', [LandingController::class, 'showBerita'])->name('landing.showBerita');
 Route::get('/artikel', [LandingController::class, 'artikel'])->name('artikel');
@@ -41,7 +42,8 @@ Route::get('/demografiPekerjaan', [LandingController::class, 'demografiPekerjaan
 Route::get('/demografiPenduduk', [LandingController::class, 'demografiPenduduk'])->name('demografi.penduduk');
 Route::get('/demografiLahan', [LandingController::class, 'demografiLahan'])->name('demografi.lahan'); // Rute baru
 Route::get('/kalender-agenda', [LandingController::class, 'kalenderAgenda'])->name('kalender.agenda');
-
+Route::get('/potensiNagari', [LandingController::class, 'potensi'])->name('landing.potensi');
+Route::get('/potensiNagari/{id}', [LandingController::class, 'showPotensi'])->name('landing.potensi.show');
 
 
 
@@ -53,13 +55,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin area (butuh login)
 Route::middleware('auth')->group(function () {
-    // Dashboard
     Route::view('/dashboard', 'admin.dashboard')->name('dashboard');
-
-    // Form tambah artikel
     Route::view('/artikel/tambah', 'admin.artikel.tambahArtikel')->name('artikel.tambah');
-
-    // Publikasi (CRUD)
     Route::resource('publikasi', PublikasiController::class)->names([
         'index' => 'publikasi.index',
         'create' => 'publikasi.create',
@@ -103,6 +100,11 @@ Route::middleware('auth')->group(function () {
     Route::resource('lembaga', LembagaController::class)
         ->parameters(['lembaga' => 'lembaga'])
         ->middleware('auth');
+
+    Route::resource('potensi', PotensiController::class)
+        ->parameters(['potensi' => 'potensi'])
+        ->middleware('auth');
+
 
 
 });

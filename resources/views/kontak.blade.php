@@ -13,7 +13,7 @@
 <body class="m-0 p-0">
     <!-- Kontak Section -->
     <section class="bg-gray-100 w-full min-h-screen flex items-center justify-center" id="profile">
-        <div class="max-w-6xl w-full grid grid-cols-2 gap-10 place-items-center mt-10">
+        <div class="max-w-6xl w-full grid md:grid-cols-2  gap-10 place-items-center mt-10">
 
             <div class="w-full rounded-xl overflow-hidden shadow-lg border-2 border-greenDark ml-5">
                 <iframe

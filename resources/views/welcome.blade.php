@@ -79,32 +79,32 @@
 
 
    <section class="relative text-gray-900 py-20 px-8 max-w-full mx-auto bg-cream overflow-hidden">
-  <div class="max-w-7xl mx-auto">
-    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+    <div class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
 
-      <div class="text-8xl text-greenDark text-center font-bold">
-        <span class="count-up" data-target="23.90">0</span>
-        <div class="text-2xl">Luas Wilayah</div>
-      </div>
+        <div class="text-8xl text-greenDark text-center font-bold">
+            <span class="count-up" data-target="23.90">0</span>
+            <div class="text-2xl">Luas Wilayah</div>
+        </div>
 
-      <div class="text-8xl text-greenDark text-center font-bold">
-        <span class="count-up" data-target="3">0</span>
-        <div class="text-2xl">Jorong</div>
-      </div>
+        <div class="text-8xl text-greenDark text-center font-bold">
+            <span class="count-up" data-target="3">0</span>
+            <div class="text-2xl">Jorong</div>
+        </div>
 
-      <div class="text-8xl text-greenDark text-center font-bold">
-        <span class="count-up" data-target="120">0</span>
-        <div class="text-2xl">Kepala Keluarga</div>
-      </div>
+        <div class="text-8xl text-greenDark text-center font-bold">
+            <span class="count-up" data-target="120">0</span>
+            <div class="text-2xl">Kepala Keluarga</div>
+        </div>
 
-      <div class="text-8xl text-greenDark text-center font-bold">
-        <span class="count-up" data-target="1.5">0</span>
-        <div class="text-2xl">Penduduk</div>
-      </div>
+        <div class="text-8xl text-greenDark text-center font-bold">
+            <span class="count-up" data-target="1.5">0</span>
+            <div class="text-2xl">Penduduk</div>
+        </div>
 
+        </div>
     </div>
-  </div>
-</section>
+    </section>
 
 
 
@@ -123,14 +123,14 @@
                 @foreach ($beritas as $berita)
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-105">
                         <a href="#">
-                            <img class="rounded-t-lg w-full h-48 object-cover"
+                            <img class="rounded w-full h-48 object-cover p-5"
                                 src="{{ asset('storage/' . $berita->foto) }}"
                                 alt="{{ $berita->judul }}"
                                 onerror="this.onerror=null;this.src='{{ asset('images/default.jpg') }}';" />
                         </a>
                         <div class="p-5">
                             <a href="#">
-                                <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                                <h5 class="mb-2 md:text-2xl  font-bold tracking-tight text-gray-900 dark:text-white">
                                     {{ $berita->judul }}
                                 </h5>
                             </a>
@@ -161,36 +161,51 @@
 
 
 
-    <section class="max-w-7xl mx-auto py-20 px-8 bg-white">
+        <section class="max-w-7xl mx-auto py-20 px-8 bg-white">
     <div class="text-center mb-4">
         <h2 class="text-3xl font-bold fade-in-left animate-on-scroll">Galeri</h2>
         <div class="h-[3px] w-[10%] bg-greenDark mt-2 mx-auto fade-in-left animate-on-scroll"></div>
     </div>
     <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mt-10">
         @foreach ($galeris as $item)
-            {{-- Pastikan $item->gambar tidak kosong dan benar-benar ada --}}
-            @if ($item->gambar)
-                <div class="flex justify-center"> {{-- Tambahkan div untuk centering --}}
+            @if ($item->foto)
+                <div class="relative group w-full max-h-[300px] overflow-hidden rounded-lg shadow-md">
                     <img
-                        src="{{ asset('storage/' . $item->gambar) }}"
-                        alt="{{ $item->judul ?? 'Gambar Galeri' }}"
-                        class="max-w-full h-auto w-full max-h-[300px] object-cover rounded-lg shadow-md"
-                        onerror="this.onerror=null;this.src='{{ asset('images/placeholder.png') }}';" {{-- Tambahkan fallback gambar --}}
+                        src="{{ asset('storage/' . $item->foto) }}"
+                        alt="{{ $item->deskripsi ?? 'Foto Galeri' }}"
+                        class="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+                        onerror="this.onerror=null;this.src='{{ asset('images/placeholder.png') }}';"
                     />
+
+                    <!-- Gradasi gelap dari bawah -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    </div>
+
+                    <!-- Tulisan muncul dari bawah -->
+                    <div class="absolute bottom-0 left-0 w-full p-4 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+                        <p class="text-white text-lg font-semibold">{{ $item->deskripsi ?? 'Deskripsi Gambar' }}</p>
+                    </div>
                 </div>
+
+
             @endif
         @endforeach
     </div>
 </section>
+
 
 <link href='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.css' rel='stylesheet' />
 <section class="max-w-7xl mx-auto py-20 px-8 bg-white">
     <div class="text-center mb-4">
         <h2 class="text-3xl font-bold fade-in-left animate-on-scroll">Kalender Agenda</h2>
         <div class="h-[3px] w-[10%] bg-greenDark mt-2 mx-auto fade-in-left animate-on-scroll"></div>
+
+        <div class="h-[100%px] w-[100%] bg-greenDark mt-8 mx-auto"></div>
     </div>
+
     <div id="calendar" class="bg-white rounded-lg shadow p-4"></div>
 </section>
+
 
 
 
@@ -210,7 +225,7 @@
             @foreach ($artikels as $artikel)
                 <div class="max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition delay-150 duration-500 ease-in-out hover:-translate-y-1 hover:scale-110">
                     <a href="#">
-                        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+                        <h5 class="mb-2 md:text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
                             {{ $artikel->judul }}
                         </h5>
                     </a>
@@ -277,6 +292,8 @@
 
 
 <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/main.min.js'></script>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.css" rel="stylesheet" />
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
 
 <script>
 
@@ -356,14 +373,43 @@
     });
   });
 
-    document.addEventListener('DOMContentLoaded', function() {
-            var calendar = new FullCalendar.Calendar(document.getElementById('calendar'), {
-                initialView: 'dayGridMonth',
-                events: @json($events),
-            });
-            calendar.render();
-        });
+//  document.addEventListener('DOMContentLoaded', function () {
+//         var calendarEl = document.getElementById('calendar');
 
+//         var calendar = new FullCalendar.Calendar(calendarEl, {
+//             initialView: 'dayGridMonth',
+//             events: @json($events),
+//             eventDidMount: function (info) {
+//                 const title = info.event.title;
+//                 const [judul, waktu] = title.split('\n');
+//                 info.el.innerHTML = `
+//                     <div class="fc-event-title text-sm font-bold">${judul}</div>
+//                     <div class="fc-event-time text-xs">${waktu}</div>
+//                 `;
+//             }
+//         });
+
+//         calendar.render();
+//     });
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const calendarEl = document.getElementById('calendar');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+            initialView: 'dayGridMonth', // Tampilan bulan
+            headerToolbar: {
+                left: 'prev,next today',
+                center: 'title',
+                right: ''
+            },
+            events: @json($events), // data dari controller
+            height: 'auto',
+            eventColor: '#004225', // Warna hijau
+            eventTextColor: '#fff',
+            nowIndicator: true,
+            dayMaxEvents: true,
+        });
+        calendar.render();
+    });
 
 
 
