@@ -21,7 +21,7 @@
                     @foreach ($beritas as $berita)
                         <div class="bg-white shadow rounded-lg overflow-hidden">
                             <a href="#">
-                                <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('storage/' . $berita->foto) }}" alt="{{ $berita->judul }}" />
+                                <img class="rounded-t-lg w-full h-48 object-cover p-5 rounded-lg" src="{{ asset('storage/' . $berita->foto) }}" alt="{{ $berita->judul }}" />
                             </a>
                             <div class="p-5">
                                 <a href="#">
@@ -30,11 +30,11 @@
                                     </h5>
                                 </a>
                                 <p class="text-sm text-gray-500 mb-2">
-     {{ $berita->created_at->format('d M Y') }}, {{ $berita->created_at->format('H:i') }} WIB
-</p>
-<h5 class="mb-2 mt-5 text-sm font-semibold tracking-tight text-gray-600 dark:text-white">
-                         Oleh :   {{ $berita->penulis }}
-                        </h5>
+                                    {{ $berita->created_at->format('d M Y') }}, {{ $berita->created_at->format('H:i') }} WIB
+                                </p>
+                                <h5 class="mb-2 mt-5 text-sm font-semibold tracking-tight text-gray-600 dark:text-white">
+                                    Oleh :   {{ $berita->penulis }}
+                                </h5>
 
                                 <a href="{{ route('landing.showBerita', $berita->id_artikel) }}" class="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white border-2 bg-greenDark rounded-lg hover:bg-white hover:text-greenDark hover:border-greenDark focus:ring-4 focus:outline-none focus:ring-greenVill dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-greenVill">
 

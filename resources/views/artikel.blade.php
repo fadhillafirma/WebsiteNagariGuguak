@@ -23,7 +23,7 @@
                 @foreach ($artikels as $artikel)
                     <div class="bg-white shadow rounded-lg overflow-hidden">
                         <a href="#">
-                            <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('storage/' . $artikel->foto) }}" alt="{{ $artikel->judul }}" />
+                            <img class="rounded-t-lg w-full h-48 object-cover p-5 rounded-lg" src="{{ asset('storage/' . $artikel->foto) }}" alt="{{ $artikel->judul }}" />
                         </a>
                         <div class="p-4">
                             <h2 class="text-lg font-bold text-gray-800 mb-1">{{ $artikel->judul }}</h2>

@@ -51,7 +51,7 @@
 
             {{-- Deskripsi --}}
             <div>
-                <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-700">Deskripsi</label>
+                <label for="deskripsi" class="block mb-2 text-sm font-medium text-gray-700">Judul</label>
                 <textarea
                     id="deskripsi"
                     name="deskripsi"

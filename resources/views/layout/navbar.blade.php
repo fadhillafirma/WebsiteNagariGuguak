@@ -12,13 +12,13 @@
         </div>
 
         <!-- Desktop Menu -->
-        <div class="hidden md:flex space-x-8 text-lg font-medium items-center" id="navbar-menu">
-          <a href="/" class="menu-link hover:text-greenOlive transition">Home</a>
-          <a href="/profile" class="menu-link hover:text-greenOlive transition">Profile</a>
+        <div class="hidden md:flex md:space-x-5 sm:space-x-5 md:text-lg sm:text-sm font-medium items-center" id="navbar-menu">
+          <a href="/" class="menu-link hover:text-greenOlive transition md:text-lg sm:text-sm">Home</a>
+          <a href="/profile" class="menu-link hover:text-greenOlive transition md:text-lg sm:text-sm">Profile</a>
 
           <!-- Dropdown Demografis -->
           <div class="relative group ">
-            <button class="hover:text-greenOlive transition focus:outline-none py-1">Demografis</button>
+            <button class="hover:text-greenOlive transition focus:outline-none py-1 md:text-lg sm:text-sm ">Demografis</button>
             <div class="absolute hidden group-hover:block bg-white backdrop-blur-sm shadow-lg rounded-lg pt-2 min-w-[180px] z-50">
               <a href="/demografiSekolah" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Sekolah</a>
               <a href="/demografiPekerjaan" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Pekerjaan</a>
@@ -29,18 +29,18 @@
             </div>
           </div>
 
-          <a href="/potensi" class="menu-link hover:text-greenOlive transition">Potensi</a>
+          <a href="/potensiNagari" class="menu-link hover:text-greenOlive transition md:text-lg sm:text-sm">Potensi</a>
 
           <!-- Dropdown Publikasi -->
           <div class="relative group">
-            <button class="hover:text-greenOlive transition focus:outline-none py-1">Publikasi</button>
+            <button class="hover:text-greenOlive transition focus:outline-none py-1 md:text-lg sm:text-sm">Publikasi</button>
             <div class="absolute hidden group-hover:block bg-white  shadow-lg rounded-lg pt-2 min-w-[150px] z-50">
               <a href="/artikel" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Artikel</a>
               <a href="/berita" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Berita</a>
             </div>
           </div>
 
-          <a href="/kontak" class="menu-link hover:text-greenOlive transition">Kontak</a>
+          <a href="/kontak" class="menu-link hover:text-greenOlive transition md:text-lg sm:text-sm">Kontak</a>
         </div>
 
         <!-- Mobile Hamburger Button -->
@@ -56,7 +56,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-white/95 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all">
+    <div id="mobile-menu" class="md:hidden hidden bg-white/100 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all">
       <a href="/" class="block py-2 hover:text-greenOlive menu-link">Home</a>
       <a href="/profile" class="block py-2 hover:text-greenOlive menu-link">Profile</a>
 
@@ -67,12 +67,12 @@
           <a href="/demografiSekolah" class="block py-1 hover:text-greenOlive menu-link">Sekolah</a>
           <a href="/demografiPekerjaan" class="block py-1 hover:text-greenOlive menu-link">Pekerjaan</a>
           <a href="/demografiPenduduk" class="block py-1 hover:text-greenOlive menu-link">Penduduk</a>
-          <a href="/demografiPenduduk" class="menu-link block py-1 hover:text-greenOlive">Penduduk</a>
+          <a href="/demografiLahan" class="menu-link block py-1 hover:text-greenOlive">Lahan</a>
 
         </div>
       </div>
 
-      <a href="/potensi" class="block py-2 hover:text-greenOlive menu-link">Potensi</a>
+      <a href="/potensiNagari" class="block py-2 hover:text-greenOlive menu-link">Potensi</a>
 
       <!-- Mobile Dropdown: Publikasi -->
       <div class="block py-2">
