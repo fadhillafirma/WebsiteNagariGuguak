@@ -9,7 +9,7 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
 </head>
 
-<body class="font-sans bg-white text-gray-800 px-4 py-8 max-w-3xl mx-auto">
+<body class="font-sans bg-white text-gray-800 px-4 py-8 max-w-3xl mx-auto shadow-xl ">
 
     <h1 class="text-3xl font-bold mb-2">{{ $artikel->judul }}</h1>
     <div class="text-sm mb-1 text-greenDark">Penulis: {{ $artikel->penulis }}</div>

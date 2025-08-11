@@ -10,7 +10,8 @@ class KalenderController extends Controller
 {
    public function index()
 {
-    $kalenders = Kalender::all(); // Ambil semua data kalender
+    $kalenders = Kalender::orderBy('tanggal', 'desc')->paginate(10);
+
 
     return view('admin.kalender.index', [
         'kalender' => $kalenders // Kirim ke view

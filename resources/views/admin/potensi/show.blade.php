@@ -9,7 +9,7 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
 </head>
-<body class="font-sans bg-white text-gray-800 px-4 py-8 max-w-3xl mx-auto">
+<body class="font-sans bg-white text-gray-800 px-4 py-8 max-w-3xl mx-auto shadow-xl">
 
     <h1 class="text-3xl font-bold mb-2">{{ $potensi->judul }}</h1>
     <div class="text-sm text-greenDark mb-1 font-bold">Jenis: {{ ucfirst($potensi->jenis_potensi) }}</div>

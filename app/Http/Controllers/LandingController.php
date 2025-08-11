@@ -14,6 +14,8 @@ use App\Models\LahanData;
 use App\Models\Kalender;
 use Carbon\Carbon;
 use App\Models\Potensi;
+use App\Models\Lembaga;
+
 
 
 
@@ -155,51 +157,64 @@ public function demografiPekerjaan ()
     }
 
 
-    public function demografiPenduduk()
+  public function demografiPenduduk()
 {
-    // Ambil tahun terbaru dari seluruh data (bukan dari hasil paginate)
-    $tahunTerbaru = DemografiPendudukJorong::max('tahun');
+    // Ambil daftar tahun yang tersedia
+    $tahunList = DemografiPendudukJorong::select('tahun')
+        ->distinct()
+        ->orderBy('tahun', 'asc')
+        ->pluck('tahun');
 
-    // Ambil data hanya untuk tahun terbaru
+    // Tahun terbaru
+    $tahunTerbaru = $tahunList->last();
+
+    // Data tabel: tampilkan data tahun terbaru
     $data = DemografiPendudukJorong::with('jorong')
-        ->where('tahun', $tahunTerbaru)
+        ->when($tahunTerbaru, fn($q) => $q->where('tahun', $tahunTerbaru))
         ->paginate(20);
 
-    // Ambil semua jorong
+    // Semua jorong (untuk label sumbu X chart)
     $jorongs = Jorong::all();
 
-    // Warna grafik
+    // Warna untuk setiap dataset
     $colors = [
         '#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6',
         '#14b8a6', '#ec4899', '#6d28d9', '#ca8a04', '#0891b2'
     ];
 
-    $labels = []; // label jorong
-    $dataJumlah = []; // data penduduk per jorong
+    // Label chart = nama jorong
+    $labels = $jorongs->pluck('nama_jorong')->toArray();
+    $datasets = [];
 
-    foreach ($jorongs as $jorong) {
-        $jumlah = DemografiPendudukJorong::where('jorong_id', $jorong->id_jorong)
-            ->where('tahun', $tahunTerbaru)
-            ->sum(DemografiPendudukJorong::raw('laki_laki + perempuan'));
+    foreach ($tahunList as $index => $tahun) {
+        $dataJumlah = [];
+        foreach ($jorongs as $jorong) {
+            $jumlah = DemografiPendudukJorong::where('jorong_id', $jorong->id_jorong)
+                ->where('tahun', $tahun)
+                ->sum(\DB::raw('laki_laki + perempuan'));
 
-        if ($jumlah > 0) {
-            $labels[] = $jorong->nama_jorong;
             $dataJumlah[] = (int) $jumlah;
         }
+
+        $datasets[] = [
+            'label' => 'Tahun ' . $tahun,
+            'data' => $dataJumlah,
+            'borderColor' => $colors[$index % count($colors)],
+            'backgroundColor' => null,
+            'fill' => false,
+            'tension' => 0.1,
+        ];
     }
 
-    $datasets = [
-        [
-            'label' => 'Jumlah Penduduk Tahun ' . $tahunTerbaru,
-            'data' => $dataJumlah,
-            'backgroundColor' => array_slice($colors, 0, count($dataJumlah)),
-            'borderColor' => array_slice($colors, 0, count($dataJumlah)),
-            'borderWidth' => 1,
-        ]
-    ];
-
-    return view('demografiPenduduk', compact('data', 'tahunTerbaru', 'labels', 'datasets'));
+    return view('demografiPenduduk', compact(
+        'data',
+        'tahunTerbaru',
+        'labels',
+        'datasets',
+        'tahunList'
+    ));
 }
+
 
 
   public function demografiLahan()
@@ -252,59 +267,60 @@ public function artikel()
 }
 
 
-
-
-
-
-
-
-
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
-    }
+public function jorong()
+{
+    $jorongs = Jorong::all();
+    return view('jorong', compact('jorongs'));
 }
+
+
+public function jorongShow($id)
+{
+    $jorong = Jorong::findOrFail($id); // Akan throw 404 kalau tidak ketemu
+
+    return view('admin.jorong.detail', [
+        'nama_jorong' => $jorong->nama_jorong,
+        'kepala_jorong' => $jorong->kepala_jorong,
+        'deskripsi_jorong' => $jorong->deskripsi_jorong,
+        'foto_kepala_jorong' => $jorong->foto_kepala_jorong,
+        'foto_jorong' => $jorong->foto_jorong,
+
+        'tahunTerbaru' => $jorong->created_at->format('Y'),
+    ]);
+}
+
+
+public function lembaga()
+{
+    $lembaga = Lembaga::all();
+
+    return view('lembaga', [
+        'lembaga' => $lembaga,
+        'tahunTerbaru' => now()->year,
+    ]);
+}
+
+
+
+
+public function lembagaShow($id)
+{
+    $lembaga = Lembaga::findOrFail($id); // Akan 404 kalau tidak ditemukan
+
+    return view('admin.lembaga.detail', [ // Pastikan path view sesuai
+        'nama_lembaga' => $lembaga->nama_lembaga,
+        'foto_lembaga' => $lembaga->foto_lembaga,
+        'deskripsi_lembaga' => $lembaga->deskripsi,
+        'nama_ketua' => $lembaga->nama_ketua,
+
+        'struktur_organisasi' => $lembaga->struktur_organisasi,
+        'tahunTerbaru' => $lembaga->created_at->format('Y'),
+    ]);
+}
+
+
+
+
+
+}
+

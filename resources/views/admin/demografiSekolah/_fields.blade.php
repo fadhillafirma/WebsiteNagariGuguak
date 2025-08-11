@@ -17,7 +17,7 @@
 </div>
 
 <div>
-    <label class="block text-gray-700 mb-1">Jumlah SMA</label>
+    <label class="block text-gray-700 mb-1">Jumlah TK</label>
     <input type="number" name="jumlah_sma" value="{{ old('jumlah_sma', $row->jumlah_sma ?? 0) }}"
            class="w-full rounded-lg border border-gray-300 py-2 p-2 focus:ring-blue-500 focus:border-blue-500" required>
 </div>

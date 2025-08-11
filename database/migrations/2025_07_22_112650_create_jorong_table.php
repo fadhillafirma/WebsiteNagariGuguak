@@ -13,6 +13,7 @@ return new class extends Migration {
             $table->string('kepala_jorong', 191)->nullable();
             $table->text('deskripsi_jorong')->nullable();
             $table->string('foto_kepala_jorong')->nullable();
+            $table->string('foto_jorong')->nullable();
             $table->timestamps();
             $table->unique(['user_id','nama_jorong'], 'jorong_user_nama_unique');
         });

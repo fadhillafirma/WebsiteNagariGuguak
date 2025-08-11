@@ -3,7 +3,7 @@
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
         <a href="/" class="flex items-center space-x-3">
-          <img src="/logo.jpg" alt="Logo" class="h-10 w-auto" />
+          <img src="/logo.png" alt="Logo" class="h-10 w-auto" />
           <span class="text-xl font-bold text-black">Nagari Guguak</span>
         </a>
         <p class="mt-4 text-sm text-black font-semibold">
