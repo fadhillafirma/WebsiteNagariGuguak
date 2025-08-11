@@ -17,7 +17,7 @@ class GaleriController extends Controller
         // hanya data milik user login:
         $galeri = Galeri::where('user_id', Auth::id())
             ->latest()
-            ->paginate(20);
+            ->paginate(10);
 
         return view('admin.galeri.index', compact('galeri'));
     }

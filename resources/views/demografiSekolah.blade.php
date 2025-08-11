@@ -15,7 +15,7 @@
 
     <section class="pt-24 pb-16 px-4">
         <div class="max-w-4xl mx-auto bg-white shadow-md rounded-xl p-6">
-            <h1 class="text-3xl font-bold text-greenDark text-center underline underline-offset-4 mb-2 mt-10">
+            <h1 class="text-3xl font-bold text-greenDark text-center underline underline-offset-4 mb-2 mt-10 title-animate">
                 Data Demografi Sekolah
             </h1>
             <p class="text-center text-gray-600 text-sm mb-8">
@@ -54,7 +54,7 @@
                                 <td class="px-6 py-3 font-semibold">{{ $item->jumlah_smp }}</td>
                             </tr>
                             <tr class="border-t hover:bg-gray-50 transition text-md">
-                                <td class="px-6 py-3 text-center text-gray-600">SMA</td>
+                                <td class="px-6 py-3 text-center text-gray-600">TK</td>
 
                                 <td class="px-6 py-3 font-semibold">{{ $item->jumlah_sma }}</td>
                             </tr>
@@ -83,6 +83,13 @@
         </div>
     </section>
 
+     <section class="bg-white pt-5 pb-5 bottom-0 left-0 w-full shadow-md ">
+                    <div class="max-w-6xl mx-auto text-center  justify-content-center">
+                        <p>2025 Nagari Guguak.</p>
+                            <p>Powered by KKN Guguak Unand 2025.</p>
+                    </div>
+        </section>
+
     @include('layout.navbar')
 
     @if(count($data) > 0)
@@ -92,7 +99,7 @@
     new Chart(ctx, {
         type: 'bar',
         data: {
-            labels: ['PAUD', 'SD', 'SMP', 'SMA'],
+            labels: ['PAUD', 'SD', 'SMP', 'TK'],
             datasets: [{
                 label: 'Jumlah Sekolah',
                 data: [
@@ -123,6 +130,24 @@
             }
         }
     });
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver(
+            (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                } else {
+                entry.target.classList.remove("show");
+                }
+            });
+            },
+            { threshold: 0.3 }
+        );
+
+        document.querySelectorAll(".title-animate").forEach((title) => {
+            observer.observe(title);
+        });
+        });
 </script>
 @endif
 

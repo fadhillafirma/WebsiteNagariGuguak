@@ -8,12 +8,12 @@
     <link rel="preconnect" href="https://fonts.bunny.net">
     <script src="https://unpkg.com/lucide@latest"></script>
 </head>
-<body class="bg-gray-100">
+<body class="bg-white">
 
     @include('layout.navbar')
 
-    <section class="py-20 px-4 max-w-7xl mx-auto">
-        <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4 text-center text-center mt-10 mb-10">Artikel</h2>
+    <section class="py-20 px-4 max-w-7xl h-screen mx-auto">
+        <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4 text-center text-center mt-10 mb-10 title-animate ">Artikel</h2>
 
 
         @if($artikels->isEmpty())
@@ -46,6 +46,34 @@
         @endif
     </section>
 
-    <script>lucide.createIcons();</script>
+     <section class="bg-white pt-5 pb-5 bottom-0 left-0 w-full shadow-md ">
+                    <div class="max-w-6xl mx-auto text-center  justify-content-center">
+                        <p>2025 Nagari Guguak.</p>
+                            <p>Powered by KKN Guguak Unand 2025.</p>
+                    </div>
+        </section>
+
+    <script>
+        lucide.createIcons();
+                //animasi css judul title-animate
+        document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver(
+            (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                } else {
+                entry.target.classList.remove("show");
+                }
+            });
+            },
+            { threshold: 0.3 }
+        );
+
+        document.querySelectorAll(".title-animate").forEach((title) => {
+            observer.observe(title);
+        });
+        });
+    </script>
 </body>
 </html>

@@ -18,11 +18,12 @@
     <div class="relative min-h-screen bg-cover bg-center bg-fixed" style="background-image: url('/sawah.jpg');">
         <div class="absolute inset-0 bg-gradient-to-r from-black/80 to-transparent w-full h-full z-0"></div>
 
-        <div class="relative z-10 min-h-screen flex items-end justify-start px-16 pb-20">
+        <div class="relative z-10 min-h-screen mx-auto flex items-end justify-start px-16 pb-20">
             <div class="text-white max-w-3xl">
-                <button class="py-3 px-5 bg-white/10 backdrop-blur-xsm mb-2 text-white border border-gray-500  rounded-full">
+                <button class="py-3 px-5 bg-white/10 backdrop-blur-sm mb-2 text-white border border-gray-500 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:shadow-[0_0_25px_rgba(255,255,255,0.9)] transition-all duration-300">
                     Kabupaten Sijunjung, Koto VII
                 </button>
+
             <h1 class="text-6xl md:text-8xl font-bold mb-4 typewriter">Selamat Datang</h1>
             <h2 class="text-4xl md:text-6xl">di <span class="text-greenVill font-semibold">Nagari Guguak</span> </h2>
             <p class="text-lg md:text-xl mt-5 text-gray-200 text-wrap ">
@@ -32,7 +33,7 @@
 
             <div class="flex flex-wrap gap-4 mt-10">
 
-                <a href="/profile" class="inline-flex items-center px-2 py-2 text-md font-medium text-center text-greenDark bg-greenVill rounded-full hover:bg-greenDark hover:text-white hover:border-greenDark focus:ring-4 focus:outline-none focus:ring-greenVill dark:bg-blue-600  dark:focus:ring-greenVill">
+                              <a href="/profile" class="inline-flex items-center px-2 py-2 text-md font-medium text-center text-greenDark bg-greenVill rounded-full hover:bg-greenDark hover:text-white hover:border-greenDark focus:ring-4 focus:outline-none focus:ring-greenVill dark:bg-blue-600  dark:focus:ring-greenVill">
 
                                 Lihat Tentang
                                 <div class="rounded-full border-2 bg-greenDark text-white ml-1 border-greenVill">
@@ -78,33 +79,33 @@
 </section>
 
 
-   <section class="relative text-gray-900 py-20 px-8 max-w-full mx-auto bg-cream overflow-hidden">
-    <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+  <section class="relative text-gray-900 py-20 px-8 max-w-full mx-auto bg-cream overflow-hidden before:absolute before:inset-0 before:bg-[radial-gradient(circle,_#AF8F6F_1px,_transparent_2px)] before:bg-[size:30px_30px] before:opacity-50 before:z-0">
+  <div class="relative z-10 max-w-7xl mx-auto">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
 
-        <div class="text-8xl text-greenDark text-center font-bold">
-            <span class="count-up" data-target="23.90">0</span>
-            <div class="text-2xl">Luas Wilayah</div>
-        </div>
+      <div class="text-8xl text-greenDark text-center font-bold">
+        <span class="count-up" data-target="23.90">0</span>
+        <div class="text-2xl">Luas Wilayah</div>
+      </div>
 
-        <div class="text-8xl text-greenDark text-center font-bold">
-            <span class="count-up" data-target="3">0</span>
-            <div class="text-2xl">Jorong</div>
-        </div>
+      <div class="text-8xl text-greenDark text-center font-bold">
+        <span class="count-up" data-target="3">0</span>
+        <div class="text-2xl">Jorong</div>
+      </div>
 
-        <div class="text-8xl text-greenDark text-center font-bold">
-            <span class="count-up" data-target="120">0</span>
-            <div class="text-2xl">Kepala Keluarga</div>
-        </div>
+      <div class="text-8xl text-greenDark text-center font-bold">
+        <span class="count-up" data-target="120">0</span>
+        <div class="text-2xl">Kepala Keluarga</div>
+      </div>
 
-        <div class="text-8xl text-greenDark text-center font-bold">
-            <span class="count-up" data-target="1.5">0</span>
-            <div class="text-2xl">Penduduk</div>
-        </div>
+      <div class="text-8xl text-greenDark text-center font-bold">
+        <span class="count-up" data-target="1.5">0</span>
+        <div class="text-2xl">Penduduk</div>
+      </div>
 
-        </div>
     </div>
-    </section>
+  </div>
+</section>
 
 
 
@@ -119,7 +120,7 @@
                 Belum ada berita yang tersedia.
             </div>
         @else
-            <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 mt-10">
+            <div class="grid  md:grid-cols-3 sm:grid-cols-2 gap-6 mt-10 bg-white rounded-xl">
                 @foreach ($beritas as $berita)
                     <div class="max-w-sm bg-white border border-gray-200 rounded-lg shadow-md dark:bg-gray-800 dark:border-gray-700 transition duration-300 ease-in-out hover:-translate-y-1 hover:scale-105">
                         <a href="#">
@@ -252,9 +253,19 @@
     <section class="relative bg-cover bg-center bg-fixed min-h-[20vh]" style="background-image: url('/sawah.jpg');">
         <div class="absolute inset-0 bg-black/50 z-0 backdrop-blur-sm "></div>
 
-        <div class="relative z-10 flex flex-col justify-center items-center text-white text-center px-4 py-16">
-                <h2 class="text-4xl font-bold mb-4">Menuju Nagari <span class="text-greenVill">Cerdas & Terhubung</span> </h2>
-                <p class="text-xl">Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.</p>
+        <div class="relative z-10 flex flex-col items-center justify-center text-white text-center px-4 py-16">
+                <h2 class="text-4xl font-bold mb-4 fade-in-left animate-on-scroll">Menuju Nagari <span class="text-greenVill">Cerdas & Terhubung</span> </h2>
+                <p class="text-xl fade-in-left animate-on-scroll">Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.</p>
+                <div class="mt-10">
+                <a href="/profile">
+                    <button class="py-3 px-5 border border-greenVill font-bold text-greenVill hover:border-white hover:text-white bounce ">
+                    Lihat Tentang
+                    </button>
+                </a>
+                </div>
+
+
+
         </div>
     </section>
 
@@ -264,14 +275,14 @@
 
 
 
-    <section class=" py-20 px-8 bg-white max-w-7xl mx-auto">
+    <section class="py-20 px-8 bg-white max-w-7xl mx-auto">
         <div class="text-center mb-4">
-                <h2 class="text-3xl font-bold fade-in-left animate-on-scroll">Lokasi</h2>
-                <div class="h-[3px] w-[5%] bg-greenDark mt-2 mx-auto fade-in-left animate-on-scroll"></div>
-                <div class="mt-10">
+            <h2 class="text-3xl font-bold fade-in-left animate-on-scroll">Lokasi</h2>
+            <div class="h-[3px] w-[5%] bg-greenDark mt-2 mx-auto fade-in-left animate-on-scroll"></div>
+            <div class="mt-10">
                 <div class="w-full max-w-4xl mx-auto rounded-xl overflow-hidden shadow-lg border-2 border-greenDark">
-                <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7383653182793!2d101.0737576!3d-0.6685665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fdc88789c7e07b1%3A0x5fb5a6c9e6972ef2!2sNagari%20Guguak!5e0!3m2!1sen!2sid!4v1721101112345!5m2!1sen!2sid&t=k"
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15794.978619402152!2d100.856389!3d-0.578056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1723273612345!5m2!1sen!2sid&t=k"
                         width="100%"
                         height="450"
                         style="border:0;"
@@ -279,12 +290,11 @@
                         loading="lazy"
                         referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
-
-
                 </div>
             </div>
         </div>
     </section>
+
 
 @include('layout.footer')
 @include('layout.navbar')

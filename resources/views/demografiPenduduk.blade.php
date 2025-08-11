@@ -8,18 +8,16 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <script src="https://unpkg.com/lucide@latest"></script>
-    {{-- Pastikan Chart.js dimuat sebelum script chart Anda --}}
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
-
     <section class="pt-24 pb-16 px-4">
         <div class="max-w-4xl mx-auto bg-white shadow-md rounded-xl p-6">
-            <h1 class="text-3xl font-bold text-greenDark text-center underline underline-offset-4 mb-2 mt-10">
+            <h1 class="text-3xl font-bold text-greenDark text-center underline underline-offset-4 mb-2 mt-10 title-animate">
                 Data Demografi Penduduk
             </h1>
             <p class="text-center text-gray-600 text-sm mb-8">
-                Tahun: <strong>{{ $tahunTerbaru }}</strong>
+                Tahun: <strong>{{ $tahunTerbaru ?? ($tahunList->last() ?? '-') }}</strong>
             </p>
             <p class="text-gray-700 text-justify mb-6">
                 Nagari Guguak memiliki komposisi penduduk yang tersebar di sejumlah jorong, dengan karakteristik yang beragam. Data berikut menampilkan jumlah penduduk berdasarkan jenis kelamin, jumlah kepala keluarga (KK), serta total penduduk di masing-masing jorong pada tahun tertentu.
@@ -69,8 +67,9 @@
         </div>
 
         <div class="max-w-4xl mx-auto bg-white mt-12 shadow-md rounded-xl p-6">
-            <h2 class="text-xl font-bold text-center text-gray-800 mb-4">Statistik Pertumbuhan Penduduk per Tahun per Jorong</h2>
-            {{-- Tambahkan pesan jika tidak ada data untuk grafik --}}
+            <h2 class="text-xl font-bold text-center text-gray-800 mb-4">
+                Statistik Pertumbuhan Penduduk per Tahun per Jorong
+            </h2>
             @if (empty($labels) || empty($datasets))
                 <p class="text-center text-gray-500">Tidak ada data yang tersedia untuk menampilkan grafik.</p>
             @else
@@ -78,6 +77,13 @@
             @endif
         </div>
     </section>
+
+     <section class="bg-white pt-5 pb-5 bottom-0 left-0 w-full shadow-md ">
+                    <div class="max-w-6xl mx-auto text-center  justify-content-center">
+                        <p>2025 Nagari Guguak.</p>
+                            <p>Powered by KKN Guguak Unand 2025.</p>
+                    </div>
+        </section>
 
     @include('layout.navbar')
 
@@ -89,14 +95,7 @@
         if (labels.length > 0 && datasetsRaw.length > 0) {
             const data = {
                 labels: labels,
-                datasets: datasetsRaw.map(item => ({
-                    label: item.label,
-                    data: item.data,
-                    borderColor: item.borderColor,
-                    backgroundColor: item.backgroundColor,
-                    fill: false,
-                    tension: 0.3
-                }))
+                datasets: datasetsRaw
             };
 
             const config = {
@@ -107,8 +106,7 @@
                     plugins: {
                         legend: { position: 'bottom' },
                         title: {
-                            display: false,
-                            text: 'Grafik Penduduk'
+                            display: false
                         }
                     },
                     scales: {
@@ -122,7 +120,7 @@
                         x: {
                             title: {
                                 display: true,
-                                text: 'Tahun'
+                                text: 'Jorong'
                             }
                         }
                     }
@@ -133,11 +131,27 @@
             if (ctx) {
                 new Chart(ctx.getContext("2d"), config);
             }
-        } else {
-            console.warn("Data grafik tidak tersedia. Chart tidak akan digambar.");
         }
     });
-    </script>
 
+    document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver(
+            (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                } else {
+                entry.target.classList.remove("show");
+                }
+            });
+            },
+            { threshold: 0.3 }
+        );
+
+        document.querySelectorAll(".title-animate").forEach((title) => {
+            observer.observe(title);
+        });
+        });
+    </script>
 </body>
 </html>

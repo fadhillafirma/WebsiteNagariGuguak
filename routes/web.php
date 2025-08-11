@@ -12,6 +12,8 @@ use App\Http\Controllers\LandingController;
 use App\Http\Controllers\KalenderController;
 use App\Http\Controllers\LembagaController;
 use App\Http\Controllers\PotensiController;
+use App\Http\Controllers\JorongController;
+use App\Http\Controllers\ProfileController;
 
 
 
@@ -29,7 +31,7 @@ Route::get('/', [LandingController::class, 'index']);
 
 // Halaman publik
 // Route::view('/', 'welcome')->name('home');
-Route::view('/profile', 'profile')->name('profile');
+Route::view('/profil', 'profile')->name('profil');
 Route::view('/kontak', 'kontak')->name('kontak');
 Route::view('/potensiNagari', 'potensi')->name('potensi');
 Route::get('/berita', [LandingController::class, 'berita'])->name('berita');
@@ -44,6 +46,13 @@ Route::get('/demografiLahan', [LandingController::class, 'demografiLahan'])->nam
 Route::get('/kalender-agenda', [LandingController::class, 'kalenderAgenda'])->name('kalender.agenda');
 Route::get('/potensiNagari', [LandingController::class, 'potensi'])->name('landing.potensi');
 Route::get('/potensiNagari/{id}', [LandingController::class, 'showPotensi'])->name('landing.potensi.show');
+Route::get('/jorongNagari', [LandingController::class, 'jorong'])->name('landing.jorong');
+Route::get('/jorongNagari/{id}', [LandingController::class, 'jorongShow'])->name('landing.jorong.show');
+Route::get('/lembagaNagari', [LandingController::class, 'lembaga'])->name('landing.lembaga');
+Route::get('/lembagaNagari/{id}', [LandingController::class, 'lembagaShow'])->name('landing.lembaga.show');
+
+
+
 
 
 
@@ -105,6 +114,17 @@ Route::middleware('auth')->group(function () {
         ->parameters(['potensi' => 'potensi'])
         ->middleware('auth');
 
+    Route::resource('jorong', JorongController::class)
+        ->parameters(['jorong' => 'jorong'])
+        ->middleware('auth');
+
+    Route::get('/profile', [ProfileController::class, 'index'])->name('profile.index');
+
+// Halaman edit profil
+Route::get('/profile/edit', [ProfileController::class, 'edit'])->name('profile.edit');
+
+// Update profil
+Route::put('/profile', [ProfileController::class, 'update'])->name('profile.update');
 
 
 });

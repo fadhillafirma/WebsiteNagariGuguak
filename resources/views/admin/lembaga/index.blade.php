@@ -47,7 +47,7 @@
                             @endif
                         </td>
                         <td class="px-6 py-4 text-gray-700">{{ $l->nama_ketua }}</td>
-                        <td class="px-6 py-4">{{ \Illuminate\Support\Str::limit($l->deskripsi, 50) }}</td>
+                        <td class="px-6 py-4">{{ \Illuminate\Support\Str::limit($l->deskripsi, 20) }}</td>
                         <td class="px-6 py-4">
                             @if($l->struktur_organisasi)
                                 <img src="{{ asset('storage/'.$l->struktur_organisasi) }}" class="w-24 h-16 object-cover rounded-md border border-gray-200" alt="struktur">

@@ -13,7 +13,7 @@
 <body class="m-0 p-0">
 
             <section class=" py-20 px-8 bg-white max-w-7xl mx-auto">
-                        <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4 text-center text-center mt-10">Berita</h2>
+                        <h2 class="font-bold text-greenDark text-4xl underline underline-offset-4 text-center text-center mt-10 title-animate">Berita</h2>
 
 
 
@@ -49,12 +49,38 @@
                 </div>
             </section>
 
+             <section class="bg-white pt-5 pb-5 bottom-0 left-0 w-full shadow-md ">
+                    <div class="max-w-6xl mx-auto text-center  justify-content-center">
+                        <p>2025 Nagari Guguak.</p>
+                            <p>Powered by KKN Guguak Unand 2025.</p>
+                    </div>
+        </section>
+
 
 
     @include('layout.navbar')
 
     <script>
         lucide.createIcons();
+         //animasi css judul title-animate
+        document.addEventListener("DOMContentLoaded", function () {
+        const observer = new IntersectionObserver(
+            (entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                entry.target.classList.add("show");
+                } else {
+                entry.target.classList.remove("show");
+                }
+            });
+            },
+            { threshold: 0.3 }
+        );
+
+        document.querySelectorAll(".title-animate").forEach((title) => {
+            observer.observe(title);
+        });
+        });
     </script>
 </body>
 </html>

@@ -34,7 +34,7 @@
                     <th scope="col" class="px-4 py-3">Tahun</th>
                     <th scope="col" class="px-4 py-3">SD</th>
                     <th scope="col" class="px-4 py-3">SMP</th>
-                    <th scope="col" class="px-4 py-3">SMA</th>
+                    <th scope="col" class="px-4 py-3">TK</th>
                     <th scope="col" class="px-4 py-3">PAUD</th>
                     <th scope="col" class="px-4 py-3 text-center">Aksi</th> {{-- text-center untuk aksi --}}
                 </tr>

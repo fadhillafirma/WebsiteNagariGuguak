@@ -35,6 +35,21 @@
                             </a>
                         </li>
 
+                        <!-- Jorong -->
+                        <li>
+                            <a href="{{ route('jorong.index') }}"
+                            class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                            {{ request()->routeIs('jorong.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M12 2l9 4.5v11L12 22l-9-4.5v-11L12 2z" />
+                                    <path d="M12 22V12" />
+                                </svg>
+                                Jorong
+                            </a>
+                        </li>
+
+
                         <!-- Galeri -->
                         <li>
                             <a href="{{ route('galeri.index') }}"
@@ -100,61 +115,80 @@
 
 
 
-                        <!-- Demografi (Dropdown) -->
-<li x-data="{ open: {{ request()->routeIs('demografi-*') ? 'true' : 'false' }} }">
-    <button @click="open = !open"
-        class="w-full flex items-center justify-between py-2 px-3 text-sm rounded-lg hover:bg-gray-100
-        {{ request()->routeIs('demografi-*') ? 'bg-gray-100 font-semibold' : '' }}">
-        <span class="flex items-center gap-x-3">
-            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
-                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                <path d="M3 10h4v11H3zM10 3h4v18h-4zM17 14h4v7h-4z" />
-            </svg>
-            Demografi
-        </span>
-        <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none"
-            viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
-        </svg>
-    </button>
 
-    <ul x-show="open" class="pl-6 mt-2 space-y-1" x-cloak>
-        <li>
-            <a href="{{ route('demografi-pekerjaan.index') }}"
-                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
-                {{ request()->routeIs('demografi-pekerjaan.*') ? 'bg-gray-200 font-semibold' : '' }}">
-                Pekerjaan
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('demografi-sekolah.index') }}"
-                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
-                {{ request()->routeIs('demografi-sekolah.*') ? 'bg-gray-200 font-semibold' : '' }}">
-                Sekolah
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('demografi-penduduk-jorong.index') }}"
-                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
-                {{ request()->routeIs('demografi-penduduk-jorong.*') ? 'bg-gray-200 font-semibold' : '' }}">
-                Penduduk
-            </a>
-        </li>
-        <li>
-            <a href="{{ route('demografi-lahan.index') }}"
-                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
-                {{ request()->routeIs('demografi-lahan.*') ? 'bg-gray-200 font-semibold' : '' }}">
-                Lahan
-            </a>
-        </li>
-    </ul>
-</li>
+                        <!-- Demografi (Dropdown) -->
+                <li x-data="{ open: {{ request()->routeIs('demografi-*') ? 'true' : 'false' }} }">
+                    <button @click="open = !open"
+                        class="w-full flex items-center justify-between py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                        {{ request()->routeIs('demografi-*') ? 'bg-gray-100 font-semibold' : '' }}">
+                        <span class="flex items-center gap-x-3">
+                            <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                <path d="M3 10h4v11H3zM10 3h4v18h-4zM17 14h4v7h-4z" />
+                            </svg>
+                            Demografi
+                        </span>
+                        <svg :class="{ 'rotate-180': open }" class="w-4 h-4 transition-transform" xmlns="http://www.w3.org/2000/svg" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                        </svg>
+                    </button>
+
+                    <ul x-show="open" class="pl-6 mt-2 space-y-1" x-cloak>
+                        <li>
+                            <a href="{{ route('demografi-pekerjaan.index') }}"
+                                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
+                                {{ request()->routeIs('demografi-pekerjaan.*') ? 'bg-gray-200 font-semibold' : '' }}">
+                                Pekerjaan
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('demografi-sekolah.index') }}"
+                                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
+                                {{ request()->routeIs('demografi-sekolah.*') ? 'bg-gray-200 font-semibold' : '' }}">
+                                Sekolah
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('demografi-penduduk-jorong.index') }}"
+                                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
+                                {{ request()->routeIs('demografi-penduduk-jorong.*') ? 'bg-gray-200 font-semibold' : '' }}">
+                                Penduduk
+                            </a>
+                        </li>
+                        <li>
+                            <a href="{{ route('demografi-lahan.index') }}"
+                                class="block py-1 px-2 text-sm rounded hover:bg-gray-100
+                                {{ request()->routeIs('demografi-lahan.*') ? 'bg-gray-200 font-semibold' : '' }}">
+                                Lahan
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+
+                 <li>
+                            <a href="{{ route('profile.index') }}"
+                            class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
+                            {{ request()->routeIs('lembaga.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                                <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                    stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                                    <path d="M3 7v13h18V7l-9-4-9 4z" />
+                                    <path d="M13 13h-2v2h2v-2z" />
+                                </svg>
+                                Profile
+                            </a>
+                        </li>
 
 
 
 
                     </ul>
+
+
                 </nav>
+
+
+
 
                 <!-- Logout -->
                 <div class="p-4 border-t border-gray-200">

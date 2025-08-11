@@ -12,7 +12,7 @@ export default {
         greenOlive: '#a6b14aff',
 
         greenDark: '#004225',
-       
+
         green1: '#04b569ff',
         green2: '#35e79aff',
         green3: '#DEE791',
@@ -26,6 +26,15 @@ export default {
 
 
         cream: '#F2F1EB'
+      },
+      keyframes: {
+        spinSlow: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+      },
+      animation: {
+        spinSlow: 'spinSlow 8s linear infinite',
       },
     },
   },

@@ -12,18 +12,18 @@
 
 <body class="m-0 p-0">
     <!-- Kontak Section -->
-    <section class="bg-gray-100 w-full min-h-screen flex items-center justify-center" id="profile">
+    <section class="bg-white w-full min-h-screen flex items-center justify-center" id="profile">
         <div class="max-w-6xl w-full grid md:grid-cols-2  gap-10 place-items-center mt-10">
 
             <div class="w-full rounded-xl overflow-hidden shadow-lg border-2 border-greenDark ml-5">
                 <iframe
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.7383653182793!2d101.0737576!3d-0.6685665!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2fdc88789c7e07b1%3A0x5fb5a6c9e6972ef2!2sNagari%20Guguak!5e0!3m2!1sen!2sid!4v1721101112345!5m2!1sen!2sid&t=k"
-                    width="100%"
-                    height="500"
-                    style="border:0;"
-                    allowfullscreen
-                    loading="lazy"
-                    referrerpolicy="no-referrer-when-downgrade">
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15794.978619402152!2d100.856389!3d-0.578056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1723273612345!5m2!1sen!2sid&t=k"
+                        width="100%"
+                        height="450"
+                        style="border:0;"
+                        allowfullscreen
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
                 </iframe>
             </div>
 
@@ -61,7 +61,16 @@
             </div>
 
         </div>
+
     </section>
+     <section class="bg-white pt-5 pb-5 bottom-0 left-0 w-full shadow-md ">
+                    <div class="max-w-6xl mx-auto text-center  justify-content-center">
+                        <p>2025 Nagari Guguak.</p>
+                            <p>Powered by KKN Guguak Unand 2025.</p>
+                    </div>
+        </section>
+
+
 
     @include('layout.navbar')
 
