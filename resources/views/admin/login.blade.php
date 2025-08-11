@@ -27,7 +27,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ url('/login') }}" class="space-y-3">
+                <form method="POST" action="{{ url('/32002guguak') }}" class="space-y-3">
                     @csrf
                     <div class="space-y-2">
                         <label for="email" class="block text-sm font-medium text-gray-700 ">Email</label>

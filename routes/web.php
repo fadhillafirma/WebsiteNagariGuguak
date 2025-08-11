@@ -58,8 +58,8 @@ Route::get('/lembagaNagari/{id}', [LandingController::class, 'lembagaShow'])->na
 
 
 // Login & Logout
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
+Route::get('/32002guguak', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/32002guguak', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin area (butuh login)
