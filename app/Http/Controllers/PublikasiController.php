@@ -63,9 +63,9 @@ class PublikasiController extends Controller
     /**
      * Detail publikasi.
      */
-    public function show(Publikasi $publikasi)
+    public function show(Publikasi $berita)
     {
-        return view('admin.publikasi.show', compact('publikasi'));
+        return view('admin.publikasi.show', compact('berita'));
     }
 
     /**

@@ -8,6 +8,8 @@
 
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
+     <link rel="icon" type="image/png" href="/logo.png" />
+
 
 
 </head>
@@ -39,7 +41,7 @@
             <table class="w-full text-sm text-gray-700 border border-gray-200 rounded-lg mb-4">
                 <thead class="bg-greenDark text-white text-sm">
                     <tr>
-                        <th class="px-6 py-3 text-center">Jenis Lahan</th>
+                        <th class="px-6 py-3 text-center">Jenis Lahan di koto guguak</th>
                         <th class="px-6 py-3 text-center">Luas (Ha)</th>
                         <th class="px-6 py-3 text-center">Produktif (Ha)</th>
                         <th class="px-6 py-3 text-center">Tidak Produktif (Ha)</th>

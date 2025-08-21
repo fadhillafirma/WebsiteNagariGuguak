@@ -9,6 +9,8 @@
     <script src="https://unpkg.com/lucide@latest"></script>
     <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/bar.js"></script>
+     <link rel="icon" type="image/png" href="/logo.png" />
+
 
 </head>
 <body>

@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Laravel</title>
+    <title>Nagari Guguak</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
     <link rel="preconnect" href="https://fonts.bunny.net" />
     <script src="https://unpkg.com/lucide@latest"></script>
+     <link rel="icon" type="image/png" href="/logo.png" />
+
 </head>
 
 <body class="m-0 p-0 min-h-screen flex flex-col">

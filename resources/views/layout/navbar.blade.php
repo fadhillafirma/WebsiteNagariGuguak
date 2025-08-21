@@ -59,6 +59,10 @@
     <div id="mobile-menu" class="md:hidden hidden bg-white/100 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all">
       <a href="/" class="block py-2 hover:text-black menu-link">Home</a>
       <a href="/profil" class="block py-2 hover:text-black menu-link">Profile</a>
+      <a href="/jorongNagari" class="block py-2 hover:text-black menu-link">Jorong</a>
+      <a href="/lembagaNagari" class="block py-2 hover:text-black menu-link">Lembaga</a>
+
+
 
       <!-- Mobile Dropdown: Demografis -->
       <div class="block py-2">

@@ -8,6 +8,8 @@
 
     <link rel="preconnect" href="https://fonts.bunny.net">
     <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="icon" type="image/png" href="/logo.png" />
+
 </head>
 
 <body class="m-0 p-0">

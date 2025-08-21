@@ -7,6 +7,8 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <link rel="preconnect" href="https://fonts.bunny.net">
     <script src="https://unpkg.com/lucide@latest"></script>
+     <link rel="icon" type="image/png" href="/logo.png" />
+
 </head>
 <body class="bg-white">
 
