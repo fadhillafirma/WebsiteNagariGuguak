@@ -26,6 +26,61 @@ use App\Http\Controllers\ProfileController;
 
 use App\Models\Galeri;
 
+use App\Http\Controllers\LembagaSubdomainController;
+use App\Http\Controllers\BpnSubdomainController;
+
+// SETUP SUBDOMAIN BPN (Spesifik)
+Route::domain('bpn.localhost')->group(function () {
+    Route::get('/', [BpnSubdomainController::class, 'index'])->name('bpn.beranda');
+    
+    Route::get('/program', [BpnSubdomainController::class, 'programIndex'])->name('bpn.program.index');
+    Route::get('/program/{program}', [BpnSubdomainController::class, 'showProgram'])->name('bpn.program.show');
+    
+    Route::get('/berita', [BpnSubdomainController::class, 'beritaIndex'])->name('bpn.berita.index');
+    Route::get('/berita/{berita}', [BpnSubdomainController::class, 'showBerita'])->name('bpn.berita.show');
+
+    Route::get('/login', [BpnSubdomainController::class, 'showLogin'])->name('bpn.login');
+    Route::post('/login', [BpnSubdomainController::class, 'login'])->name('bpn.login.submit');
+    Route::post('/logout', [BpnSubdomainController::class, 'logout'])->name('bpn.logout');
+
+    Route::get('/admin', [BpnSubdomainController::class, 'admin'])->name('bpn.admin');
+    Route::post('/admin/program', [BpnSubdomainController::class, 'storeProgram'])->name('bpn.program.store');
+    Route::put('/admin/program/{program}', [BpnSubdomainController::class, 'updateProgram'])->name('bpn.program.update');
+    Route::delete('/admin/program/{program}', [BpnSubdomainController::class, 'destroyProgram'])->name('bpn.program.destroy');
+    Route::post('/admin/berita', [BpnSubdomainController::class, 'storeBerita'])->name('bpn.berita.store');
+    Route::put('/admin/berita/{berita}', [BpnSubdomainController::class, 'updateBerita'])->name('bpn.berita.update');
+    Route::delete('/admin/berita/{berita}', [BpnSubdomainController::class, 'destroyBerita'])->name('bpn.berita.destroy');
+    Route::put('/admin/profil', [BpnSubdomainController::class, 'updateProfil'])->name('bpn.profil.update');
+});
+
+// SETUP SUBDOMAIN
+Route::domain('{lembaga}.localhost')->group(function () {
+    // Halaman utama (frontend) lembaga
+    Route::get('/', [LembagaSubdomainController::class, 'index'])->name('lembaga.beranda');
+    
+    // Halaman List & Detail Program
+    Route::get('/program', [LembagaSubdomainController::class, 'programIndex'])->name('lembaga.program.index');
+    Route::get('/program/{program}', [LembagaSubdomainController::class, 'showProgram'])->name('lembaga.program.show');
+    
+    // Halaman List & Detail Berita
+    Route::get('/berita', [LembagaSubdomainController::class, 'beritaIndex'])->name('lembaga.berita.index');
+    Route::get('/berita/{berita}', [LembagaSubdomainController::class, 'showBerita'])->name('lembaga.berita.show');
+
+    // Login & Logout Lembaga Admin
+    Route::get('/login', [LembagaSubdomainController::class, 'showLogin'])->name('lembaga.login');
+    Route::post('/login', [LembagaSubdomainController::class, 'login'])->name('lembaga.login.submit');
+    Route::post('/logout', [LembagaSubdomainController::class, 'logout'])->name('lembaga.logout');
+
+    // Halaman Admin Panel lembaga (dilindungi auth di controller)
+    Route::get('/admin', [LembagaSubdomainController::class, 'admin'])->name('lembaga.admin');
+    Route::post('/admin/program', [LembagaSubdomainController::class, 'storeProgram'])->name('lembaga.program.store');
+    Route::put('/admin/program/{program}', [LembagaSubdomainController::class, 'updateProgram'])->name('lembaga.program.update');
+    Route::delete('/admin/program/{program}', [LembagaSubdomainController::class, 'destroyProgram'])->name('lembaga.program.destroy');
+    Route::post('/admin/berita', [LembagaSubdomainController::class, 'storeBerita'])->name('lembaga.berita.store');
+    Route::put('/admin/berita/{berita}', [LembagaSubdomainController::class, 'updateBerita'])->name('lembaga.berita.update');
+    Route::delete('/admin/berita/{berita}', [LembagaSubdomainController::class, 'destroyBerita'])->name('lembaga.berita.destroy');
+    Route::put('/admin/profil', [LembagaSubdomainController::class, 'updateProfil'])->name('lembaga.profil.update');
+});
 Route::get('/', [LandingController::class, 'index']);
 
 
@@ -128,3 +183,4 @@ Route::put('/profile', [ProfileController::class, 'update'])->name('profile.upda
 
 
 });
+
