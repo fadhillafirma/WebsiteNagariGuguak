@@ -28,33 +28,45 @@
                 <tr>
                     <th class="px-6 py-3">Nama Lembaga</th>
                     <th class="px-6 py-3">Foto</th>
+                    <th class="px-6 py-3">Subdomain & Akun</th>
                     <th class="px-6 py-3">Nama Ketua</th>
                     <th class="px-6 py-3">Deskripsi</th>
-                    <th class="px-6 py-3">Struktur Organisasi</th>
                     <th class="px-6 py-3 text-center">Aksi</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach($lembagas as $l)
                     <tr class="bg-white border-b hover:bg-gray-50">
-                        <td class="px-6 py-4 text-gray-700">{{ $l->nama_lembaga }}</td>
+                        <td class="px-6 py-4 text-gray-700 font-semibold">{{ $l->nama_lembaga }}</td>
 
                         <td class="px-6 py-4">
                             @if($l->foto_lembaga)
-                                <img src="{{ asset('storage/'.$l->foto_lembaga) }}" class="w-24 h-16 object-cover rounded-md border border-gray-200" alt="foto">
+                                <img src="{{ asset('storage/'.$l->foto_lembaga) }}" class="w-20 h-12 object-cover rounded-md border border-gray-200" alt="foto">
                             @else
-                                <span class="text-gray-400">-</span>
+                                <span class="text-gray-400 text-xs">Tanpa Logo</span>
+                            @endif
+                        </td>
+                        <td class="px-6 py-4">
+                            @if($l->subdomain)
+                                <a href="http://{{ $l->subdomain }}.localhost" target="_blank" class="text-blue-600 hover:underline font-semibold block mb-1">
+                                    {{ $l->subdomain }}.localhost
+                                </a>
+                            @else
+                                <span class="text-gray-400 block mb-1">- Tidak ada -</span>
+                            @endif
+
+                            @if($l->user && $l->user->role === 'admin_lembaga')
+                                <div class="text-xs text-gray-500 flex items-center gap-1 mt-2">
+                                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                                    {{ $l->user->email }}
+                                </div>
+                            @else
+                                <div class="text-xs text-red-400 mt-2">Belum ada akun admin</div>
                             @endif
                         </td>
                         <td class="px-6 py-4 text-gray-700">{{ $l->nama_ketua }}</td>
-                        <td class="px-6 py-4">{{ \Illuminate\Support\Str::limit($l->deskripsi, 20) }}</td>
-                        <td class="px-6 py-4">
-                            @if($l->struktur_organisasi)
-                                <img src="{{ asset('storage/'.$l->struktur_organisasi) }}" class="w-24 h-16 object-cover rounded-md border border-gray-200" alt="struktur">
-                            @else
-                                <span class="text-gray-400">-</span>
-                            @endif
-                        </td>
+                        <td class="px-6 py-4">{{ \Illuminate\Support\Str::limit($l->deskripsi, 30) }}</td>
+                        
                         <td class="px-6 py-4 text-center flex justify-center gap-2 flex-wrap">
                             <a href="{{ route('lembaga.show', $l->id) }}"
                             class="px-3 py-1 rounded bg-blue-500 hover:bg-blue-600 text-white text-xs">

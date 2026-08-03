@@ -65,8 +65,8 @@
         <!-- Sidebar Header -->
         <div class="p-6 border-b border-slate-100 flex items-center gap-3">
             <div>
-                <img src="{{ asset('baznas.png') }}" alt="Logo Baznas" style="height: 35px; object-fit: contain;">
-                <p class="text-[10px] font-medium text-slate-400 mt-1 uppercase tracking-widest">Admin Panel</p>
+                <h1 class="text-sm font-bold text-slate-900 tracking-tight leading-tight uppercase">Admin Panel</h1>
+                <p class="text-[11px] font-medium text-slate-500 truncate max-w-[130px]" title="{{ $lembaga->nama_lembaga }}">{{ $lembaga->nama_lembaga }}</p>
             </div>
         </div>
 

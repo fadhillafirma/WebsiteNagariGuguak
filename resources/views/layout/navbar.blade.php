@@ -13,34 +13,9 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex md:space-x-5 sm:space-x-5 md:text-lg sm:text-sm font-medium items-center" id="navbar-menu">
-          <a href="/" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Home</a>
-          <a href="/profil" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Profile</a>
-          <a href="/jorongNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Jorong</a>
-          <a href="/lembagaNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Lembaga</a>
-
-          <!-- Dropdown Demografis -->
-          <div class="relative group">
-            <button class="hover:text-black transition focus:outline-none py-1 md:text-lg sm:text-sm">Demografis</button>
-            <div class="absolute hidden group-hover:block bg-white backdrop-blur-sm shadow-lg rounded-lg pt-2 min-w-[180px] z-50">
-              <a href="/demografiSekolah" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Sekolah</a>
-              <a href="/demografiPekerjaan" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Pekerjaan</a>
-              <a href="/demografiPenduduk" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Penduduk</a>
-              <a href="/demografiLahan" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Lahan</a>
-            </div>
-          </div>
-
-          <a href="/potensiNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Potensi</a>
-
-          <!-- Dropdown Publikasi -->
-          <div class="relative group">
-            <button class="hover:text-black transition focus:outline-none py-1 md:text-lg sm:text-sm">Publikasi</button>
-            <div class="absolute hidden group-hover:block bg-white shadow-lg rounded-lg pt-2 min-w-[150px] z-50">
-              <a href="/artikel" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Artikel</a>
-              <a href="/berita" class="menu-link block px-4 py-2 hover:bg-gray-100 hover:text-greenOlive">Berita</a>
-            </div>
-          </div>
-
-          <a href="/kontak" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Kontak</a>
+          <a href="/program" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Program</a>
+          <a href="/berita" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Berita</a>
+          <a href="/kontak" class="menu-link hover:text-black transition md:text-lg sm:text-sm">About Us</a>
         </div>
 
         <!-- Mobile Hamburger Button -->
@@ -57,36 +32,9 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-white/100 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all">
-      <a href="/" class="block py-2 hover:text-black menu-link">Home</a>
-      <a href="/profil" class="block py-2 hover:text-black menu-link">Profile</a>
-      <a href="/jorongNagari" class="block py-2 hover:text-black menu-link">Jorong</a>
-      <a href="/lembagaNagari" class="block py-2 hover:text-black menu-link">Lembaga</a>
-
-
-
-      <!-- Mobile Dropdown: Demografis -->
-      <div class="block py-2">
-        <span class="font-semibold">Demografis</span>
-        <div class="pl-4">
-          <a href="/demografiSekolah" class="block py-1 hover:text-black menu-link">Sekolah</a>
-          <a href="/demografiPekerjaan" class="block py-1 hover:text-black menu-link">Pekerjaan</a>
-          <a href="/demografiPenduduk" class="block py-1 hover:text-black menu-link">Penduduk</a>
-          <a href="/demografiLahan" class="menu-link block py-1 hover:text-greenOlive">Lahan</a>
-        </div>
-      </div>
-
-      <a href="/potensiNagari" class="block py-2 hover:text-black menu-link">Potensi</a>
-
-      <!-- Mobile Dropdown: Publikasi -->
-      <div class="block py-2">
-        <span class="font-semibold">Publikasi</span>
-        <div class="pl-4">
-          <a href="/artikel" class="block py-1 hover:text-black menu-link">Artikel</a>
-          <a href="/berita" class="block py-1 hover:text-black menu-link">Berita</a>
-        </div>
-      </div>
-
-      <a href="/kontak" class="block py-2 hover:text-black menu-link">Kontak</a>
+      <a href="/program" class="block py-2 hover:text-black menu-link">Program</a>
+      <a href="/berita" class="block py-2 hover:text-black menu-link">Berita</a>
+      <a href="/kontak" class="block py-2 hover:text-black menu-link">About Us</a>
     </div>
   </div>
 </nav>

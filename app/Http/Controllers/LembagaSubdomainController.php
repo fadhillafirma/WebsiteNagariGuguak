@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Lembaga;
 use App\Models\LembagaBerita;
 use App\Models\LembagaProgram;
+use App\Models\LembagaTugas;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -12,22 +13,30 @@ class LembagaSubdomainController extends Controller
 {
     public function index($subdomain)
     {
-        $lembaga = Lembaga::where('subdomain', $subdomain)->first();
-
-        if (!$lembaga) {
-            return response()->view('errors.404', ['message' => "Lembaga '$subdomain' tidak ditemukan."], 404);
-        }
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
 
         $programs = $lembaga->programs()->aktif()->take(6)->get();
         $beritas = $lembaga->beritas()->tayang()->take(4)->get();
+        $tugas = $lembaga->tugas()->take(3)->get();
 
-        $info = [
-            'nama' => $lembaga->nama_lembaga,
-            'deskripsi' => $lembaga->deskripsi,
-            'warna' => $subdomain == 'bumnag' ? '#2563eb' : '#16a34a',
-        ];
+        $info = $this->getThemeInfo($lembaga, $subdomain);
 
-        return view('lembaga.profil-sementara', compact('lembaga', 'info', 'programs', 'beritas', 'subdomain'));
+        if (view()->exists("{$subdomain}.profil")) {
+            return view("{$subdomain}.profil", compact('lembaga', 'info', 'programs', 'beritas', 'tugas', 'subdomain'));
+        }
+        return view('lembaga.profil', compact('lembaga', 'info', 'programs', 'beritas', 'subdomain'));
+    }
+
+    public function tugasIndex($subdomain)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        $tugas = $lembaga->tugas()->get();
+        $info = $this->getThemeInfo($lembaga, $subdomain);
+
+        if (view()->exists("{$subdomain}.list-tugas")) {
+            return view("{$subdomain}.list-tugas", compact('lembaga', 'tugas', 'info', 'subdomain'));
+        }
+        return abort(404, 'Halaman tugas tidak ditemukan');
     }
 
     public function programIndex($subdomain)
@@ -35,12 +44,11 @@ class LembagaSubdomainController extends Controller
         $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
         $programs = $lembaga->programs()->aktif()->get();
 
-        $info = [
-            'nama' => $lembaga->nama_lembaga,
-            'deskripsi' => $lembaga->deskripsi,
-            'warna' => $subdomain == 'bumnag' ? '#2563eb' : '#16a34a',
-        ];
+        $info = $this->getThemeInfo($lembaga, $subdomain);
 
+        if (view()->exists("{$subdomain}.list-program")) {
+            return view("{$subdomain}.list-program", compact('lembaga', 'programs', 'info', 'subdomain'));
+        }
         return view('lembaga.list-program', compact('lembaga', 'programs', 'info', 'subdomain'));
     }
 
@@ -49,12 +57,11 @@ class LembagaSubdomainController extends Controller
         $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
         $beritas = $lembaga->beritas()->tayang()->get();
 
-        $info = [
-            'nama' => $lembaga->nama_lembaga,
-            'deskripsi' => $lembaga->deskripsi,
-            'warna' => $subdomain == 'bumnag' ? '#2563eb' : '#16a34a',
-        ];
+        $info = $this->getThemeInfo($lembaga, $subdomain);
 
+        if (view()->exists("{$subdomain}.list-berita")) {
+            return view("{$subdomain}.list-berita", compact('lembaga', 'beritas', 'info', 'subdomain'));
+        }
         return view('lembaga.list-berita', compact('lembaga', 'beritas', 'info', 'subdomain'));
     }
 
@@ -69,12 +76,11 @@ class LembagaSubdomainController extends Controller
             abort(404);
         }
 
-        $info = [
-            'nama' => $lembaga->nama_lembaga,
-            'deskripsi' => $lembaga->deskripsi,
-            'warna' => $subdomain == 'bumnag' ? '#2563eb' : '#16a34a',
-        ];
+        $info = $this->getThemeInfo($lembaga, $subdomain);
 
+        if (view()->exists("{$subdomain}.detail-program")) {
+            return view("{$subdomain}.detail-program", compact('lembaga', 'program', 'info', 'subdomain'));
+        }
         return view('lembaga.detail-program', compact('lembaga', 'program', 'info', 'subdomain'));
     }
 
@@ -89,13 +95,25 @@ class LembagaSubdomainController extends Controller
             abort(404);
         }
 
-        $info = [
+        $info = $this->getThemeInfo($lembaga, $subdomain);
+
+        if (view()->exists("{$subdomain}.detail-berita")) {
+            return view("{$subdomain}.detail-berita", compact('lembaga', 'berita', 'info', 'subdomain'));
+        }
+        return view('lembaga.detail-berita', compact('lembaga', 'berita', 'info', 'subdomain'));
+    }
+
+    private function getThemeInfo($lembaga, $subdomain)
+    {
+        $warna = '#16a34a'; // default hijau
+        if ($subdomain === 'bumnag') $warna = '#2563eb'; // biru
+        if ($subdomain === 'bpn') $warna = '#580F1C'; // merah marun
+
+        return [
             'nama' => $lembaga->nama_lembaga,
             'deskripsi' => $lembaga->deskripsi,
-            'warna' => $subdomain == 'bumnag' ? '#2563eb' : '#16a34a',
+            'warna' => $warna,
         ];
-
-        return view('lembaga.detail-berita', compact('lembaga', 'berita', 'info', 'subdomain'));
     }
 
     // ====== AUTH ======
@@ -109,7 +127,10 @@ class LembagaSubdomainController extends Controller
             return redirect()->route('lembaga.admin', ['lembaga' => $subdomain]);
         }
 
-        return view('lembaga.login-upz', compact('lembaga', 'subdomain'));
+        if (view()->exists("{$subdomain}.login")) {
+            return view("{$subdomain}.login", compact('lembaga', 'subdomain'));
+        }
+        return view('lembaga.login', compact('lembaga', 'subdomain'));
     }
 
     public function login(Request $request, $subdomain)
@@ -153,17 +174,49 @@ class LembagaSubdomainController extends Controller
     {
         $lembaga = $this->lembaga($subdomain);
 
-        // Cek apakah sudah login dan pemilik
-        if (!Auth::check() || Auth::user()->id !== $lembaga->user_id) {
-            return redirect()->route('lembaga.login', ['lembaga' => $subdomain]);
-        }
-
         $programs = $lembaga->programs()->latest()->get();
         $beritas = $lembaga->beritas()->latest()->get();
+        $semuaTugas = $lembaga->tugas()->latest()->get();
+
         $editProgram = request('edit_program') ? $lembaga->programs()->find(request('edit_program')) : null;
         $editBerita = request('edit_berita') ? $lembaga->beritas()->find(request('edit_berita')) : null;
+        $editTugas = request('edit_tugas') ? $lembaga->tugas()->find(request('edit_tugas')) : null;
 
-        return view('lembaga.admin-upz', compact('lembaga', 'programs', 'beritas', 'subdomain', 'editProgram', 'editBerita'));
+        if (view()->exists("{$subdomain}.admin")) {
+            return view("{$subdomain}.admin", compact('lembaga', 'programs', 'beritas', 'semuaTugas', 'subdomain', 'editProgram', 'editBerita', 'editTugas'));
+        }
+        return view('lembaga.admin', compact('lembaga', 'programs', 'beritas', 'semuaTugas', 'subdomain', 'editProgram', 'editBerita', 'editTugas'));
+    }
+
+    public function storeTugas(Request $request, $subdomain)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        $data = $request->validate([
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+        ]);
+        $lembaga->tugas()->create($data);
+        return redirect()->route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'tugas'])->with('success', 'Tugas pokok berhasil ditambahkan!');
+    }
+
+    public function updateTugas(Request $request, $subdomain, $tugasId)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        $tugas = $lembaga->tugas()->findOrFail($tugasId);
+        $data = $request->validate([
+            'judul' => 'required|string|max:255',
+            'deskripsi' => 'required|string',
+        ]);
+        $tugas->update($data);
+        return redirect()->route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'tugas'])->with('success', 'Tugas pokok berhasil diperbarui!');
+    }
+
+    public function destroyTugas($subdomain, $tugasId)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        $tugas = $lembaga->tugas()->findOrFail($tugasId);
+        $tugas->delete();
+        return redirect()->route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'tugas'])->with('success', 'Tugas pokok berhasil dihapus!');
     }
 
     public function storeProgram(Request $request, $subdomain)

@@ -15,6 +15,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'role',
     ];
 
     protected $hidden = [
@@ -25,6 +26,16 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public function isSuperadmin()
+    {
+        return $this->role === 'superadmin';
+    }
+
+    public function isLembagaAdmin()
+    {
+        return $this->role === 'admin_lembaga';
+    }
 
     // Relasi ke semua tabel
     public function publikasi()

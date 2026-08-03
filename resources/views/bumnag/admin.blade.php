@@ -52,9 +52,10 @@
 <body class="bg-[#f8fafc] font-sans antialiased text-slate-800 selection:bg-brand-500 selection:text-white">
 
 <div class="flex min-h-screen" x-data="{ 
-    activeTab: '{{ request('tab', $editBerita ? 'berita' : ($editProgram ? 'program' : 'dashboard')) }}',
+    activeTab: '{{ request('tab', $editBerita ? 'berita' : ($editProgram ? 'program' : ($editTugas ? 'tugas' : 'dashboard'))) }}',
     showProgramForm: {{ $editProgram ? 'true' : 'false' }},
     showBeritaForm: {{ $editBerita ? 'true' : 'false' }},
+    showTugasForm: {{ $editTugas ? 'true' : 'false' }},
     showProfilEditForm: false,
     viewProgramModal: null,
     viewBeritaModal: null
@@ -65,8 +66,8 @@
         <!-- Sidebar Header -->
         <div class="p-6 border-b border-slate-100 flex items-center gap-3">
             <div>
-                <img src="{{ asset('baznas.png') }}" alt="Logo Baznas" style="height: 35px; object-fit: contain;">
-                <p class="text-[10px] font-medium text-slate-400 mt-1 uppercase tracking-widest">Admin Panel</p>
+                <h1 class="text-sm font-bold text-slate-900 tracking-tight leading-tight uppercase">Admin Panel</h1>
+                <p class="text-[11px] font-medium text-slate-500 truncate max-w-[130px]" title="{{ $lembaga->nama_lembaga }}">{{ $lembaga->nama_lembaga }}</p>
             </div>
         </div>
 
@@ -100,6 +101,16 @@
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z"/>
                 </svg>
                 <span>Warta Publikasi</span>
+            </button>
+
+            <!-- 3b. Tugas Pokok -->
+            <button @click="activeTab = 'tugas'; if(!{{ $editTugas ? 'true' : 'false' }}) showTugasForm = false" 
+               :class="activeTab === 'tugas' ? 'bg-brand-50/60 text-brand-700 border-r-4 border-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-r-4 border-transparent'"
+               class="w-full flex items-center gap-x-3 py-3 px-6 text-sm transition-all duration-200 text-left group">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors" :class="activeTab === 'tugas' ? 'text-brand-600' : 'text-slate-400 group-hover:text-slate-600'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
+                </svg>
+                <span>Tugas Pokok</span>
             </button>
 
             <!-- 4. Profil UPZ -->
@@ -603,6 +614,122 @@
                                                 </td>
                                             </tr>
                                         @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+
+            <!-- TAB 3b: DATA TUGAS POKOK -->
+            <div x-show="activeTab === 'tugas'" x-cloak class="space-y-6">
+
+                <!-- FORM TAMBAH / EDIT TUGAS -->
+                <div x-show="showTugasForm" class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 max-w-4xl mx-auto space-y-6">
+                    <div class="flex items-center justify-between border-b border-slate-100 pb-4">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">
+                                {{ isset($editTugas) && $editTugas ? 'Ubah Tugas Pokok' : 'Entri Tugas Pokok Baru' }}
+                            </h2>
+                            <p class="text-xs text-slate-500 mt-1">Lengkapi formulir di bawah ini.</p>
+                        </div>
+                        @if(isset($editTugas) && $editTugas)
+                            <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain]) }}?tab=tugas" class="px-4 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-50 rounded-lg transition inline-flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg> Kembali
+                            </a>
+                        @else
+                            <button type="button" @click="showTugasForm = false" class="px-4 py-2 text-xs font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-50 rounded-lg transition inline-flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg> Kembali
+                            </button>
+                        @endif
+                    </div>
+
+                    <form action="{{ isset($editTugas) && $editTugas ? route('lembaga.tugas.update', ['lembaga' => $subdomain, 'tugas' => $editTugas->id]) : route('lembaga.tugas.store', ['lembaga' => $subdomain]) }}" method="POST" class="space-y-5">
+                        @csrf
+                        @if(isset($editTugas) && $editTugas) @method('PUT') @endif
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Judul Tugas Pokok <span class="text-red-500">*</span></label>
+                            <input type="text" name="judul" value="{{ old('judul', $editTugas->judul ?? '') }}" required placeholder="Contoh: Pemberdayaan Ekonomi" class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Deskripsi Singkat <span class="text-red-500">*</span></label>
+                            <textarea name="deskripsi" rows="3" required placeholder="Jelaskan deskripsi tugas pokok ini..." class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">{{ old('deskripsi', $editTugas->deskripsi ?? '') }}</textarea>
+                        </div>
+
+                        <div class="flex items-center justify-end gap-3 pt-5 border-t border-slate-100">
+                            @if(isset($editTugas) && $editTugas)
+                                <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain]) }}?tab=tugas" class="px-5 py-2.5 text-sm font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-50 rounded-lg transition">
+                                    Batal
+                                </a>
+                            @else
+                                <button type="button" @click="showTugasForm = false" class="px-5 py-2.5 text-sm font-medium text-slate-600 bg-white border border-slate-300 hover:bg-slate-50 rounded-lg transition">
+                                    Batal
+                                </button>
+                            @endif
+
+                            <button type="submit" class="px-6 py-2.5 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-lg transition">
+                                {{ isset($editTugas) && $editTugas ? 'Simpan Perubahan' : 'Tambah Tugas Pokok' }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- TABEL DATA TUGAS -->
+                <div x-show="!showTugasForm" class="space-y-4">
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                        <div>
+                            <h2 class="text-xl font-bold text-slate-900">Daftar Tugas Pokok</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">Kelola fungsi dan tugas pokok BUMNag.</p>
+                        </div>
+                        <button @click="showTugasForm = true" class="px-4 py-2.5 rounded-lg text-white bg-slate-900 hover:bg-slate-800 font-medium text-xs transition-colors inline-flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
+                            Tambah Tugas Pokok
+                        </button>
+                    </div>
+
+                    <div class="bg-white border border-slate-200 rounded-xl overflow-hidden shadow-sm">
+                        @if(isset($semuaTugas) && $semuaTugas->count() === 0)
+                            <div class="p-12 text-center">
+                                <svg class="w-10 h-10 mx-auto text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
+                                <p class="font-medium text-slate-900 text-sm">Tidak ada data tugas pokok</p>
+                            </div>
+                        @else
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-sm text-left text-slate-600">
+                                    <thead class="text-[11px] text-slate-500 uppercase bg-slate-50 border-b border-slate-200 font-semibold tracking-wider">
+                                        <tr>
+                                            <th class="px-6 py-4">Judul Tugas</th>
+                                            <th class="px-6 py-4">Deskripsi</th>
+                                            <th class="px-6 py-4 text-center">Opsi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100">
+                                        @if(isset($semuaTugas))
+                                        @foreach($semuaTugas as $tugas)
+                                            <tr class="hover:bg-slate-50/50 transition-colors">
+                                                <td class="px-6 py-4 font-bold text-slate-900">{{ $tugas->judul }}</td>
+                                                <td class="px-6 py-4">
+                                                    <p class="text-xs text-slate-600 line-clamp-2">{{ $tugas->deskripsi }}</p>
+                                                </td>
+                                                <td class="px-6 py-4 text-center">
+                                                    <div class="flex items-center justify-center gap-1.5">
+                                                        <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain, 'edit_tugas' => $tugas->id]) }}?tab=tugas" class="px-2.5 py-1.5 rounded text-blue-600 hover:text-blue-900 hover:bg-blue-50 text-xs font-medium transition" title="Edit">
+                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                                        </a>
+                                                        <form action="{{ route('lembaga.tugas.destroy', ['lembaga' => $subdomain, 'tugas' => $tugas->id]) }}" method="POST" onsubmit="return confirm('Hapus tugas pokok ini?')">
+                                                            @csrf @method('DELETE')
+                                                            <button type="submit" class="px-2.5 py-1.5 rounded text-red-500 hover:text-red-700 hover:bg-red-50 text-xs font-medium transition" title="Hapus">
+                                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

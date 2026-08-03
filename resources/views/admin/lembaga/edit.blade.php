@@ -44,17 +44,45 @@
         </div>
 
         <div>
-            <label class="block text-gray-700 mb-1">Foto Lembaga (Opsional)</label>
-            @if($lembaga->foto_lembaga)
-                <div class="mb-2">
-                    <img src="{{ asset('storage/' . $lembaga->foto_lembaga) }}" class="w-32 h-20 object-cover rounded border">
-                </div>
-            @endif
-            <input type="file" name="foto_lembaga" class="w-full rounded-lg border border-gray-300 py-2 p-2">
-            @error('foto_lembaga') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+            <label class="block text-gray-700 mb-1">Subdomain (Opsional)</label>
+            <div class="flex items-center">
+                <input type="text" name="subdomain" value="{{ old('subdomain', $lembaga->subdomain) }}" placeholder="contoh: upz"
+                       class="w-full rounded-l-lg border border-gray-300 py-2 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                <span class="bg-gray-100 border border-l-0 border-gray-300 px-3 py-2 rounded-r-lg text-gray-500">.localhost</span>
+            </div>
+            <p class="text-xs text-gray-500 mt-1">Jika diisi, lembaga ini akan memiliki website subdomain mandiri.</p>
+            @error('subdomain') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
-        <div class="flex justify-end gap-3">
+        <div class="border-t pt-4 mt-6">
+            <h3 class="text-lg font-semibold text-gray-800 mb-4">Pengaturan Akun Admin Lembaga (Opsional)</h3>
+            <p class="text-sm text-gray-500 mb-4">Ubah atau buat akun khusus untuk lembaga ini.</p>
+
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-gray-700 mb-1">Nama Admin</label>
+                    <input type="text" name="admin_name" value="{{ old('admin_name', optional($lembaga->user)->role === 'admin_lembaga' ? optional($lembaga->user)->name : '') }}" placeholder="Nama pengelola..."
+                           class="w-full rounded-lg border border-gray-300 py-2 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    @error('admin_name') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 mb-1">Email Login</label>
+                    <input type="email" name="admin_email" value="{{ old('admin_email', optional($lembaga->user)->role === 'admin_lembaga' ? optional($lembaga->user)->email : '') }}" placeholder="admin.lembaga@guguak.id"
+                           class="w-full rounded-lg border border-gray-300 py-2 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    @error('admin_email') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+                </div>
+
+                <div>
+                    <label class="block text-gray-700 mb-1">Password Baru (Kosongkan jika tidak ingin mengubah)</label>
+                    <input type="password" name="admin_password" placeholder="Minimal 6 karakter"
+                           class="w-full rounded-lg border border-gray-300 py-2 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500">
+                    @error('admin_password') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
+                </div>
+            </div>
+        </div>
+
+        <div class="flex justify-end gap-3 mt-8 border-t pt-4">
             <a href="{{ route('lembaga.index') }}" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Batal</a>
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Update</button>
         </div>

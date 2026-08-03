@@ -22,6 +22,13 @@ class AuthController extends Controller
         ]);
 
         if (Auth::attempt($credentials)) {
+            if (!Auth::user()->isSuperadmin()) {
+                Auth::logout();
+                return back()->withErrors([
+                    'email' => 'Akun Anda tidak memiliki akses ke panel Superadmin.',
+                ])->onlyInput('email');
+            }
+
             $request->session()->regenerate();
             return redirect()->intended('/dashboard');
         }

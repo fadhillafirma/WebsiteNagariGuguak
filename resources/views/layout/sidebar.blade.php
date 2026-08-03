@@ -20,6 +20,15 @@
                 <!-- Header -->
                 <div class="p-5 border-b border-gray-200">
                     <h1 class="text-xl font-bold text-gray-800">Admin Panel</h1>
+                    <div class="mt-3 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center text-blue-700 font-bold">
+                            {{ substr(auth()->user()->name, 0, 1) }}
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-gray-800 leading-tight">{{ auth()->user()->name }}</p>
+                            <p class="text-xs text-gray-500 capitalize">{{ str_replace('_', ' ', auth()->user()->role) }}</p>
+                        </div>
+                    </div>
                 </div>
 
                 <!-- Navigation -->
@@ -168,14 +177,14 @@
                     </ul>
                 </li>
 
-                 <li>
+                        <!-- Profile -->
+                        <li>
                             <a href="{{ route('profile.index') }}"
                             class="flex items-center gap-x-3 py-2 px-3 text-sm rounded-lg hover:bg-gray-100
-                            {{ request()->routeIs('lembaga.*') ? 'bg-gray-100 font-semibold' : '' }}">
+                            {{ request()->routeIs('profile.*') ? 'bg-gray-100 font-semibold' : '' }}">
                                 <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" fill="none"
                                     stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
-                                    <path d="M3 7v13h18V7l-9-4-9 4z" />
-                                    <path d="M13 13h-2v2h2v-2z" />
+                                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
                                 </svg>
                                 Profile
                             </a>

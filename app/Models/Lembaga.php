@@ -42,5 +42,12 @@ class Lembaga extends Model
     {
         return $this->hasMany(LembagaProgram::class, 'lembaga_id');
     }
-}
 
+    /**
+     * Relasi: satu lembaga memiliki banyak tugas.
+     */
+    public function tugas()
+    {
+        return $this->hasMany(LembagaTugas::class, 'lembaga_id');
+    }
+}
