@@ -13,9 +13,37 @@
 
         <!-- Desktop Menu -->
         <div class="hidden md:flex md:space-x-5 sm:space-x-5 md:text-lg sm:text-sm font-medium items-center" id="navbar-menu">
-          <a href="/program" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Program</a>
-          <a href="/berita" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Berita</a>
-          <a href="/kontak" class="menu-link hover:text-black transition md:text-lg sm:text-sm">About Us</a>
+          <a href="/" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Home</a>
+          <a href="/profil" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Profile</a>
+          <a href="/jorongNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Jorong</a>
+          <a href="/lembagaNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Lembaga</a>
+          <a href="/situsLembaga" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Situs Lembaga</a>
+          <div class="group relative">
+            <button class="hover:text-black transition flex items-center md:text-lg sm:text-sm h-16">
+              Demografis
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute hidden group-hover:block pt-1 top-[50px] min-w-[150px]">
+              <div class="bg-white text-greenDark py-2 rounded shadow-lg">
+                <a href="/demografiPekerjaan" class="menu-link block px-4 py-2 hover:bg-gray-100">Pekerjaan</a>
+                <a href="/demografiPenduduk" class="menu-link block px-4 py-2 hover:bg-gray-100">Penduduk</a>
+              </div>
+            </div>
+          </div>
+          <a href="/potensiNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Potensi</a>
+          <div class="group relative">
+            <button class="hover:text-black transition flex items-center md:text-lg sm:text-sm h-16">
+              Publikasi
+              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            <div class="absolute hidden group-hover:block pt-1 top-[50px] min-w-[150px]">
+              <div class="bg-white text-greenDark py-2 rounded shadow-lg">
+                <a href="/artikel" class="menu-link block px-4 py-2 hover:bg-gray-100">Artikel</a>
+                <a href="/berita" class="menu-link block px-4 py-2 hover:bg-gray-100">Berita</a>
+              </div>
+            </div>
+          </div>
+          <a href="/kontak" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Kontak</a>
         </div>
 
         <!-- Mobile Hamburger Button -->
@@ -32,9 +60,27 @@
 
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="md:hidden hidden bg-white/100 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all">
-      <a href="/program" class="block py-2 hover:text-black menu-link">Program</a>
-      <a href="/berita" class="block py-2 hover:text-black menu-link">Berita</a>
-      <a href="/kontak" class="block py-2 hover:text-black menu-link">About Us</a>
+      <a href="/" class="block py-2 hover:text-black menu-link">Home</a>
+      <a href="/profil" class="block py-2 hover:text-black menu-link">Profile</a>
+      <a href="/jorongNagari" class="block py-2 hover:text-black menu-link">Jorong</a>
+      <a href="/lembagaNagari" class="block py-2 hover:text-black menu-link">Lembaga</a>
+      <a href="/situsLembaga" class="block py-2 hover:text-black menu-link">Situs Lembaga</a>
+      <div class="block py-2">
+        <span class="font-semibold">Demografis</span>
+        <div class="pl-4">
+          <a href="/demografiPekerjaan" class="menu-link block py-1 hover:text-black">Pekerjaan</a>
+          <a href="/demografiPenduduk" class="menu-link block py-1 hover:text-black">Penduduk</a>
+        </div>
+      </div>
+      <a href="/potensiNagari" class="block py-2 hover:text-black menu-link">Potensi</a>
+      <div class="block py-2">
+        <span class="font-semibold">Publikasi</span>
+        <div class="pl-4">
+          <a href="/artikel" class="menu-link block py-1 hover:text-black">Artikel</a>
+          <a href="/berita" class="menu-link block py-1 hover:text-black">Berita</a>
+        </div>
+      </div>
+      <a href="/kontak" class="block py-2 hover:text-black menu-link">Kontak</a>
     </div>
   </div>
 </nav>

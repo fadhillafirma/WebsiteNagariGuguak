@@ -108,6 +108,7 @@ Route::get('/jorongNagari', [LandingController::class, 'jorong'])->name('landing
 Route::get('/jorongNagari/{id}', [LandingController::class, 'jorongShow'])->name('landing.jorong.show');
 Route::get('/lembagaNagari', [LandingController::class, 'lembaga'])->name('landing.lembaga');
 Route::get('/lembagaNagari/{id}', [LandingController::class, 'lembagaShow'])->name('landing.lembaga.show');
+Route::get('/situsLembaga', [LandingController::class, 'situsLembaga'])->name('landing.situs_lembaga');
 
 // Login & Logout
 Route::get('/32002guguak', [AuthController::class, 'showLoginForm'])->name('login');
@@ -152,11 +153,14 @@ Route::middleware(['auth', 'superadmin'])->group(function () {
     Route::resource('demografi-lahan', LahanDataController::class)
         ->parameters(['demografi-lahan' => 'lahan_data']);
 
-     Route::resource('kalender', KalenderController::class)
+    Route::resource('kalender', KalenderController::class)
         ->parameters(['kalender' => 'kalender_data']);
 
     Route::resource('lembaga', LembagaController::class)
         ->parameters(['lembaga' => 'lembaga']);
+
+    Route::resource('situs-lembaga', App\Http\Controllers\SitusLembagaController::class)
+        ->parameters(['situs-lembaga' => 'situs_lembaga']);
 
     Route::resource('potensi', PotensiController::class)
         ->parameters(['potensi' => 'potensi']);

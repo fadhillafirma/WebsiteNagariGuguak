@@ -218,7 +218,7 @@
             <h2 class="text-2xl sm:text-4xl font-bold mb-4 fade-in-left animate-on-scroll">Menuju Nagari <span class="text-greenVill">Cerdas & Terhubung</span></h2>
             <p class="text-sm sm:text-xl">Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.</p>
             <div class="mt-8">
-                <a href="/profile" class="inline-block py-3 px-6 border-2 border-greenVill font-bold text-greenVill hover:border-white hover:text-white transition-colors duration-300">
+                <a href="/profil" class="inline-block py-3 px-6 border-2 border-greenVill font-bold text-greenVill hover:border-white hover:text-white transition-colors duration-300">
                     Lihat Tentang
                 </a>
             </div>

@@ -321,6 +321,11 @@ public function lembagaShow($id)
 
 
 
+    public function situsLembaga()
+    {
+        $situs_lembagas = \App\Models\SitusLembaga::all();
+        return view('situsLembaga', compact('situs_lembagas'));
+    }
 
 }
 
