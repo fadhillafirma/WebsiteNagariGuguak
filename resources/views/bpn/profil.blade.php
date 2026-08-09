@@ -7,6 +7,7 @@
     <meta name="description" content="{{ $info['deskripsi'] }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700|playfair-display:600,700,800" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
     <style>
         :root {
             /* Tema Maroon dan Emas Minangkabau */
@@ -33,29 +34,45 @@
             overflow-x: hidden;
         }
 
-        /* ====== NEW NAVBAR (FLOATING) ====== */
+        /* ====== NEW NAVBAR (FORMAL & ANCHORED) ====== */
         nav {
-            position: fixed; top: 20px; left: 50%; transform: translateX(-50%); z-index: 999;
-            width: 92%; max-width: 1000px;
-            height: 64px; padding: 0 30px;
+            position: fixed; top: 0; left: 0; right: 0; z-index: 999;
+            width: 100%;
+            height: 80px; padding: 0 5%;
             display: flex; align-items:center; justify-content:space-between;
-            background: rgba(255,255,255,0.95);
-            backdrop-filter: blur(10px);
-            border-radius: 40px;
-            box-shadow: 0 10px 30px rgba(88,15,28,0.08);
-            border: 1px solid rgba(201,168,76,0.3);
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 2px solid var(--gold);
+            box-shadow: 0 4px 20px rgba(88,15,28,0.03);
             transition: all 0.3s ease;
         }
         nav.scrolled {
-            top: 10px; width: 96%; background: rgba(255,255,255,0.98);
+            height: 70px;
+            background: rgba(255, 255, 255, 0.99);
+            box-shadow: 0 8px 30px rgba(88,15,28,0.06);
         }
         .nav-brand {
-            display:flex; align-items:center; gap:12px; text-decoration:none;
+            display:flex; align-items:center; gap:14px; text-decoration:none;
+        }
+        .nav-brand img {
+            height: 48px; width: auto; object-fit: contain;
+            transition: height 0.3s ease;
+        }
+        nav.scrolled .nav-brand img {
+            height: 40px;
         }
         .nav-brand-title {
-            font-family: var(--font-serif);
-            font-size:18px; font-weight:700;
-            color: var(--maroon-dark); line-height:1.2;
+            font-family: var(--font-sans);
+            font-size: 16px; font-weight: 700;
+            color: var(--maroon-dark); line-height: 1.2;
+        }
+        .nav-brand-sub {
+            font-family: var(--font-sans);
+            font-size: 10px; font-weight: 500;
+            color: var(--text-sub);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-top: 2px;
         }
         .nav-links { display:flex; gap:30px; list-style:none; margin-left: auto; margin-right: 30px; }
         .nav-links a {
@@ -67,13 +84,15 @@
         .nav-links a:hover { color:var(--maroon-mid); }
         .nav-btn {
             background: var(--maroon-dark); color: var(--white) !important;
-            padding: 10px 24px; border-radius: 30px;
-            font-size:12px !important; transition: background 0.3s !important;
+            padding: 10px 20px; border-radius: 4px;
+            font-size:12px !important; text-transform: uppercase;
+            font-weight: 700; letter-spacing: 0.5px;
+            transition: background 0.3s !important;
         }
         .nav-btn:hover { background: var(--maroon-mid); }
 
         /* ====== HERO (SPLIT FULL VIEWPORT) ====== */
-        #hero { padding: 0; margin: 0; height: 100vh; min-height: 600px; }
+        #hero { padding-top: 80px; margin: 0; height: calc(100vh - 80px); min-height: 600px; box-sizing: border-box; }
         .hero-container {
             width: 100%; height: 100%;
             background: var(--maroon-dark);
@@ -250,7 +269,11 @@
     {{-- NAVBAR --}}
     <nav id="site-nav">
         <a href="#" class="nav-brand">
-            <div class="nav-brand-title">BPN <em>Nagari</em></div>
+            <img src="{{ asset('logo_bpd.png') }}" alt="Logo BPN">
+            <div>
+                <div class="nav-brand-title">BPN Nagari Guguak</div>
+                <div class="nav-brand-sub">Badan Permusyawaratan Nagari</div>
+            </div>
         </a>
         <ul class="nav-links">
             <li><a href="#tugas">Tugas Pokok</a></li>
@@ -290,34 +313,22 @@
             <h2 class="section-title">Peran Strategis BPN</h2>
         </div>
         
+        @forelse($tugas as $index => $t)
         <div class="zigzag-row">
             <div class="zigzag-icon">
-                <span style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--gold-light);">01</span>
+                <span style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--gold-light);">0{{ $index + 1 }}</span>
             </div>
             <div class="zigzag-text">
-                <h3>Membahas Peraturan Nagari</h3>
-                <p>Membahas dan menyepakati rancangan Peraturan Nagari bersama Wali Nagari demi kepentingan dan ketertiban masyarakat di lingkungan Nagari Guguak.</p>
+                <h3>{{ $t->judul }}</h3>
+                <p>{{ $t->deskripsi }}</p>
             </div>
         </div>
+        @empty
+        <p style="text-align: center; color: var(--text-sub);">Belum ada data fungsi dan wewenang yang dipublikasikan.</p>
+        @endforelse
 
-        <div class="zigzag-row">
-            <div class="zigzag-icon">
-                <span style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--gold-light);">02</span>
-            </div>
-            <div class="zigzag-text">
-                <h3>Menampung Aspirasi Masyarakat</h3>
-                <p>Menggali, menampung, menghimpun, merumuskan, dan menyalurkan aspirasi dari seluruh elemen masyarakat nagari agar terdengar oleh pemerintah.</p>
-            </div>
-        </div>
-
-        <div class="zigzag-row">
-            <div class="zigzag-icon">
-                <span style="font-family: var(--font-serif); font-size: 40px; font-weight: 700; color: var(--gold-light);">03</span>
-            </div>
-            <div class="zigzag-text">
-                <h3>Fungsi Pengawasan</h3>
-                <p>Melakukan pengawasan terhadap kinerja Wali Nagari dan perangkatnya dalam melaksanakan program-program pemerintahan dan pembangunan nagari.</p>
-            </div>
+        <div style="text-align:center; margin-top:50px;">
+            <a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bpn']) }}" class="btn-primary" style="background:transparent; border:2px solid var(--maroon-dark); color:var(--maroon-dark);">Lihat Semua Fungsi & Wewenang</a>
         </div>
     </section>
 
@@ -329,7 +340,7 @@
                     <span class="kicker">Agenda & Kegiatan</span>
                     <h2 class="section-title">Program Kerja</h2>
                 </div>
-                <a href="{{ route('bpn.program.index') }}" style="color:var(--maroon-dark); font-weight:700; text-transform:uppercase; font-size:14px; text-decoration:none;">Lihat Semua &rarr;</a>
+                <a href="{{ route('lembaga.program.index', ['lembaga' => 'bpn']) }}" style="color:var(--maroon-dark); font-weight:700; text-transform:uppercase; font-size:14px; text-decoration:none;">Lihat Semua &rarr;</a>
             </div>
             
             <div class="prog-list">
@@ -346,7 +357,7 @@
                         <span class="prog-cat">{{ $program->kategori ?: 'Musyawarah' }}</span>
                         <h3 class="prog-title">{{ $program->nama_program }}</h3>
                         <p class="prog-desc">{{ Str::limit($program->deskripsi, 140) }}</p>
-                        <a href="{{ route('bpn.program.show', $program->id) }}" class="prog-link">Selengkapnya <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+                        <a href="{{ route('lembaga.program.show', ['lembaga' => 'bpn', 'program' => Str::slug($program->nama_program)]) }}" class="prog-link">Selengkapnya <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
                     </div>
                 </div>
                 @empty
@@ -378,7 +389,7 @@
                 <div class="berita-body">
                     <span class="berita-cat">{{ $berita->kategori }}</span>
                     <h3 class="berita-title">{{ Str::limit($berita->judul, 60) }}</h3>
-                    <a href="{{ route('bpn.berita.show', $berita->id) }}" class="berita-link">Baca Selengkapnya &rarr;</a>
+                    <a href="{{ route('lembaga.berita.show', ['lembaga' => 'bpn', 'berita' => Str::slug($berita->judul)]) }}" class="berita-link">Baca Selengkapnya &rarr;</a>
                 </div>
             </div>
             @empty
@@ -387,7 +398,7 @@
         </div>
         
         <div style="text-align:center; margin-top:50px;">
-            <a href="{{ route('bpn.berita.index') }}" class="btn-primary" style="background:transparent; border:2px solid var(--maroon-dark); color:var(--maroon-dark);">Indeks Berita</a>
+            <a href="{{ route('lembaga.berita.index', ['lembaga' => 'bpn']) }}" class="btn-primary" style="background:transparent; border:2px solid var(--maroon-dark); color:var(--maroon-dark);">Indeks Berita</a>
         </div>
     </section>
 
@@ -407,7 +418,7 @@
             <li><a href="#tugas">Tugas Pokok</a></li>
             <li><a href="#program">Agenda BPN</a></li>
             <li><a href="#berita">Warta</a></li>
-            <li><a href="{{ route('bpn.login') }}">Admin Login</a></li>
+            <li><a href="{{ route('lembaga.login', ['lembaga' => 'bpn']) }}">Admin Login</a></li>
         </ul>
         <div class="foot-copy">
             &copy; 2026 Badan Permusyawaratan Nagari Guguak. Hak cipta dilindungi undang-undang.

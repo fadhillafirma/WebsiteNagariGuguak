@@ -121,12 +121,18 @@
                 <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
                     @foreach ($beritas as $berita)
                         <div class="bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1">
-                            <a href="#">
-                                <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('storage/' . $berita->foto) }}" alt="{{ $berita->judul }}" onerror="this.onerror=null;this.src='{{ asset('images/default.jpg') }}';" />
+                            <a href="{{ route('landing.showBerita', $berita->id_artikel) }}">
+                                @if($berita->foto)
+                                    <img class="rounded-t-lg w-full h-48 object-cover" src="{{ asset('storage/' . $berita->foto) }}" alt="{{ $berita->judul }}" />
+                                @else
+                                    <div class="w-full h-48 bg-gray-200 flex items-center justify-center rounded-t-lg">
+                                        <span class="text-gray-400 text-sm">Tidak ada foto</span>
+                                    </div>
+                                @endif
                             </a>
                             <div class="p-5">
                                 <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ $berita->judul }}</h5>
-                                <p class="text-sm text-gray-500 mb-2">{{ $berita->created_at->format('d M Y') }}, {{ $berita->created_at->format('H:i') }} WIB</p>
+                                <p class="text-sm text-gray-500 mb-2">{{ $berita->tanggal_update?->format('d M Y') }}</p>
                                 <p class="mb-4 text-sm font-semibold text-gray-600">Oleh: {{ $berita->penulis }}</p>
                                 <a href="{{ route('landing.showBerita', $berita->id_artikel) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-800 rounded-lg hover:bg-white hover:text-green-800 hover:border-2 hover:border-green-800 transition-colors duration-300">
                                     Read more
@@ -195,7 +201,7 @@
                     @foreach ($artikels as $artikel)
                         <div class="p-6 bg-white border border-gray-200 rounded-lg shadow-md hover:shadow-lg transition-transform duration-300 hover:-translate-y-1">
                             <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ $artikel->judul }}</h5>
-                            <p class="text-sm text-gray-500 mb-2">{{ $artikel->created_at->format('d M Y, H:i') }}</p>
+                            <p class="text-sm text-gray-500 mb-2">{{ $artikel->tanggal_update?->format('d M Y') }}</p>
                             <p class="mb-4 text-sm font-semibold text-gray-600">Oleh: {{ $artikel->penulis }}</p>
                             <a href="{{ route('landing.showArtikel', $artikel->id_artikel) }}" class="inline-flex items-center px-4 py-2 text-sm font-medium text-white bg-green-800 rounded-lg hover:bg-white hover:text-green-800 hover:border-2 hover:border-green-800 transition-colors duration-300">
                                 Read more

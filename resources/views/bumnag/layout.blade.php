@@ -6,6 +6,7 @@
     <title>@yield('title', 'BUMNag Nagari Guguak')</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700|lora:400,500,600,700" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('bumnag.png') }}" />
     <style>
         :root {
             --orange-main: #D04A02;
@@ -89,7 +90,7 @@
 <body>
     <nav>
         <a href="{{ route('lembaga.beranda', ['lembaga' => 'bumnag']) }}" class="nav-brand">
-            <div class="nav-brand-title">BUMNag<em>.</em></div>
+            <img src="{{ asset('bumnag.png') }}" alt="Logo BUMNag" style="height: 48px; width: auto; object-fit: contain;">
         </a>
         <ul class="nav-links">
             <li><a href="{{ route('lembaga.beranda', ['lembaga' => 'bumnag']) }}">Beranda</a></li>

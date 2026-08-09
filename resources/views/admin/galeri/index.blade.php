@@ -49,7 +49,7 @@
                             {{ $g->deskripsi ?? '-' }}
                         </td>
                         <td class="px-6 py-4">
-                            {{ $g->created_at?->format('d-m-Y') }}
+                            {{ $g->tanggal_post ? $g->tanggal_post->format('d-m-Y') : $g->created_at?->format('d-m-Y') }}
                         </td>
                         <td class="px-6 py-4 text-center flex justify-center gap-2">
                             <a href="{{ route('galeri.edit', $g->id_foto) }}"

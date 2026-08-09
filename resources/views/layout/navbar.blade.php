@@ -1,40 +1,115 @@
+<style>
+  .logo-title-custom {
+    font-size: 11px !important;
+  }
+  .logo-subtitle-custom {
+    font-size: 8px !important;
+  }
+  .navbar-menu-container {
+    display: none !important;
+  }
+  
+  /* Styling untuk link dan button menu agar selalu berwarna greenDark (#004225) */
+  .navbar-menu-container a, 
+  .navbar-menu-container button {
+    color: #004225 !important;
+    font-weight: 700 !important;
+    font-family: inherit;
+    transition: color 0.15s ease-in-out;
+  }
+  .navbar-menu-container a:hover, 
+  .navbar-menu-container button:hover {
+    color: #000000 !important;
+  }
+  .navbar-menu-container a.text-black {
+    color: #000000 !important;
+  }
+  
+  @media (min-width: 768px) {
+    .logo-title-custom {
+      font-size: 13px !important;
+    }
+    .logo-subtitle-custom {
+      font-size: 10px !important;
+    }
+    .navbar-menu-container {
+      display: flex !important;
+      gap: 12px !important;
+      font-size: 12px !important;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .logo-title-custom {
+      font-size: 15px !important;
+    }
+    .logo-subtitle-custom {
+      font-size: 11px !important;
+    }
+    .navbar-menu-container {
+      gap: 18px !important;
+      font-size: 14px !important;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    .logo-title-custom {
+      font-size: 16px !important;
+    }
+    .logo-subtitle-custom {
+      font-size: 12px !important;
+    }
+    .navbar-menu-container {
+      gap: 24px !important;
+      font-size: 15px !important;
+    }
+  }
+
+  /* Custom background color class to ensure it's always greenVill (#DEE791) */
+  .navbar-bg-custom {
+    background-color: rgba(222, 231, 145, 0.9) !important;
+  }
+</style>
+
 <nav class="fixed top-5 left-0 w-full flex justify-center z-50">
-  <div class="w-[90%] {{ Request::is('/') ? 'bg-white/20 backdrop-blur-sm text-GreenDark' : 'bg-greenVill/70 backdrop-blur-sm text-greenDark' }} shadow-md rounded-full overflow-visible">
+  <div class="w-[90%] navbar-bg-custom backdrop-blur-sm text-greenDark shadow-md rounded-full overflow-visible">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center justify-between h-16">
         <!-- Logo -->
-        <div class="flex items-center space-x-3">
-          <img src="/logo.png" alt="Logo" class="h-10 w-auto object-contain" />
-          <div>
-            <span class="text-greenDark text-md font-bold whitespace-nowrap marquee-text">Nagari Guguak</span>
-            <h1 class="text-greenDark text-xs font-bold whitespace-nowrap">Koto VII, Sijunjung, Sumbar</h1>
+        <div class="flex items-center space-x-2 md:space-x-3">
+          <img src="/logo.png" alt="Logo" class="h-8 md:h-10 w-auto object-contain" />
+          <div class="flex flex-col justify-center">
+            <span class="text-greenDark font-bold whitespace-nowrap marquee-text logo-title-custom">Nagari Guguak</span>
+            <h1 class="text-greenDark font-bold whitespace-nowrap logo-subtitle-custom">Koto VII, Sijunjung, Sumbar</h1>
           </div>
         </div>
 
         <!-- Desktop Menu -->
-        <div class="hidden md:flex md:space-x-5 sm:space-x-5 md:text-lg sm:text-sm font-medium items-center" id="navbar-menu">
-          <a href="/" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Home</a>
-          <a href="/profil" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Profile</a>
-          <a href="/jorongNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Jorong</a>
-          <a href="/lembagaNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Lembaga</a>
-          <a href="/situsLembaga" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Situs Lembaga</a>
+        <div class="navbar-menu-container font-bold items-center" id="navbar-menu">
+          <a href="/" class="menu-link hover:text-black transition">Home</a>
+          <a href="/profil" class="menu-link hover:text-black transition">Profile</a>
+          <a href="/jorongNagari" class="menu-link hover:text-black transition">Jorong</a>
+          <a href="/lembagaNagari" class="menu-link hover:text-black transition">Lembaga</a>
+          <a href="/situsLembaga" class="menu-link hover:text-black transition">Situs Lembaga</a>
           <div class="group relative">
-            <button class="hover:text-black transition flex items-center md:text-lg sm:text-sm h-16">
+            <button class="hover:text-black transition flex items-center h-16">
               Demografis
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              <svg class="w-3 h-3 ml-0.5 md:w-4 md:h-4 md:ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="absolute hidden group-hover:block pt-1 top-[50px] min-w-[150px]">
               <div class="bg-white text-greenDark py-2 rounded shadow-lg">
+                <a href="/demografiSekolah" class="menu-link block px-4 py-2 hover:bg-gray-100">Sekolah</a>
                 <a href="/demografiPekerjaan" class="menu-link block px-4 py-2 hover:bg-gray-100">Pekerjaan</a>
                 <a href="/demografiPenduduk" class="menu-link block px-4 py-2 hover:bg-gray-100">Penduduk</a>
+                <a href="/demografiLahan" class="menu-link block px-4 py-2 hover:bg-gray-100">Lahan</a>
               </div>
             </div>
           </div>
-          <a href="/potensiNagari" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Potensi</a>
+          <a href="/potensiNagari" class="menu-link hover:text-black transition">Potensi</a>
           <div class="group relative">
-            <button class="hover:text-black transition flex items-center md:text-lg sm:text-sm h-16">
+            <button class="hover:text-black transition flex items-center h-16">
               Publikasi
-              <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+              <svg class="w-3 h-3 ml-0.5 md:w-4 md:h-4 md:ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </button>
             <div class="absolute hidden group-hover:block pt-1 top-[50px] min-w-[150px]">
               <div class="bg-white text-greenDark py-2 rounded shadow-lg">
@@ -43,7 +118,7 @@
               </div>
             </div>
           </div>
-          <a href="/kontak" class="menu-link hover:text-black transition md:text-lg sm:text-sm">Kontak</a>
+          <a href="/kontak" class="menu-link hover:text-black transition">Kontak</a>
         </div>
 
         <!-- Mobile Hamburger Button -->
@@ -68,8 +143,10 @@
       <div class="block py-2">
         <span class="font-semibold">Demografis</span>
         <div class="pl-4">
+          <a href="/demografiSekolah" class="menu-link block py-1 hover:text-black">Sekolah</a>
           <a href="/demografiPekerjaan" class="menu-link block py-1 hover:text-black">Pekerjaan</a>
           <a href="/demografiPenduduk" class="menu-link block py-1 hover:text-black">Penduduk</a>
+          <a href="/demografiLahan" class="menu-link block py-1 hover:text-black">Lahan</a>
         </div>
       </div>
       <a href="/potensiNagari" class="block py-2 hover:text-black menu-link">Potensi</a>

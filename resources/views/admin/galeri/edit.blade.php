@@ -59,6 +59,8 @@
                 >{{ old('deskripsi', $galeri->deskripsi) }}</textarea>
             </div>
 
+
+
             {{-- Tombol --}}
             <div class="flex justify-end gap-3 pt-4">
                 <a href="{{ route('galeri.index') }}"

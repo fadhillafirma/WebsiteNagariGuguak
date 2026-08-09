@@ -24,12 +24,18 @@
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($artikels as $artikel)
                     <div class="bg-white shadow rounded-lg overflow-hidden">
-                        <a href="#">
-                            <img class="rounded-t-lg w-full h-48 object-cover p-5 rounded-lg" src="{{ asset('storage/' . $artikel->foto) }}" alt="{{ $artikel->judul }}" />
+                        <a href="{{ route('landing.showArtikel', $artikel->id_artikel) }}">
+                            @if($artikel->foto)
+                                <img class="rounded-t-lg w-full h-48 object-cover p-5 rounded-lg" src="{{ asset('storage/' . $artikel->foto) }}" alt="{{ $artikel->judul }}" />
+                            @else
+                                <div class="w-full h-48 bg-gray-200 flex items-center justify-center rounded-t-lg">
+                                    <span class="text-gray-400 text-sm">Tidak ada foto</span>
+                                </div>
+                            @endif
                         </a>
                         <div class="p-4">
                             <h2 class="text-lg font-bold text-gray-800 mb-1">{{ $artikel->judul }}</h2>
-                            <p class="text-sm text-gray-500 mb-2">{{ $artikel->created_at->format('d M Y, H:i') }}</p>
+                            <p class="text-sm text-gray-500 mb-2">{{ $artikel->tanggal_update?->format('d M Y') }}</p>
                             <p class="text-gray-700 text-sm mb-3">{{ Str::limit(strip_tags($artikel->isi), 100) }}</p>
                             <h5 class="mb-2 mt-5 text-sm font-semibold tracking-tight text-gray-600 dark:text-white">
                                 Oleh :   {{ $artikel->penulis }}

@@ -44,7 +44,7 @@ class PublikasiController extends Controller
         'penulis' => 'nullable|string|max:100',
         'deskripsi' => 'required|string',
         'jenis' => 'required|in:artikel,berita',
-        'foto' => 'nullable|image|max:2048'
+        'foto' => 'nullable|image|max:2048',
     ]);
 
     if ($request->hasFile('foto')) {
@@ -83,10 +83,10 @@ class PublikasiController extends Controller
         {
             $validated = $request->validate([
                 'judul' => 'required|string|max:255',
-                'penulis' => 'nullable|string|max:100', // ✅ DITAMBAH
+                'penulis' => 'nullable|string|max:100',
                 'deskripsi' => 'required|string',
                 'jenis' => 'required|in:artikel,berita',
-                'foto' => 'nullable|image|max:2048'
+                'foto' => 'nullable|image|max:2048',
             ]);
 
             if ($request->hasFile('foto')) {

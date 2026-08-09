@@ -38,6 +38,8 @@
         </div>
 
 
+
+
         <div>
             <label class="block text-gray-700 mb-1">Foto (Opsional)</label>
             @if($publikasi->foto)

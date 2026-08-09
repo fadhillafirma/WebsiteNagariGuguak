@@ -37,7 +37,7 @@
 
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <link rel="icon" type="image/png" href="/logo.png" />
+    <link rel="icon" type="image/png" href="{{ asset('bumnag.png') }}" />
     
     <style>
         [x-cloak] { display: none !important; }
@@ -306,9 +306,17 @@
                                 <input type="text" name="penerima_manfaat" value="{{ old('penerima_manfaat', $editProgram->penerima_manfaat ?? '') }}" placeholder="Contoh: 50 KK" class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">
                             </div>
 
-                            <div>
-                                <label class="block text-xs font-semibold text-slate-700 mb-1.5">Alokasi Dana (Rp)</label>
-                                <input type="number" name="alokasi_dana" min="0" value="{{ old('alokasi_dana', $editProgram->alokasi_dana ?? '') }}" placeholder="Nominal alokasi (cth: 15000000)" class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">
+                            <div x-data="{ withDana: {{ old('alokasi_dana', $editProgram->alokasi_dana ?? '') ? 'true' : 'false' }} }">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <label class="block text-xs font-semibold text-slate-700">Alokasi Dana (Rp)</label>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="checkbox" x-model="withDana" class="sr-only peer">
+                                        <div class="relative w-8 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-brand-600"></div>
+                                        <span class="ms-2 text-[10px] font-bold text-gray-500 uppercase">Ada Dana?</span>
+                                    </label>
+                                </div>
+                                <input type="hidden" name="alokasi_dana" value="">
+                                <input x-show="withDana" x-bind:disabled="!withDana" type="number" name="alokasi_dana" min="0" value="{{ old('alokasi_dana', $editProgram->alokasi_dana ?? '') }}" placeholder="Nominal alokasi (cth: 15000000)" class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">
                             </div>
 
                             <div>

@@ -84,6 +84,6 @@ public function store(Request $request)
         $kalender = Kalender::findOrFail($id);
         $kalender->delete();
 
-        return response()->json(['message' => 'Kalender deleted']);
+        return redirect()->route('kalender.index')->with('success', 'Kegiatan berhasil dihapus');
     }
 }

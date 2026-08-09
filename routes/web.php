@@ -27,27 +27,7 @@ use App\Http\Controllers\ProfileController;
 use App\Models\Galeri;
 
 use App\Http\Controllers\LembagaSubdomainController;
-use App\Http\Controllers\BpnSubdomainController;
 
-// SETUP SUBDOMAIN BPN (Spesifik)
-Route::domain('bpn.localhost')->group(function () {
-    Route::get('/', [BpnSubdomainController::class, 'index'])->name('bpn.beranda');
-    Route::get('/program', [BpnSubdomainController::class, 'programIndex'])->name('bpn.program.index');
-    Route::get('/program/{program}', [BpnSubdomainController::class, 'showProgram'])->name('bpn.program.show');
-    Route::get('/berita', [BpnSubdomainController::class, 'beritaIndex'])->name('bpn.berita.index');
-    Route::get('/berita/{berita}', [BpnSubdomainController::class, 'showBerita'])->name('bpn.berita.show');
-    Route::get('/login', [BpnSubdomainController::class, 'showLogin'])->name('bpn.login');
-    Route::post('/login', [BpnSubdomainController::class, 'login'])->name('bpn.login.submit');
-    Route::post('/logout', [BpnSubdomainController::class, 'logout'])->name('bpn.logout');
-    Route::get('/admin', [BpnSubdomainController::class, 'admin'])->name('bpn.admin');
-    Route::post('/admin/program', [BpnSubdomainController::class, 'storeProgram'])->name('bpn.program.store');
-    Route::put('/admin/program/{program}', [BpnSubdomainController::class, 'updateProgram'])->name('bpn.program.update');
-    Route::delete('/admin/program/{program}', [BpnSubdomainController::class, 'destroyProgram'])->name('bpn.program.destroy');
-    Route::post('/admin/berita', [BpnSubdomainController::class, 'storeBerita'])->name('bpn.berita.store');
-    Route::put('/admin/berita/{berita}', [BpnSubdomainController::class, 'updateBerita'])->name('bpn.berita.update');
-    Route::delete('/admin/berita/{berita}', [BpnSubdomainController::class, 'destroyBerita'])->name('bpn.berita.destroy');
-    Route::put('/admin/profil', [BpnSubdomainController::class, 'updateProfil'])->name('bpn.profil.update');
-});
 // SETUP SUBDOMAIN
 Route::domain('{lembaga}.localhost')->group(function () {
     // Halaman utama (frontend) lembaga

@@ -105,11 +105,24 @@
 
     <nav id="site-nav">
         <a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}" class="nav-brand">
-            <img src="{{ asset('baznas.png') }}" alt="Baznas Logo" style="height: 60px; object-fit: contain;">
+            @if(isset($lembaga) && $lembaga->foto_lembaga)
+                <img id="nav-logo-img" src="{{ asset('storage/'.$lembaga->foto_lembaga) }}" alt="Logo {{ $info['nama'] }}" style="height: 60px; object-fit: contain; transition: height 0.3s;">
+            @elseif($subdomain === 'upz')
+                <img id="nav-logo-img" src="{{ asset('baznas.png') }}" alt="Logo Baznas" style="height: 40px; object-fit: contain; transition: height 0.3s;">
+            @else
+                <span class="nav-brand-title" style="color: var(--green-dark); font-size: 20px;">{{ $info['nama'] }}</span>
+            @endif
         </a>
-        <div class="nav-links">
-            <a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#program">Daftar Program</a>
-        </div>
+        <ul class="nav-links">
+            <li><a href="{{ route('lembaga.program.index', ['lembaga' => $subdomain]) }}">Program</a></li>
+            <li><a href="{{ route('lembaga.berita.index', ['lembaga' => $subdomain]) }}">Berita</a></li>
+            @if($subdomain === 'upz')
+            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cara">Cara Berzakat</a></li>
+            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Bayar Zakat</a></li>
+            @else
+            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Hubungi Kami</a></li>
+            @endif
+        </ul>
     </nav>
 
     <div class="detail-wrapper">

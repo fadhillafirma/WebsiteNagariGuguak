@@ -37,6 +37,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
     
     <style>
         [x-cloak] { display: none !important; }
@@ -50,9 +51,10 @@
 <body class="bg-slate-50 font-sans antialiased text-slate-800 selection:bg-brand-600 selection:text-white">
 
 <div class="flex min-h-screen" x-data="{ 
-    activeTab: '{{ request('tab', $editBerita ? 'berita' : ($editProgram ? 'program' : 'dashboard')) }}',
+    activeTab: '{{ request('tab', $editTugas ? 'tugas' : ($editBerita ? 'berita' : ($editProgram ? 'program' : 'dashboard'))) }}',
     showProgramForm: {{ $editProgram ? 'true' : 'false' }},
     showBeritaForm: {{ $editBerita ? 'true' : 'false' }},
+    showTugasForm: {{ $editTugas ? 'true' : 'false' }},
     viewProgramModal: null,
     viewBeritaModal: null
 }">
@@ -88,6 +90,13 @@
                 <span>Warta Publikasi</span>
             </button>
 
+            <button @click="activeTab = 'tugas'; if(!{{ $editTugas ? 'true' : 'false' }}) showTugasForm = false" 
+               :class="activeTab === 'tugas' ? 'bg-brand-50 text-brand-700 border-r-4 border-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-r-4 border-transparent'"
+               class="w-full flex items-center gap-x-3 py-3 px-6 text-sm transition-all duration-200 text-left group">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors" :class="activeTab === 'tugas' ? 'text-brand-600' : 'text-slate-400 group-hover:text-slate-600'" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+                <span>Fungsi & Wewenang</span>
+            </button>
+
             <button @click="activeTab = 'profil'" 
                :class="activeTab === 'profil' ? 'bg-brand-50 text-brand-700 border-r-4 border-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-r-4 border-transparent'"
                class="w-full flex items-center gap-x-3 py-3 px-6 text-sm transition-all duration-200 text-left group">
@@ -98,8 +107,8 @@
             <div class="pt-6 pb-2 px-6">
                 <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest">Akses Eksternal</p>
             </div>
-            <a href="{{ route('bpn.beranda') }}" target="_blank" class="flex items-center gap-x-3 py-2.5 px-6 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all group">
-                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
+            <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}" target="_blank" class="flex items-center gap-x-3 py-2.5 px-6 text-sm text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-all group">
+                <svg class="w-5 h-5 text-slate-400 group-hover:text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/></svg>
                 <span>Lihat Website BPN</span>
             </a>
         </nav>
@@ -113,7 +122,7 @@
                     <p class="text-xs font-semibold text-slate-800 truncate">{{ Auth::user()->name ?? 'Administrator' }}</p>
                     <p class="text-[10px] text-slate-500 font-medium truncate">{{ Auth::user()->email ?? '' }}</p>
                 </div>
-                <form method="POST" action="{{ route('bpn.logout') }}">
+                <form method="POST" action="{{ route('lembaga.logout', ['lembaga' => 'bpn']) }}">
                     @csrf
                     <button type="submit" class="w-8 h-8 rounded-lg bg-red-50 hover:bg-red-100 text-red-500 hover:text-red-700 flex items-center justify-center transition-colors" title="Logout">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/></svg>
@@ -186,18 +195,29 @@
                     <div class="flex justify-between border-b pb-4">
                         <h2 class="text-xl font-bold">{{ $editProgram ? 'Ubah Data Program' : 'Entri Program Baru' }}</h2>
                         @if($editProgram)
-                            <a href="{{ route('bpn.admin') }}?tab=program" class="px-4 py-2 text-xs font-medium border rounded-lg hover:bg-slate-50">Kembali</a>
+                            <a href="{{ route('lembaga.admin', ['lembaga' => 'bpn']) }}?tab=program" class="px-4 py-2 text-xs font-medium border rounded-lg hover:bg-slate-50">Kembali</a>
                         @else
                             <button @click="showProgramForm = false" class="px-4 py-2 text-xs font-medium border rounded-lg hover:bg-slate-50">Kembali</button>
                         @endif
                     </div>
-                    <form action="{{ $editProgram ? route('bpn.program.update', $editProgram->id) : route('bpn.program.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
+                    <form action="{{ $editProgram ? route('lembaga.program.update', ['lembaga' => 'bpn', 'program' => $editProgram->id]) : route('lembaga.program.store', ['lembaga' => 'bpn']) }}" method="POST" enctype="multipart/form-data" class="space-y-5">
                         @csrf @if($editProgram) @method('PUT') @endif
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div><label class="block text-xs font-semibold mb-1">Nama Program *</label><input type="text" name="nama_program" value="{{ old('nama_program', $editProgram->nama_program ?? '') }}" required class="w-full border rounded-lg px-3 py-2 text-sm"></div>
                             <div><label class="block text-xs font-semibold mb-1">Kategori</label><input type="text" name="kategori" value="{{ old('kategori', $editProgram->kategori ?? '') }}" class="w-full border rounded-lg px-3 py-2 text-sm"></div>
                             <div><label class="block text-xs font-semibold mb-1">Penerima Manfaat</label><input type="text" name="penerima_manfaat" value="{{ old('penerima_manfaat', $editProgram->penerima_manfaat ?? '') }}" class="w-full border rounded-lg px-3 py-2 text-sm"></div>
-                            <div><label class="block text-xs font-semibold mb-1">Alokasi Dana</label><input type="number" name="alokasi_dana" value="{{ old('alokasi_dana', $editProgram->alokasi_dana ?? '') }}" class="w-full border rounded-lg px-3 py-2 text-sm"></div>
+                            <div x-data="{ withDana: {{ old('alokasi_dana', $editProgram->alokasi_dana ?? '') ? 'true' : 'false' }} }">
+                                <div class="flex justify-between items-center mb-1">
+                                    <label class="block text-xs font-semibold">Alokasi Dana</label>
+                                    <label class="flex items-center cursor-pointer">
+                                        <input type="checkbox" x-model="withDana" class="sr-only peer">
+                                        <div class="relative w-7 h-4 bg-gray-200 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full rtl:peer-checked:after:-translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:start-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-3 after:w-3 after:transition-all peer-checked:bg-brand-700"></div>
+                                        <span class="ms-1.5 text-[9px] font-bold text-gray-500 uppercase">Ada Dana?</span>
+                                    </label>
+                                </div>
+                                <input type="hidden" name="alokasi_dana" value="">
+                                <input x-show="withDana" x-bind:disabled="!withDana" type="number" name="alokasi_dana" value="{{ old('alokasi_dana', $editProgram->alokasi_dana ?? '') }}" class="w-full border rounded-lg px-3 py-2 text-sm">
+                            </div>
                             <div><label class="block text-xs font-semibold mb-1">Tanggal</label><input type="date" name="tanggal_mulai" value="{{ old('tanggal_mulai', optional($editProgram->tanggal_mulai ?? null)->format('Y-m-d')) }}" class="w-full border rounded-lg px-3 py-2 text-sm"></div>
                             <div><label class="block text-xs font-semibold mb-1">Status *</label>
                                 <select name="status" class="w-full border rounded-lg px-3 py-2 text-sm bg-white">
@@ -240,8 +260,8 @@
                                     <td class="px-6 py-4 font-bold">{{ $program->nama_program }}</td>
                                     <td class="px-6 py-4 uppercase text-xs">{{ $program->status }}</td>
                                     <td class="px-6 py-4 flex gap-2">
-                                        <a href="{{ route('bpn.admin', ['edit_program' => $program->id]) }}?tab=program" class="text-blue-600">Edit</a>
-                                        <form action="{{ route('bpn.program.destroy', $program->id) }}" method="POST" onsubmit="return confirm('Hapus?')">
+                                        <a href="{{ route('lembaga.admin', ['lembaga' => 'bpn', 'edit_program' => $program->id]) }}?tab=program" class="text-blue-600">Edit</a>
+                                        <form action="{{ route('lembaga.program.destroy', ['lembaga' => 'bpn', 'program' => $program->id]) }}" method="POST" onsubmit="return confirm('Hapus?')">
                                             @csrf @method('DELETE') <button class="text-red-600">Hapus</button>
                                         </form>
                                     </td>
@@ -259,12 +279,12 @@
                     <div class="flex justify-between border-b pb-4">
                         <h2 class="text-xl font-bold">{{ $editBerita ? 'Ubah Berita' : 'Entri Berita Baru' }}</h2>
                         @if($editBerita)
-                            <a href="{{ route('bpn.admin') }}?tab=berita" class="px-4 py-2 border rounded hover:bg-slate-50 text-sm">Kembali</a>
+                            <a href="{{ route('lembaga.admin', ['lembaga' => 'bpn']) }}?tab=berita" class="px-4 py-2 border rounded hover:bg-slate-50 text-sm">Kembali</a>
                         @else
                             <button @click="showBeritaForm = false" class="px-4 py-2 border rounded hover:bg-slate-50 text-sm">Kembali</button>
                         @endif
                     </div>
-                    <form action="{{ $editBerita ? route('bpn.berita.update', $editBerita->id) : route('bpn.berita.store') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
+                    <form action="{{ $editBerita ? route('lembaga.berita.update', ['lembaga' => 'bpn', 'berita' => $editBerita->id]) : route('lembaga.berita.store', ['lembaga' => 'bpn']) }}" method="POST" enctype="multipart/form-data" class="space-y-5">
                         @csrf @if($editBerita) @method('PUT') @endif
                         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div class="col-span-2"><label class="block text-xs font-semibold mb-1">Judul *</label><input type="text" name="judul" value="{{ old('judul', $editBerita->judul ?? '') }}" required class="w-full border rounded px-3 py-2"></div>
@@ -306,8 +326,55 @@
                                     <td class="px-6 py-4 font-bold">{{ $berita->judul }}</td>
                                     <td class="px-6 py-4 uppercase text-xs">{{ $berita->status }}</td>
                                     <td class="px-6 py-4 flex gap-2">
-                                        <a href="{{ route('bpn.admin', ['edit_berita' => $berita->id]) }}?tab=berita" class="text-blue-600">Edit</a>
-                                        <form action="{{ route('bpn.berita.destroy', $berita->id) }}" method="POST" onsubmit="return confirm('Hapus?')">
+                                        <a href="{{ route('lembaga.admin', ['lembaga' => 'bpn', 'edit_berita' => $berita->id]) }}?tab=berita" class="text-blue-600">Edit</a>
+                                        <form action="{{ route('lembaga.berita.destroy', ['lembaga' => 'bpn', 'berita' => $berita->id]) }}" method="POST" onsubmit="return confirm('Hapus?')">
+                                            @csrf @method('DELETE') <button class="text-red-600">Hapus</button>
+                                        </form>
+                                    </td>
+                                </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TUGAS / FUNGSI & WEWENANG -->
+            <div x-show="activeTab === 'tugas'" x-cloak class="space-y-6">
+                <div x-show="showTugasForm" class="bg-white rounded-xl shadow-sm border p-6 max-w-4xl mx-auto space-y-6">
+                    <div class="flex justify-between border-b pb-4">
+                        <h2 class="text-xl font-bold">{{ $editTugas ? 'Ubah Fungsi & Wewenang' : 'Entri Fungsi & Wewenang' }}</h2>
+                        @if($editTugas)
+                            <a href="{{ route('lembaga.admin', ['lembaga' => 'bpn']) }}?tab=tugas" class="px-4 py-2 border rounded hover:bg-slate-50 text-sm">Kembali</a>
+                        @else
+                            <button @click="showTugasForm = false" class="px-4 py-2 border rounded hover:bg-slate-50 text-sm">Kembali</button>
+                        @endif
+                    </div>
+                    <form action="{{ $editTugas ? route('lembaga.tugas.update', ['lembaga' => 'bpn', 'tugas' => $editTugas->id]) : route('lembaga.tugas.store', ['lembaga' => 'bpn']) }}" method="POST" class="space-y-5">
+                        @csrf @if($editTugas) @method('PUT') @endif
+                        <div><label class="block text-xs font-semibold mb-1">Judul / Peran *</label><input type="text" name="judul" value="{{ old('judul', $editTugas->judul ?? '') }}" required class="w-full border rounded px-3 py-2"></div>
+                        <div><label class="block text-xs font-semibold mb-1">Deskripsi *</label><textarea name="deskripsi" rows="4" required class="w-full border rounded px-3 py-2">{{ old('deskripsi', $editTugas->deskripsi ?? '') }}</textarea></div>
+                        <div class="text-right pt-4 border-t"><button type="submit" class="px-6 py-2 bg-brand-700 text-white rounded">Simpan</button></div>
+                    </form>
+                </div>
+
+                <div x-show="!showTugasForm" class="space-y-4">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-xl font-bold">Daftar Fungsi & Wewenang</h2>
+                        <button @click="showTugasForm = true" class="px-4 py-2 bg-brand-700 text-white rounded text-sm">Tambah Data</button>
+                    </div>
+                    <div class="bg-white border rounded-xl overflow-x-auto">
+                        <table class="w-full text-sm text-left">
+                            <thead class="bg-slate-50 border-b text-xs uppercase font-semibold">
+                                <tr><th class="px-6 py-4">Judul / Peran</th><th class="px-6 py-4">Opsi</th></tr>
+                            </thead>
+                            <tbody>
+                                @foreach($semuaTugas as $tugas)
+                                <tr class="border-b">
+                                    <td class="px-6 py-4 font-bold">{{ $tugas->judul }}</td>
+                                    <td class="px-6 py-4 flex gap-2">
+                                        <a href="{{ route('lembaga.admin', ['lembaga' => 'bpn', 'edit_tugas' => $tugas->id]) }}?tab=tugas" class="text-blue-600">Edit</a>
+                                        <form action="{{ route('lembaga.tugas.destroy', ['lembaga' => 'bpn', 'tugas' => $tugas->id]) }}" method="POST" onsubmit="return confirm('Hapus?')">
                                             @csrf @method('DELETE') <button class="text-red-600">Hapus</button>
                                         </form>
                                     </td>
@@ -323,7 +390,7 @@
             <div x-show="activeTab === 'profil'" x-cloak class="space-y-6">
                 <div class="bg-white rounded-xl shadow-sm border p-6 max-w-4xl mx-auto space-y-6">
                     <h2 class="text-xl font-bold border-b pb-4">Pengaturan Profil BPN</h2>
-                    <form action="{{ route('bpn.profil.update') }}" method="POST" enctype="multipart/form-data" class="space-y-5">
+                    <form action="{{ route('lembaga.profil.update', ['lembaga' => 'bpn']) }}" method="POST" enctype="multipart/form-data" class="space-y-5">
                         @csrf @method('PUT')
                         <div><label class="block text-xs font-semibold mb-1">Nama Ketua BPN</label><input type="text" name="nama_ketua" value="{{ old('nama_ketua', $lembaga->nama_ketua ?? '') }}" required class="w-full border rounded px-3 py-2"></div>
                         <div><label class="block text-xs font-semibold mb-1">Deskripsi Lembaga</label><textarea name="deskripsi" rows="4" class="w-full border rounded px-3 py-2">{{ old('deskripsi', $lembaga->deskripsi ?? '') }}</textarea></div>
@@ -350,4 +417,3 @@
 
 </body>
 </html>
-

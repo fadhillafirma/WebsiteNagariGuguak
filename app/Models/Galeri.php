@@ -16,6 +16,11 @@ class Galeri extends Model
         'user_id',
         'foto',
         'deskripsi',
+        'tanggal_post',
+    ];
+
+    protected $casts = [
+        'tanggal_post' => 'datetime',
     ];
 
     public function user()

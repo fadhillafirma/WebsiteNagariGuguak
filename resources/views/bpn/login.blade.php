@@ -6,6 +6,7 @@
     <title>Login Admin – BPN {{ $lembaga->nama_lembaga }}</title>
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
     <style>
         :root {
             /* Tema Marun Tua dan Emas Minangkabau */
@@ -99,7 +100,7 @@
                 </div>
             @endif
 
-            <form method="POST" action="{{ route('bpn.login.submit') }}">
+            <form method="POST" action="{{ route('lembaga.login.submit', ['lembaga' => 'bpn']) }}">
                 @csrf
                 <div class="form-group">
                     <label for="email" class="form-label">Email</label>
@@ -121,7 +122,7 @@
                 <button type="submit" class="btn-login">Masuk ke Dashboard</button>
             </form>
             <div class="login-footer">
-                <a href="{{ route('bpn.beranda') }}">
+                <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}">
                     <svg viewBox="0 0 24 24" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
                     Kembali ke Halaman Utama
                 </a>

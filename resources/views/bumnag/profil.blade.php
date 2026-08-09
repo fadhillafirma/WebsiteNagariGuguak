@@ -7,6 +7,7 @@
     <meta name="description" content="{{ $info['deskripsi'] }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,600,700|lora:400,500,600,700" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('bumnag.png') }}" />
     <style>
         :root {
             /* Tema PwC Inspired (Hitam, Putih, Oranye) */
@@ -182,7 +183,7 @@
     {{-- NAVBAR --}}
     <nav>
         <a href="#" class="nav-brand">
-            <div class="nav-brand-title">BUMNag<em>.</em></div>
+            <img src="{{ asset('bumnag.png') }}" alt="Logo BUMNag" style="height: 48px; width: auto; object-fit: contain;">
         </a>
         <ul class="nav-links">
             <li><a href="#about">Tentang Kami</a></li>
@@ -257,7 +258,7 @@
                     @if($program->foto)
                         <img src="{{ asset('storage/'.$program->foto) }}" alt="{{ $program->nama_program }}">
                     @else
-                        <img src="{{ asset('images/logo.png') }}" style="object-fit:contain; padding:40px; opacity:0.1; background:#fff;" alt="">
+                        <img src="{{ asset('bumnag.png') }}" style="object-fit:contain; padding:40px; opacity:0.1; background:#fff;" alt="">
                     @endif
                 </div>
                 <div class="prog-body">

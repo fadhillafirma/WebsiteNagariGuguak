@@ -14,7 +14,7 @@
     <h1 class="text-3xl font-bold mb-2">{{ $potensi->judul }}</h1>
     <div class="text-sm text-greenDark mb-1 font-bold">Jenis: {{ ucfirst($potensi->jenis_potensi) }}</div>
     <div class="text-sm text-gray-500 mb-4">
-        Diperbarui pada: {{ $potensi->updated_at->format('d M Y') }}
+        Diperbarui pada: {{ $potensi->tanggal_post ? $potensi->tanggal_post->format('d M Y') : $potensi->updated_at->format('d M Y') }}
     </div>
 
     @if ($potensi->gambar)

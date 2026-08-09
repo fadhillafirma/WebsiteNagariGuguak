@@ -28,7 +28,7 @@ class LandingController extends Controller
     public function index()
         {
             // Galeri, berita, artikel
-            $galeris = Galeri::latest()->take(6)->get();
+            $galeris = Galeri::latest('tanggal_post')->take(6)->get();
             $beritas = Publikasi::where('jenis', 'berita')->latest()->take(6)->get();
             $artikels = Publikasi::where('jenis', 'artikel')->latest()->take(6)->get();
 
@@ -69,7 +69,7 @@ public function showDetail($id)
 public function berita()
 {
     $beritas = Publikasi::where('jenis', 'berita')
-        ->orderBy('created_at', 'desc')
+        ->orderBy('tanggal_update', 'desc')
         ->get();
 
     return view('berita', compact('beritas'));
@@ -99,7 +99,7 @@ public function showArtikel($id)
 
     public function potensi()
     {
-        $potensis = Potensi::all()->groupBy('jenis_potensi');
+        $potensis = Potensi::orderBy('tanggal_post', 'desc')->get()->groupBy('jenis_potensi');
           $jenisPotensiList = $potensis->keys();
         return view('potensi', compact('potensis', 'jenisPotensiList'));
     }
@@ -260,7 +260,7 @@ public function demografiPekerjaan ()
 public function artikel()
 {
     $artikels = Publikasi::where('jenis', 'artikel')
-        ->orderBy('created_at', 'desc')
+        ->orderBy('tanggal_update', 'desc')
         ->get();
 
     return view('artikel', compact('artikels'));

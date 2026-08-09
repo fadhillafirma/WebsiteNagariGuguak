@@ -23,11 +23,17 @@
             @foreach ($beritas as $berita)
                 <div class="bg-white shadow rounded-lg overflow-hidden">
                     <a href="{{ route('landing.showBerita', $berita->id_artikel) }}">
-                        <img
-                            class="rounded-t-lg w-full h-48 object-cover p-5 rounded-lg"
-                            src="{{ asset('storage/' . $berita->foto) }}"
-                            alt="{{ $berita->judul }}"
-                        />
+                        @if($berita->foto)
+                            <img
+                                class="rounded-t-lg w-full h-48 object-cover p-5 rounded-lg"
+                                src="{{ asset('storage/' . $berita->foto) }}"
+                                alt="{{ $berita->judul }}"
+                            />
+                        @else
+                            <div class="w-full h-48 bg-gray-200 flex items-center justify-center rounded-t-lg">
+                                <span class="text-gray-400 text-sm">Tidak ada foto</span>
+                            </div>
+                        @endif
                     </a>
                     <div class="p-5">
                         <a href="{{ route('landing.showBerita', $berita->id_artikel) }}">
@@ -36,7 +42,7 @@
                             </h5>
                         </a>
                         <p class="text-sm text-gray-500 mb-2">
-                            {{ $berita->created_at->format('d M Y') }}, {{ $berita->created_at->format('H:i') }} WIB
+                            {{ $berita->tanggal_update?->format('d M Y') }}
                         </p>
                         <h5 class="mb-2 mt-5 text-sm font-semibold tracking-tight text-gray-600">
                             Oleh: {{ $berita->penulis }}

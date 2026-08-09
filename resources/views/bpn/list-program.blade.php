@@ -7,6 +7,7 @@
     <meta name="description" content="Daftar program kerja {{ $info['nama'] }} untuk kesejahteraan masyarakat Nagari Guguak.">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&family=playfair-display:700" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
     <style>
         :root {
             --maroon-dark: #580F1C;
@@ -293,18 +294,18 @@
 </head>
 <body>
 
-    {{-- NAVBAR --}}
     <nav id="site-nav">
-        <a href="{{ route('bpn.beranda') }}" class="nav-brand">
+        <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}" class="nav-brand">
+            <img src="{{ asset('logo_bpd.png') }}" alt="Logo BPN" style="height: 40px; width: auto; object-fit: contain;">
             <div>
                 <div class="nav-brand-title">BPN Nagari Guguak</div>
                 <div class="nav-brand-sub">Badan Permusyawaratan Nagari</div>
             </div>
         </a>
         <ul class="nav-links">
-            <li><a href="{{ route('bpn.beranda') }}">Beranda</a></li>
-            <li><a href="{{ route('bpn.program.index') }}" class="active">Program</a></li>
-            <li><a href="{{ route('bpn.berita.index') }}">Berita</a></li>
+            <li><a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}">Beranda</a></li>
+            <li><a href="{{ route('lembaga.program.index', ['lembaga' => 'bpn']) }}" class="active">Program</a></li>
+            <li><a href="{{ route('lembaga.berita.index', ['lembaga' => 'bpn']) }}">Berita</a></li>
         </ul>
     </nav>
 
@@ -322,11 +323,11 @@
     {{-- BREADCRUMB --}}
     <div class="breadcrumb-bar">
         <div class="breadcrumb">
-            <a href="{{ route('bpn.beranda') }}">
+            <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}">
                 <svg viewBox="0 0 24 24" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
             </a>
             <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-            <a href="{{ route('bpn.beranda') }}">Beranda</a>
+            <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}">Beranda</a>
             <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             <span class="current">Program Kerja</span>
         </div>
@@ -365,7 +366,7 @@
                     </span>
                 </div>
                 <p class="prog-card-desc">{{ Str::limit($program->deskripsi, 200) }}</p>
-                <a href="{{ route('bpn.program.show', $program->id) }}" class="btn-detail">
+                <a href="{{ route('lembaga.program.show', ['lembaga' => 'bpn', 'program' => Str::slug($program->nama_program)]) }}" class="btn-detail">
                     Lihat Detail
                     <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
                 </a>
@@ -389,9 +390,9 @@
             <div>
                 <div class="foot-h">Navigasi</div>
                 <ul class="foot-ul">
-                    <li><a href="{{ route('bpn.beranda') }}">Beranda</a></li>
-                    <li><a href="{{ route('bpn.program.index') }}">Program Kerja</a></li>
-                    <li><a href="{{ route('bpn.berita.index') }}">Berita & Kegiatan</a></li>
+                    <li><a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}">Beranda</a></li>
+                    <li><a href="{{ route('lembaga.program.index', ['lembaga' => 'bpn']) }}">Program Kerja</a></li>
+                    <li><a href="{{ route('lembaga.berita.index', ['lembaga' => 'bpn']) }}">Berita & Kegiatan</a></li>
                 </ul>
             </div>
             <div>

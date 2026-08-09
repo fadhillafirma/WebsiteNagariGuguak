@@ -526,7 +526,7 @@
 
     {{-- NAVBAR --}}
     <nav id="site-nav">
-        <a href="#" class="nav-brand">
+        <a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}" class="nav-brand">
             @if($lembaga->foto_lembaga)
                 <img id="nav-logo-img" src="{{ asset('storage/'.$lembaga->foto_lembaga) }}" alt="Logo {{ $info['nama'] }}" style="height: 60px; object-fit: contain; transition: height 0.3s;">
             @elseif($subdomain === 'upz')
@@ -539,10 +539,10 @@
             <li><a href="{{ route('lembaga.program.index', ['lembaga' => $subdomain]) }}">Program</a></li>
             <li><a href="{{ route('lembaga.berita.index', ['lembaga' => $subdomain]) }}">Berita</a></li>
             @if($subdomain === 'upz')
-            <li><a href="#cara">Cara Berzakat</a></li>
-            <li><a href="#cta" class="nav-btn">Bayar Zakat</a></li>
+            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cara">Cara Berzakat</a></li>
+            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Bayar Zakat</a></li>
             @else
-            <li><a href="#cta" class="nav-btn">Hubungi Kami</a></li>
+            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Hubungi Kami</a></li>
             @endif
         </ul>
     </nav>

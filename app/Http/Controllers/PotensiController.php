@@ -20,7 +20,6 @@ class PotensiController extends Controller
     {
         return view('admin.potensi.create');
     }
-
     public function store(Request $request)
     {
         $request->validate([
@@ -41,6 +40,7 @@ class PotensiController extends Controller
             'judul' => $request->judul,
             'deskripsi' => $request->deskripsi,
             'gambar' => $gambarPath,
+            'tanggal_post' => now(),
         ]);
 
         return redirect()->route('potensi.index')->with('success', 'Data potensi berhasil ditambahkan.');

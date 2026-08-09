@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Berita & Kegiatan – {{ $info['nama'] }}</title>
-    <meta name="description" content="Berita dan kegiatan terbaru dari {{ $info['nama'] }} untuk masyarakat Nagari Guguak.">
+    <title>Fungsi & Wewenang – {{ $info['nama'] }}</title>
+    <meta name="description" content="Daftar fungsi dan wewenang {{ $info['nama'] }} untuk kesejahteraan masyarakat Nagari Guguak.">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&family=playfair-display:700" rel="stylesheet">
     <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
@@ -21,6 +21,7 @@
             --text-sub:   #4b4b4b;
             --border:     rgba(88,15,28,0.12);
             --font: 'Inter', ui-sans-serif, system-ui, sans-serif;
+            --font-serif: 'Playfair Display', serif;
         }
         * { margin:0; padding:0; box-sizing:border-box; }
         html { scroll-behavior: smooth; }
@@ -117,125 +118,48 @@
         .breadcrumb svg { width: 14px; height: 14px; stroke: var(--text-sub); fill: none; opacity: 0.5; }
         .breadcrumb .current { font-weight: 600; color: var(--maroon-dark); }
 
-        /* ====== BERITA LIST ====== */
+        /* ====== TUGAS LIST ====== */
         .list-section {
             padding: 60px 6% 100px;
-            max-width: 1200px; margin: 0 auto;
+            max-width: 1000px; margin: 0 auto;
         }
 
-        /* Horizontal Card (Jorong style) */
-        .berita-card {
-            display: flex;
+        .tugas-card {
+            display: flex; flex-direction: column; gap: 16px;
             background: var(--white);
             border-radius: 12px;
             box-shadow: 0 4px 24px rgba(0,0,0,0.04);
             border: 1px solid var(--border);
-            overflow: hidden;
-            margin-bottom: 36px;
+            padding: 40px;
+            margin-bottom: 30px;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
-            text-decoration: none;
-            color: inherit;
             opacity: 0; transform: translateY(30px);
             animation: card-in 0.6s ease forwards;
         }
-        .berita-card:hover {
+        .tugas-card:hover {
             transform: translateY(-4px);
             box-shadow: 0 12px 40px rgba(88,15,28,0.08);
+            border-color: var(--gold-light);
         }
-        .berita-card:nth-child(even) { flex-direction: row-reverse; }
-
-        .berita-card-image {
-            width: 44%; min-height: 320px;
-            flex-shrink: 0;
-            position: relative;
-            overflow: hidden;
-        }
-        .berita-card-image .img-bg {
-            position: absolute; inset: 0;
-            background: linear-gradient(135deg, var(--maroon-mid), var(--maroon-dark));
-            transition: transform 0.5s ease;
-        }
-        .berita-card:hover .img-bg { transform: scale(1.05); }
-        .berita-card-image .img-bg img {
-            width: 100%; height: 100%; object-fit: cover;
-        }
-        .berita-card-image .card-overlay {
-            position: absolute; inset: 0;
-            background: linear-gradient(180deg, transparent 40%, rgba(38,5,11,0.5) 100%);
-            z-index: 1;
-        }
-        .berita-card-image .card-date-badge {
-            position: absolute; top: 20px; left: 20px; z-index: 2;
-            background: var(--gold);
-            color: var(--maroon-dark);
-            padding: 8px 14px;
-            border-radius: 6px;
-            text-align: center;
-            line-height: 1.2;
-        }
-        .berita-card:nth-child(even) .card-date-badge {
-            left: auto; right: 20px;
-        }
-        .card-date-badge .date-day {
-            font-size: 20px; font-weight: 800; display: block;
-        }
-        .card-date-badge .date-month {
-            font-size: 9px; font-weight: 700; letter-spacing: 1px;
-            text-transform: uppercase; display: block;
-        }
-
-        .berita-card-body {
-            flex: 1;
-            padding: 40px 44px;
-            display: flex; flex-direction: column; justify-content: center;
-        }
-        .berita-tag {
-            display: inline-block;
-            background: var(--gold);
-            color: var(--maroon-dark);
-            font-size: 10px; font-weight: 700;
-            letter-spacing: 1.5px; text-transform: uppercase;
-            padding: 5px 14px; margin-bottom: 16px;
-            border-radius: 3px;
-            align-self: flex-start;
-        }
-        .berita-card-title {
-            font-size: 24px; font-weight: 700;
-            color: var(--maroon-dark); line-height: 1.35;
+        
+        .tugas-number {
+            font-family: var(--font-serif);
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold-light);
+            line-height: 1;
             margin-bottom: 8px;
         }
-        .berita-card-meta {
-            display: flex; gap: 20px;
-            font-size: 12px; color: var(--text-sub); font-weight: 500;
-            margin-bottom: 18px;
-            flex-wrap: wrap;
+
+        .tugas-title {
+            font-family: var(--font-serif);
+            font-size: 26px; font-weight: 700;
+            color: var(--maroon-dark); line-height: 1.35;
         }
-        .berita-card-meta span {
-            display: inline-flex; align-items: center; gap: 5px;
+        .tugas-desc {
+            font-size: 16px; color: var(--text-sub);
+            line-height: 1.85; font-weight: 400;
         }
-        .berita-card-meta svg {
-            width: 14px; height: 14px; stroke: var(--gold); fill: none; stroke-width: 1.8;
-        }
-        .berita-card-desc {
-            font-size: 15px; color: var(--text-sub);
-            line-height: 1.85; font-weight: 300;
-            margin-bottom: 28px;
-        }
-        .btn-detail {
-            display: inline-flex; align-items: center; gap: 8px;
-            background: var(--maroon-dark);
-            color: var(--white);
-            padding: 12px 28px; border-radius: 5px;
-            font-size: 13px; font-weight: 700;
-            text-decoration: none;
-            letter-spacing: 0.5px;
-            text-transform: uppercase;
-            transition: background 0.25s, transform 0.2s;
-            align-self: flex-start;
-        }
-        .btn-detail:hover { background: var(--maroon-mid); transform: translateX(3px); }
-        .btn-detail svg { width: 16px; height: 16px; stroke: currentColor; fill: none; transition: transform 0.2s; }
-        .btn-detail:hover svg { transform: translateX(4px); }
 
         /* EMPTY STATE */
         .empty-state {
@@ -280,15 +204,10 @@
 
         /* ====== RESPONSIVE ====== */
         @media (max-width: 900px) {
-            .berita-card,
-            .berita-card:nth-child(even) {
-                flex-direction: column;
-            }
-            .berita-card-image { width: 100%; min-height: 220px; }
-            .berita-card-body { padding: 28px 24px; }
-            .berita-card:nth-child(even) .card-date-badge { left: 20px; right: auto; }
             .page-hero { min-height: 280px; }
             .page-hero h1 { font-size: 32px; }
+            .tugas-card { padding: 30px; }
+            .tugas-title { font-size: 22px; }
         }
         @media (max-width: 768px) {
             nav { padding: 15px 5%; height: auto; flex-wrap: wrap; }
@@ -313,7 +232,7 @@
         <ul class="nav-links">
             <li><a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}">Beranda</a></li>
             <li><a href="{{ route('lembaga.program.index', ['lembaga' => 'bpn']) }}">Program</a></li>
-            <li><a href="{{ route('lembaga.berita.index', ['lembaga' => 'bpn']) }}" class="active">Berita</a></li>
+            <li><a href="{{ route('lembaga.berita.index', ['lembaga' => 'bpn']) }}">Berita</a></li>
         </ul>
     </nav>
 
@@ -322,9 +241,8 @@
         <div class="page-hero-bg"></div>
         <div class="page-hero-pattern"></div>
         <div class="page-hero-content">
-           
-            <h1>Berita & <em>Kegiatan</em></h1>
-            <p class="page-hero-desc">Informasi terkini seputar kegiatan, penyaluran dana zakat, dan berita penting dari BPN Nagari Guguak.</p>
+            <h1>Fungsi & <em>Wewenang</em></h1>
+            <p class="page-hero-desc">Peran strategis BPN dalam mengawal dan mewujudkan tata kelola nagari yang transparan dan partisipatif.</p>
         </div>
     </section>
 
@@ -337,53 +255,22 @@
             <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}">Beranda</a>
             <svg viewBox="0 0 24 24" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-            <span class="current">Berita & Kegiatan</span>
+            <span class="current">Fungsi & Wewenang</span>
         </div>
     </div>
 
-    {{-- BERITA LIST --}}
+    {{-- TUGAS LIST --}}
     <div class="list-section">
-        @forelse($beritas as $index => $berita)
-        <div class="berita-card" style="animation-delay: {{ $index * 0.12 }}s;">
-            <div class="berita-card-image">
-                <div class="img-bg">
-                    @if($berita->foto)
-                        <img src="{{ asset('storage/'.$berita->foto) }}" alt="{{ $berita->judul }}">
-                    @endif
-                </div>
-                <div class="card-overlay"></div>
-                @php
-                    $tgl = optional($berita->tanggal_tayang);
-                @endphp
-                <div class="card-date-badge">
-                    <span class="date-day">{{ $tgl->format('d') ?? '--' }}</span>
-                    <span class="date-month">{{ $tgl->translatedFormat('M Y') ?? '---' }}</span>
-                </div>
-            </div>
-            <div class="berita-card-body">
-                <span class="berita-tag">{{ $berita->kategori ?: 'Berita' }}</span>
-                <h2 class="berita-card-title">{{ $berita->judul }}</h2>
-                <div class="berita-card-meta">
-                    <span>
-                        <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-                        {{ optional($berita->tanggal_tayang)->translatedFormat('d F Y') ?: 'Belum ditentukan' }}
-                    </span>
-                    <span>
-                        <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
-                        {{ $berita->penulis ?: 'Administrator' }}
-                    </span>
-                </div>
-                <p class="berita-card-desc">{{ Str::limit($berita->isi_berita, 200) }}</p>
-                <a href="{{ route('lembaga.berita.show', ['lembaga' => 'bpn', 'berita' => Str::slug($berita->judul)]) }}" class="btn-detail">
-                    Lihat Detail
-                    <svg viewBox="0 0 24 24" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-                </a>
-            </div>
+        @forelse($tugas as $index => $t)
+        <div class="tugas-card" style="animation-delay: {{ $index * 0.12 }}s;">
+            <div class="tugas-number">0{{ $index + 1 }}</div>
+            <h2 class="tugas-title">{{ $t->judul }}</h2>
+            <p class="tugas-desc">{{ $t->deskripsi }}</p>
         </div>
         @empty
         <div class="empty-state">
-            <svg viewBox="0 0 24 24" stroke-width="1"><path d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2"/></svg>
-            <p>Belum ada berita yang dipublikasikan.</p>
+            <svg viewBox="0 0 24 24" stroke-width="1"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+            <p>Belum ada fungsi dan wewenang yang ditambahkan.</p>
         </div>
         @endforelse
     </div>
@@ -441,6 +328,3 @@
     </script>
 </body>
 </html>
-
-
-

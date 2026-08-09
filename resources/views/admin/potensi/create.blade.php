@@ -48,6 +48,8 @@
             @error('gambar') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror
         </div>
 
+
+
         <div class="flex justify-end gap-3">
             <a href="{{ route('potensi.index') }}" class="px-4 py-2 bg-gray-300 rounded hover:bg-gray-400">Batal</a>
             <button type="submit" class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">Simpan</button>

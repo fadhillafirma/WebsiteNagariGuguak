@@ -43,6 +43,8 @@
         </div>
 
 
+
+
         <div>
             <label class="block text-gray-700 mb-1">Foto (Opsional)</label>
             <input type="file" name="foto" class="w-full rounded-lg border border-gray-300 py-2 px-2 rounded-lg p-2">

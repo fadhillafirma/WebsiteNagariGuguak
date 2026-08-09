@@ -47,6 +47,7 @@ class GaleriController extends Controller
             'user_id'   => Auth::id(),
             'foto'      => $path,
             'deskripsi' => $validated['deskripsi'] ?? null,
+            'tanggal_post' => now(),
         ]);
 
         return redirect()

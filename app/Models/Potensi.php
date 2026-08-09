@@ -18,6 +18,11 @@ class Potensi extends Model
         'judul',
         'deskripsi',
         'gambar',
+        'tanggal_post',
+    ];
+
+    protected $casts = [
+        'tanggal_post' => 'datetime',
     ];
 
     /**

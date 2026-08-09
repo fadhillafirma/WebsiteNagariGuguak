@@ -17,16 +17,21 @@
     <section class="bg-white w-full min-h-screen flex items-center justify-center" id="profile">
         <div class="max-w-6xl w-full grid md:grid-cols-2  gap-10 place-items-center mt-10">
 
-            <div class="w-full rounded-xl overflow-hidden shadow-lg border-2 border-greenDark ml-5">
+            <div class="w-full rounded-xl overflow-hidden shadow-lg border-2 border-greenDark ml-5 relative">
                 <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15794.978619402152!2d100.856389!3d-0.578056!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sid!4v1723273612345!5m2!1sen!2sid&t=k"
-                        width="100%"
-                        height="450"
-                        style="border:0;"
-                        allowfullscreen
-                        loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade">
+                    src="https://www.openstreetmap.org/export/embed.html?bbox=100.8465%2C-0.5883%2C100.8665%2C-0.5683&layer=mapnik&marker=-0.5782566%2C100.8565485"
+                    width="100%"
+                    height="450"
+                    style="border:0;"
+                    loading="lazy">
                 </iframe>
+                <a href="https://maps.app.goo.gl/K93Q4dQcxebM8Qm36"
+                   target="_blank" rel="noopener noreferrer"
+                   class="absolute inset-0 z-10 flex items-end justify-end p-3">
+                    <span class="bg-greenDark text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-900 transition text-sm font-medium">
+                        Buka di Google Maps →
+                    </span>
+                </a>
             </div>
 
             <div class="w-full p-5 flex flex-col justify-center">

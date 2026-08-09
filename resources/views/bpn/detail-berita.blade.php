@@ -7,6 +7,7 @@
     <meta name="description" content="{{ Str::limit($berita->isi_berita, 150) }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet">
+    <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
     <style>
         :root {
             --maroon-dark: #580F1C;
@@ -102,19 +103,20 @@
 <body>
 
     <nav id="site-nav">
-        <a href="{{ route('bpn.beranda') }}" class="nav-brand">
+        <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}" class="nav-brand">
+            <img src="{{ asset('logo_bpd.png') }}" alt="Logo BPN" style="height: 40px; width: auto; object-fit: contain;">
             <div>
                 <div class="nav-brand-title">BPN Nagari Guguak</div>
                 <div class="nav-brand-sub">Kembali ke Beranda</div>
             </div>
         </a>
         <div class="nav-links">
-            <a href="{{ route('bpn.beranda') }}#berita">Kembali ke Berita</a>
+            <a href="{{ route('lembaga.beranda', ['lembaga' => 'bpn']) }}#berita">Kembali ke Berita</a>
         </div>
     </nav>
 
     <div class="detail-wrapper">
-        <a href="{{ route('bpn.berita.index') }}" class="back-link">
+        <a href="{{ route('lembaga.berita.index', ['lembaga' => 'bpn']) }}" class="back-link">
             <svg viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
             Kembali ke Daftar Berita
         </a>

@@ -34,7 +34,7 @@
                 @if($program->foto)
                     <img src="{{ asset('storage/'.$program->foto) }}" alt="{{ $program->nama_program }}">
                 @else
-                    <img src="{{ asset('images/logo.png') }}" style="object-fit:contain; padding:40px; opacity:0.1; background:#fff;" alt="">
+                    <img src="{{ asset('bumnag.png') }}" style="object-fit:contain; padding:40px; opacity:0.1; background:#fff;" alt="">
                 @endif
             </div>
             <div class="prog-body">
