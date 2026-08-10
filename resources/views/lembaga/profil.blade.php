@@ -124,8 +124,8 @@
         }
         .hero-inner {
             position:relative; z-index:2;
-            max-width:800px; margin:0 auto;
-            padding:130px 6% 90px;
+            width:100%;
+            padding:130px 5% 90px;
             display:flex; flex-direction:column; align-items:flex-start;
         }
         .hero-kicker {
@@ -495,7 +495,8 @@
 
         /* ====== RESPONSIVE (HP & TABLET) ====== */
         @media (max-width: 900px) {
-            .hero-inner { padding-top: 110px; text-align: center; align-items: center; }
+            .hero-inner { padding-top: 110px; text-align: center; align-items: center; width: 100%; }
+            .hero-text { width: 100%; display: flex; flex-direction: column; align-items: center; }
             .hero-kicker { margin: 0 auto 24px; }
             .hero-desc { margin: 0 auto 30px; }
             .hero-acts { justify-content: center; }
@@ -511,23 +512,26 @@
         }
         @media (max-width: 900px) {
             .nav-menu {
-                position: absolute; top: 70px; left: 0; right: 0; background: rgba(255,255,255,0.98);
+                position: absolute; top: 100%; left: 0; right: 0; background: rgba(255,255,255,0.98);
                 backdrop-filter: blur(14px);
                 flex-direction: column; padding: 20px 5%; gap: 20px;
                 border-bottom: 1px solid rgba(0,66,37,0.1);
                 box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
                 display: none;
+                z-index: 9998;
             }
             .nav-menu.active { display: flex; }
             .nav-links { flex-direction: column; gap: 20px; text-align: center; width: 100%; margin: 0; }
             .nav-links a.nav-btn { display: inline-block; width: 100%; text-align: center; }
-            .menu-toggle { display: block; color: var(--green-dark); }
+            .menu-toggle { display: block; color: var(--green-dark); position: relative; z-index: 9999; }
         }
         @media (max-width: 600px) {
             nav { padding: 15px 5%; }
             .nav-brand-title { font-size: 14px; }
             
-            .hero-title { font-size: 32px; }
+            .hero-inner { padding-left: 20px; padding-right: 20px; }
+            .hero-title { font-size: 25px; line-height: 1.3; margin-bottom: 15px; }
+            .hero-desc { font-size: 14px; line-height: 1.6; }
             .hero-acts { flex-direction: column; width: 100%; }
             .btn-gold, .btn-outline, .btn-green { width: 100%; text-align: center; display: block; }
             
@@ -598,7 +602,7 @@
                 </div>
 
                 @if(isset($lembaga->rekenings) && $lembaga->rekenings->count() > 0)
-                <div class="hero-rekening" style="margin: 40px auto 0; max-width: 500px; width: 100%; text-align: left; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); animation: fd-up 0.9s 0.4s ease both;">
+                <div class="hero-rekening" style="margin-top: 40px; max-width: 500px; width: 100%; text-align: left; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); animation: fd-up 0.9s 0.4s ease both;">
                     <h3 style="font-size: 13px; color: var(--gold-light); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Penyaluran Zakat / Donasi:</h3>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         @foreach($lembaga->rekenings as $rek)

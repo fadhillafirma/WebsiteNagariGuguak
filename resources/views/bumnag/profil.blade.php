@@ -187,12 +187,13 @@
             .nav-buttons .nav-btn { width: 100%; text-align: center; margin: 0 !important; }
             .menu-toggle { display: block; }
             
-            .hero-top { padding: 40px 5%; }
-            .section-padding { padding: 60px 5%; }
+            .hero-top { padding-top: 40px; padding-bottom: 40px; padding-left: 20px; padding-right: 20px; text-align: center; align-items: center; width: 100%; }
+            .hero-text { width: 100%; display: flex; flex-direction: column; align-items: center; }
+            .section-padding { padding: 60px 20px; }
             .grid-2 { grid-template-columns: 1fr; gap: 40px; }
             .prog-grid { grid-template-columns: 1fr; }
             .berita-item { grid-template-columns: 1fr; gap: 16px; padding: 30px 0; }
-            .hero-title { font-size: 32px; }
+            .hero-title { font-size: 26px; line-height: 1.3; }
             .hero-bottom { min-height: 250px; }
             .foot-top { flex-direction: column; gap: 30px; }
             .foot-links { flex-direction: column; gap: 15px; }
