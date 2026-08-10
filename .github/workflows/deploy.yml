@@ -34,7 +34,8 @@ jobs:
 
       - name: 📦 Bundle files
         run: |
-          tar -czf deploy.tar.gz --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.env*' --exclude='tests' --exclude='deploy.tar.gz' .
+          tar -czf ../deploy.tar.gz --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.env*' --exclude='tests' .
+          mv ../deploy.tar.gz .
 
       - name: 🚀 Upload to Hostinger
         uses: appleboy/scp-action@v0.1.7
