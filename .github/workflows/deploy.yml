@@ -32,24 +32,29 @@ jobs:
           npm ci
           npm run build
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
+      - name: 📦 Bundle files
+        run: |
+          tar -czf deploy.tar.gz --exclude='.git' --exclude='.github' --exclude='node_modules' --exclude='.env*' --exclude='tests' --exclude='deploy.tar.gz' .
+
+      - name: 🚀 Upload to Hostinger
+        uses: appleboy/scp-action@v0.1.7
         with:
-          server: ${{ secrets.FTP_SERVER }}
+          host: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
-          server-dir: /domains/nagariguguaksijunjung.id/public_html/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.github/**
-            **/node_modules/**
-            .env
-            .env.example
-            README.md
-            tests/**
-            storage/framework/cache/**
-            storage/framework/sessions/**
-            storage/framework/views/**
-            storage/logs/**
-            public/storage
+          port: 65002
+          source: "deploy.tar.gz"
+          target: "domains/nagariguguaksijunjung.id/public_html/"
+
+      - name: 🔧 Extract and Cleanup
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USERNAME }}
+          password: ${{ secrets.FTP_PASSWORD }}
+          port: 65002
+          script: |
+            cd domains/nagariguguaksijunjung.id/public_html/
+            tar -xzf deploy.tar.gz
+            rm deploy.tar.gz
+
