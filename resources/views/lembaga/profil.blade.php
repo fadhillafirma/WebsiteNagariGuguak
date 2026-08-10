@@ -69,6 +69,8 @@
             font-size:11px; color:rgba(255,255,255,0.5);
             letter-spacing:0.5px; font-weight:400;
         }
+        .nav-menu { display: flex; align-items: center; justify-content: flex-end; flex-grow: 1; }
+        .menu-toggle { display: none; background: none; border: none; cursor: pointer; color: var(--green-dark); width: 32px; height: 32px; margin-left: auto; }
         .nav-links { display:flex; gap:28px; list-style:none; }
         .nav-links a {
             color: var(--green-dark);
@@ -506,10 +508,23 @@
             
             .foot-grid { grid-template-columns: 1fr 1fr; gap: 30px; }
         }
+        @media (max-width: 900px) {
+            .nav-menu {
+                position: absolute; top: 70px; left: 0; right: 0; background: rgba(255,255,255,0.98);
+                backdrop-filter: blur(14px);
+                flex-direction: column; padding: 20px 5%; gap: 20px;
+                border-bottom: 1px solid rgba(0,66,37,0.1);
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                display: none;
+            }
+            .nav-menu.active { display: flex; }
+            .nav-links { flex-direction: column; gap: 20px; text-align: center; width: 100%; margin: 0; }
+            .nav-links a.nav-btn { display: inline-block; width: 100%; text-align: center; }
+            .menu-toggle { display: block; color: var(--green-dark); }
+        }
         @media (max-width: 600px) {
             nav { padding: 15px 5%; }
             .nav-brand-title { font-size: 14px; }
-            .nav-links { display: none; /* Can be replaced with a hamburger menu later */ }
             
             .hero-title { font-size: 32px; }
             .hero-acts { flex-direction: column; width: 100%; }
@@ -542,16 +557,21 @@
                 <span class="nav-brand-title" style="color: var(--green-dark); font-size: 20px;">{{ $info['nama'] }}</span>
             @endif
         </a>
-        <ul class="nav-links">
-            <li><a href="{{ route('lembaga.program.index', ['lembaga' => $subdomain]) }}">Program</a></li>
-            <li><a href="{{ route('lembaga.berita.index', ['lembaga' => $subdomain]) }}">Berita</a></li>
-            @if($subdomain === 'upz')
-            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cara">Cara Berzakat</a></li>
-            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Bayar Zakat</a></li>
-            @else
-            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Hubungi Kami</a></li>
-            @endif
-        </ul>
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="{{ route('lembaga.program.index', ['lembaga' => $subdomain]) }}" onclick="toggleMenu()">Program</a></li>
+                <li><a href="{{ route('lembaga.berita.index', ['lembaga' => $subdomain]) }}" onclick="toggleMenu()">Berita</a></li>
+                @if($subdomain === 'upz')
+                <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cara" onclick="toggleMenu()">Cara Berzakat</a></li>
+                <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn" onclick="toggleMenu()">Bayar Zakat</a></li>
+                @else
+                <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn" onclick="toggleMenu()">Hubungi Kami</a></li>
+                @endif
+            </ul>
+        </div>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
     </nav>
 
     {{-- HERO --}}
@@ -575,6 +595,23 @@
                     @endif
                     <a href="https://nagariguguak.id" class="btn-outline">Kembali ke Web Nagari</a>
                 </div>
+
+                @if(isset($lembaga->rekenings) && $lembaga->rekenings->count() > 0)
+                <div class="hero-rekening" style="margin-top: 40px; max-width: 500px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); animation: fd-up 0.9s 0.4s ease both;">
+                    <h3 style="font-size: 13px; color: var(--gold-light); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Penyaluran Zakat / Donasi:</h3>
+                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                        @foreach($lembaga->rekenings as $rek)
+                        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.25); padding: 12px 16px; border-radius: 8px;">
+                            <div>
+                                <div style="font-weight: 700; color: #fff; font-size: 15px; font-family: monospace; letter-spacing: 0.5px;">{{ $rek->nomor_rekening }}</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px;">{{ $rek->nama_bank }} - a.n {{ $rek->atas_nama }}</div>
+                            </div>
+                            <button onclick="navigator.clipboard.writeText('{{ $rek->nomor_rekening }}'); alert('Nomor rekening {{ $rek->nama_bank }} disalin!');" style="background: var(--gold); color: var(--green-dark); border: none; padding: 6px 14px; border-radius: 4px; font-weight: 700; font-size: 11px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">SALIN</button>
+                        </div>
+                        @endforeach
+                    </div>
+                </div>
+                @endif
             </div>
         </div>
         <div class="scroll-cue">
@@ -776,6 +813,10 @@
     </footer>
 
     <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+
         const reveals = document.querySelectorAll('.reveal');
         const obs = new IntersectionObserver((entries) => {
             entries.forEach((entry, i) => {
