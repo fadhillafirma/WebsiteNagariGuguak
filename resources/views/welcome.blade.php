@@ -14,21 +14,21 @@
 
 </head>
 
-<body class="m-0 p-0 w-full bg-white font-sans">
-
+<body class="m-0 p-0 w-full bg-white font-sans overflow-x-hidden">
+<div class="w-full overflow-x-hidden relative">
     @include('layout.navbar')
 
     <div class="relative h-screen bg-cover bg-center w-full flex items-end" style="background-image: url('/sawah.jpg');">
         <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent w-full h-full z-0"></div>
         <div class="relative z-10 w-full px-4 sm:px-8 md:px-16 pb-16">
             <div class="text-white max-w-3xl">
-                <button class="py-3 px-5 bg-white/10 backdrop-blur-sm mb-2 text-white border border-gray-500 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:shadow-[0_0_25px_rgba(255,255,255,0.9)] transition-all duration-300">
+                <button class="text-sm sm:text-base py-2 px-4 sm:py-3 sm:px-5 bg-white/10 backdrop-blur-sm mb-2 text-white border border-gray-500 rounded-full shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:shadow-[0_0_25px_rgba(255,255,255,0.9)] transition-all duration-300">
                     Kabupaten Sijunjung, Koto VII
                 </button>
 
-                <h1 class="text-4xl sm:text-6xl font-bold mb-2">Selamat Datang</h1>
-                <h2 class="text-3xl sm:text-5xl">di <span class="text-greenVill font-semibold">Nagari Guguak</span></h2>
-                <p class="text-base sm:text-lg mt-4 text-gray-200">
+                <h1 class="text-3xl sm:text-5xl md:text-6xl font-bold mb-2">Selamat Datang</h1>
+                <h2 class="text-2xl sm:text-4xl md:text-5xl">di <span class="text-greenVill font-semibold">Nagari Guguak</span></h2>
+                <p class="text-sm sm:text-base md:text-lg mt-4 text-gray-200">
                     Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.
                 </p>
 
@@ -63,7 +63,7 @@
                 </div>
             </div>
 
-            <div class="relative w-full mt-10 overflow-hidden rounded-xl h-[800px] sm:h-[400px]">
+            <div class="relative w-full mt-10 overflow-hidden rounded-xl h-[250px] sm:h-[400px] md:h-[500px]">
                 <div id="carousel" class="flex w-full h-full transition-transform duration-1000 ease-in-out">
                     <img src="/sawahGuguk.jpg" alt="Sawah Guguk" class="w-full h-full object-cover flex-shrink-0">
                     <img src="/kerbau.jpg" alt="Kerbau" class="w-full h-full object-cover flex-shrink-0">
@@ -79,25 +79,25 @@
         <div class="relative z-10 max-w-7xl mx-auto">
             <div class="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
                 <div class="p-4">
-                    <div class="text-4xl sm:text-5xl md:text-6xl text-greenDark font-bold">
+                    <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-greenDark font-bold">
                         <span class="count-up" data-target="23.90">0</span>H
                     </div>
                     <div class="text-base sm:text-lg mt-2">Luas Wilayah</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl sm:text-5xl md:text-6xl text-greenDark font-bold">
+                    <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-greenDark font-bold">
                         <span class="count-up" data-target="3">0</span>
                     </div>
                     <div class="text-base sm:text-lg mt-2">Jorong</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl sm:text-5xl md:text-6xl text-greenDark font-bold">
+                    <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-greenDark font-bold">
                         <span class="count-up" data-target="100">0</span>+
                     </div>
                     <div class="text-base sm:text-lg mt-2">Kepala Keluarga</div>
                 </div>
                 <div class="p-4">
-                    <div class="text-4xl sm:text-5xl md:text-6xl text-greenDark font-bold">
+                    <div class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl text-greenDark font-bold">
                         <span class="count-up" data-target="2.3">0</span>Rb
                     </div>
                     <div class="text-base sm:text-lg mt-2">Penduduk</div>
@@ -221,8 +221,8 @@
     <section class="relative bg-cover bg-center min-h-[30vh] flex items-center" style="background-image: url('/sawah.jpg');">
         <div class="absolute inset-0 bg-black/50 z-0 backdrop-blur-sm"></div>
         <div class="relative z-10 w-full text-white text-center px-4 py-16">
-            <h2 class="text-2xl sm:text-4xl font-bold mb-4 fade-in-left animate-on-scroll">Menuju Nagari <span class="text-greenVill">Cerdas & Terhubung</span></h2>
-            <p class="text-sm sm:text-xl">Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.</p>
+            <h2 class="text-xl sm:text-3xl md:text-4xl font-bold mb-4 fade-in-left animate-on-scroll">Menuju Nagari <span class="text-greenVill">Cerdas & Terhubung</span></h2>
+            <p class="text-xs sm:text-base md:text-xl">Jelajahi keindahan alam, budaya, dan semangat masyarakat kami dalam membangun nagari yang cerdas dan terhubung.</p>
             <div class="mt-8">
                 <a href="/profil" class="inline-block py-3 px-6 border-2 border-greenVill font-bold text-greenVill hover:border-white hover:text-white transition-colors duration-300">
                     Lihat Tentang
@@ -386,5 +386,6 @@
 
 
 
+</div>
 </body>
 </html>

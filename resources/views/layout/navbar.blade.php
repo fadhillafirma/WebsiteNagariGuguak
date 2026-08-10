@@ -71,7 +71,7 @@
   }
 </style>
 
-<nav class="fixed top-5 left-0 w-full flex justify-center z-50">
+<nav class="fixed top-5 left-0 right-0 flex justify-center z-50">
   <div class="w-[90%] navbar-bg-custom backdrop-blur-sm text-greenDark shadow-md rounded-full overflow-visible">
     <div class="max-w-7xl mx-auto px-6">
       <div class="flex items-center justify-between h-16">
@@ -134,7 +134,7 @@
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="md:hidden hidden bg-white/100 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all">
+    <div id="mobile-menu" class="md:hidden hidden bg-white/100 backdrop-blur-sm text-greenDark px-6 pb-4 rounded-b-xl transition-all max-h-[80vh] overflow-y-auto">
       <a href="/" class="block py-2 hover:text-black menu-link">Home</a>
       <a href="/profil" class="block py-2 hover:text-black menu-link">Profile</a>
       <a href="/jorongNagari" class="block py-2 hover:text-black menu-link">Jorong</a>
