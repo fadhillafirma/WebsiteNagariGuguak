@@ -7,6 +7,13 @@
     <meta name="description" content="{{ Str::limit($program->deskripsi, 150) }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet">
+    @if(isset($lembaga) && $lembaga->foto_lembaga)
+        <link rel="icon" type="image/png" href="{{ asset('storage/'.$lembaga->foto_lembaga) }}" />
+    @elseif(isset($subdomain) && $subdomain === 'upz')
+        <link rel="icon" type="image/png" href="{{ asset('baznas.png') }}" />
+    @else
+        <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
+    @endif
     <style>
         :root {
             --green-dark: #004225;
@@ -118,7 +125,7 @@
             <li><a href="{{ route('lembaga.berita.index', ['lembaga' => $subdomain]) }}">Berita</a></li>
             @if($subdomain === 'upz')
             <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cara">Cara Berzakat</a></li>
-            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Bayar Zakat</a></li>
+            <li><a href="{{ route('lembaga.bayar-zakat', ['lembaga' => $subdomain]) }}" class="nav-btn">Bayar Zakat</a></li>
             @else
             <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Hubungi Kami</a></li>
             @endif

@@ -3,7 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Admin Panel - UPZ Nagari Guguak</title>
+    <title>Admin Panel - {{ $info['nama'] }}</title>
+    @if(isset($lembaga) && $lembaga->foto_lembaga)
+        <link rel="icon" type="image/png" href="{{ asset('storage/'.$lembaga->foto_lembaga) }}" />
+    @elseif(isset($subdomain) && $subdomain === 'upz')
+        <link rel="icon" type="image/png" href="{{ asset('baznas.png') }}" />
+    @else
+        <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
+    @endif
 
     <!-- Tailwind CSS CDN Fallback -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -52,7 +59,7 @@
 <body class="bg-[#f8fafc] font-sans antialiased text-slate-800 selection:bg-brand-500 selection:text-white">
 
 <div class="flex min-h-screen" x-data="{ 
-    activeTab: '{{ request('tab', $editBerita ? 'berita' : ($editProgram ? 'program' : 'dashboard')) }}',
+    activeTab: '{{ request('tab', isset($editRekening) && $editRekening ? 'rekening' : (isset($editTugas) && $editTugas ? 'tugas' : (isset($editBerita) && $editBerita ? 'berita' : (isset($editProgram) && $editProgram ? 'program' : 'dashboard')))) }}',
     showProgramForm: {{ $editProgram ? 'true' : 'false' }},
     showBeritaForm: {{ $editBerita ? 'true' : 'false' }},
     showProfilEditForm: false,
@@ -91,6 +98,18 @@
                 </svg>
                 <span>Kelola Program</span>
             </button>
+
+            @if($subdomain === 'upz')
+            <!-- Kelola Rekening Tab -->
+            <button @click="activeTab = 'rekening'"
+               :class="activeTab === 'rekening' ? 'bg-brand-50/60 text-brand-700 border-r-4 border-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-r-4 border-transparent'"
+               class="w-full flex items-center gap-x-3 py-3 px-6 text-sm transition-all duration-200 text-left group">
+                <svg class="w-5 h-5 flex-shrink-0 transition-colors" :class="activeTab === 'rekening' ? 'text-brand-600' : 'text-slate-400 group-hover:text-slate-600'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/>
+                </svg>
+                <span>Kelola Rekening</span>
+            </button>
+            @endif
 
             <!-- 3. Berita & Publikasi UPZ -->
             <button @click="activeTab = 'berita'; if(!{{ $editBerita ? 'true' : 'false' }}) showBeritaForm = false" 
@@ -444,6 +463,111 @@
                 </div>
             </div>
 
+            @if($subdomain === 'upz')
+            <!-- TAB REKENING ZAKAT -->
+            <div x-show="activeTab === 'rekening'" x-cloak class="space-y-6">
+                <!-- FORM TAMBAH / EDIT REKENING -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 p-6 md:p-8 max-w-4xl mx-auto space-y-6">
+                    <div class="border-b border-slate-100 pb-4">
+                        <h2 class="text-xl font-bold text-slate-900">
+                            {{ isset($editRekening) && $editRekening ? 'Ubah Data Rekening' : 'Entri Rekening Baru' }}
+                        </h2>
+                        <p class="text-xs text-slate-500 mt-1">Lengkapi formulir di bawah ini untuk mengelola rekening pembayaran zakat.</p>
+                    </div>
+
+                    <form action="{{ isset($editRekening) && $editRekening ? route('lembaga.rekening.update', ['lembaga' => $subdomain, 'rekening' => $editRekening->id]) : route('lembaga.rekening.store', ['lembaga' => $subdomain]) }}" method="POST">
+                        @csrf
+                        @if(isset($editRekening) && $editRekening) @method('PUT') @endif
+                        
+                        <div class="grid grid-cols-1 gap-6">
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Nama Bank</label>
+                                <input type="text" name="nama_bank" value="{{ old('nama_bank', $editRekening->nama_bank ?? '') }}" required placeholder="Contoh: Bank Nagari / BRI" class="w-full rounded-lg border-slate-300 focus:border-brand-500 focus:ring-brand-500 text-sm py-2.5 px-3">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Nomor Rekening</label>
+                                <input type="text" name="nomor_rekening" value="{{ old('nomor_rekening', $editRekening->nomor_rekening ?? '') }}" required placeholder="Contoh: 1234-5678-9012" class="w-full rounded-lg border-slate-300 focus:border-brand-500 focus:ring-brand-500 text-sm py-2.5 px-3 font-mono">
+                            </div>
+                            <div>
+                                <label class="block text-sm font-semibold text-slate-700 mb-2">Atas Nama</label>
+                                <input type="text" name="atas_nama" value="{{ old('atas_nama', $editRekening->atas_nama ?? '') }}" required placeholder="Contoh: UPZ Nagari Guguak" class="w-full rounded-lg border-slate-300 focus:border-brand-500 focus:ring-brand-500 text-sm py-2.5 px-3">
+                            </div>
+                        </div>
+
+                        <div class="mt-8 flex justify-end gap-3 pt-5 border-t border-slate-100">
+                            @if(isset($editRekening) && $editRekening)
+                                <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'rekening']) }}" class="px-5 py-2.5 text-sm font-medium text-slate-600 bg-white border border-slate-300 rounded-lg hover:bg-slate-50 transition">Batal</a>
+                            @endif
+                            <button type="submit" class="px-6 py-2.5 text-sm font-semibold text-white bg-brand-600 rounded-lg hover:bg-brand-700 shadow-sm transition inline-flex items-center gap-2">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                                {{ isset($editRekening) && $editRekening ? 'Simpan Perubahan' : 'Tambah Rekening' }}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- DAFTAR REKENING -->
+                <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden mt-8 max-w-4xl mx-auto">
+                    <div class="p-5 border-b border-slate-100 bg-slate-50/50 flex items-center justify-between">
+                        <h3 class="font-bold text-slate-800">Daftar Rekening Terdaftar</h3>
+                        <span class="bg-brand-100 text-brand-700 text-xs font-bold px-2.5 py-1 rounded-full">{{ $semuaRekening->count() }} Rekening</span>
+                    </div>
+                    
+                    <div class="p-0">
+                        @if($semuaRekening->isEmpty())
+                            <div class="p-12 text-center flex flex-col items-center">
+                                <div class="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mb-4 border border-slate-100">
+                                    <svg class="w-8 h-8 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"/></svg>
+                                </div>
+                                <h3 class="text-slate-800 font-bold mb-1">Belum ada rekening</h3>
+                                <p class="text-sm text-slate-500 max-w-sm">Anda belum mendaftarkan satupun rekening untuk pembayaran zakat.</p>
+                            </div>
+                        @else
+                            <div class="overflow-x-auto">
+                                <table class="w-full text-left border-collapse">
+                                    <thead>
+                                        <tr class="bg-white border-b border-slate-100 text-xs uppercase tracking-wider text-slate-500">
+                                            <th class="p-4 font-semibold w-12 text-center">No</th>
+                                            <th class="p-4 font-semibold">Detail Rekening</th>
+                                            <th class="p-4 font-semibold text-right w-32">Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody class="divide-y divide-slate-100 text-sm">
+                                        @foreach($semuaRekening as $idx => $rek)
+                                            <tr class="hover:bg-slate-50/80 transition-colors group">
+                                                <td class="p-4 text-center font-medium text-slate-400">{{ $idx + 1 }}</td>
+                                                <td class="p-4">
+                                                    <div class="font-bold text-slate-800 text-base">{{ $rek->nama_bank }}</div>
+                                                    <div class="text-brand-600 font-mono mt-0.5 tracking-wider">{{ $rek->nomor_rekening }}</div>
+                                                    <div class="text-xs text-slate-500 mt-1 flex items-center gap-1.5">
+                                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
+                                                        a.n. {{ $rek->atas_nama }}
+                                                    </div>
+                                                </td>
+                                                <td class="p-4 text-right align-top">
+                                                    <div class="flex items-center justify-end gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'rekening', 'edit_rekening' => $rek->id]) }}" class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 hover:bg-blue-600 hover:text-white flex items-center justify-center transition-colors shadow-sm" title="Ubah">
+                                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                                                        </a>
+                                                        <form action="{{ route('lembaga.rekening.destroy', ['lembaga' => $subdomain, 'rekening' => $rek->id]) }}" method="POST" onsubmit="return confirm('Hapus rekening {{ $rek->nama_bank }} ini?');" class="inline-block">
+                                                            @csrf @method('DELETE')
+                                                            <button type="submit" class="w-8 h-8 rounded-lg bg-red-50 text-red-600 hover:bg-red-600 hover:text-white flex items-center justify-center transition-colors shadow-sm" title="Hapus">
+                                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>
+                                                            </button>
+                                                        </form>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        @endif
+                    </div>
+                </div>
+            </div>
+            @endif
+
             <!-- TAB 3: DATA BERITA & PUBLIKASI UPZ -->
             <div x-show="activeTab === 'berita'" x-cloak class="space-y-6">
 
@@ -701,7 +825,7 @@
                         </div>
                         <div class="border-b border-slate-100 pb-4">
                             <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Domain Sistem</p>
-                            <p class="text-base font-semibold text-brand-600">{{ $subdomain }}.localhost</p>
+                            <p class="text-base font-semibold text-brand-600">{{ $subdomain }}.{{ env('APP_DOMAIN', 'localhost') }}</p>
                         </div>
                         <div class="border-b border-slate-100 pb-4">
                             <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Penanggung Jawab (Ketua)</p>

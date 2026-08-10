@@ -44,7 +44,7 @@
             <div class="flex items-center">
                 <input type="text" name="subdomain" value="{{ old('subdomain') }}" placeholder="contoh: upz"
                        class="w-full rounded-l-lg border border-gray-300 py-2 px-3 shadow-sm focus:border-blue-500 focus:ring-blue-500">
-                <span class="bg-gray-100 border border-l-0 border-gray-300 px-3 py-2 rounded-r-lg text-gray-500">.localhost</span>
+                <span class="bg-gray-100 border border-l-0 border-gray-300 px-3 py-2 rounded-r-lg text-gray-500">.{{ env('APP_DOMAIN', 'localhost') }}</span>
             </div>
             <p class="text-xs text-gray-500 mt-1">Jika diisi, lembaga ini akan memiliki website subdomain mandiri.</p>
             @error('subdomain') <p class="text-red-500 text-sm">{{ $message }}</p> @enderror

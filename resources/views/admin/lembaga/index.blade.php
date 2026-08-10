@@ -48,8 +48,8 @@
                         </td>
                         <td class="px-6 py-4">
                             @if($l->subdomain)
-                                <a href="http://{{ $l->subdomain }}.localhost" target="_blank" class="text-blue-600 hover:underline font-semibold block mb-1">
-                                    {{ $l->subdomain }}.localhost
+                                <a href="http://{{ $l->subdomain }}.{{ env('APP_DOMAIN', 'localhost') }}" target="_blank" class="text-blue-600 hover:underline font-semibold block mb-1">
+                                    {{ $l->subdomain }}.{{ env('APP_DOMAIN', 'localhost') }}
                                 </a>
                             @else
                                 <span class="text-gray-400 block mb-1">- Tidak ada -</span>

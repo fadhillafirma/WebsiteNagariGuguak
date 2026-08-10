@@ -7,7 +7,14 @@
     <meta name="description" content="{{ $info['deskripsi'] }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     {{-- Font diselaraskan dengan web utama Nagari Guguak (Inter via fonts.bunny.net) --}}
-    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800" rel="stylesheet">
+    <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&family=playfair-display:700" rel="stylesheet">
+    @if(isset($lembaga) && $lembaga->foto_lembaga)
+        <link rel="icon" type="image/png" href="{{ asset('storage/'.$lembaga->foto_lembaga) }}" />
+    @elseif(isset($subdomain) && $subdomain === 'upz')
+        <link rel="icon" type="image/png" href="{{ asset('baznas.png') }}" />
+    @else
+        <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
+    @endif
     <style>
         :root {
             --green-dark: #004225;
@@ -710,15 +717,18 @@
             @if($subdomain === 'upz')
             <h2 class="cta-title reveal">Tunaikan Zakatmu,<br>Berkahkan Hartamu</h2>
             <p class="cta-desc reveal">Zakat bukan sekadar kewajiban, melainkan investasi terbaik untuk keberkahan hidup Anda dan kesejahteraan sesama. Percayakan kepada kami.</p>
+            <div class="cta-row reveal">
+                <a href="{{ route('lembaga.bayar-zakat', ['lembaga' => $subdomain]) }}" class="btn-gold">Bayar Zakat Sekarang</a>
+                <a href="https://nagariguguak.id" class="btn-ghost">Kembali ke Portal Nagari</a>
+            </div>
             @else
             <h2 class="cta-title reveal">Mari Berkolaborasi Bersama<br>{{ $info['nama'] }}</h2>
             <p class="cta-desc reveal">Hubungi kami untuk informasi lebih lanjut mengenai program kerja dan kegiatan yang sedang berlangsung di Nagari Guguak.</p>
-            @endif
-            
             <div class="cta-row reveal">
                 <a href="https://nagariguguak.id/kontak" class="btn-gold">Hubungi Kami</a>
                 <a href="https://nagariguguak.id" class="btn-ghost">Kembali ke Portal Nagari</a>
             </div>
+            @endif
         </div>
     </section>
 
@@ -758,7 +768,10 @@
         </div>
         <div class="foot-bottom">
             <p>&copy; 2025 <span>{{ $info['nama'] }} Nagari Guguak</span>. Bagian dari ekosistem digital Nagari Guguak.</p>
-            <p>Dikelola oleh Pemerintah Nagari Guguak.</p>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <p>Dikelola oleh Pemerintah Nagari Guguak.</p>
+                <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain]) }}" style="padding: 4px 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); border-radius: 4px; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">Login Admin</a>
+            </div>
         </div>
     </footer>
 

@@ -50,6 +50,7 @@
             color: var(--black-text); letter-spacing: -1px;
         }
         .nav-brand-title em { color: var(--orange-main); font-style: normal; }
+        .nav-menu { display: flex; align-items: center; flex-grow: 1; justify-content: space-between; }
         .nav-links { display:flex; gap:35px; list-style:none; margin: 0 auto; }
         .nav-links a {
             color: var(--black-text);
@@ -57,6 +58,7 @@
             transition:color 0.2s;
         }
         .nav-links a:hover { color: var(--orange-main); }
+        .nav-buttons { display: flex; align-items: center; }
         .nav-btn {
             background: var(--white); color: var(--black-text);
             padding: 10px 24px; border-radius: 4px;
@@ -64,6 +66,11 @@
             text-decoration: none; transition: all 0.3s;
         }
         .nav-btn:hover { border-color: var(--black-text); }
+        .menu-toggle { 
+            display: none; background: none; border: none; 
+            cursor: pointer; color: var(--black-text); 
+            width: 32px; height: 32px; 
+        }
 
         /* ====== HERO ====== */
         #hero { 
@@ -167,11 +174,25 @@
         .foot-bottom { font-size: 13px; opacity: 0.6; display: flex; justify-content: space-between; }
 
         @media (max-width: 900px) {
-            .nav-links { display: none; }
+            .nav-menu { 
+                position: fixed; top: 80px; left: 0; right: 0; background: var(--white);
+                flex-direction: column; padding: 20px 5%; gap: 20px;
+                border-bottom: 1px solid var(--border);
+                box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+                display: none;
+            }
+            .nav-menu.active { display: flex; }
+            .nav-links { flex-direction: column; gap: 20px; text-align: center; width: 100%; margin: 0; }
+            .nav-buttons { flex-direction: column; gap: 10px; width: 100%; }
+            .nav-buttons .nav-btn { width: 100%; text-align: center; margin: 0 !important; }
+            .menu-toggle { display: block; }
+            
+            .hero-top { padding: 40px 5%; }
+            .section-padding { padding: 60px 5%; }
             .grid-2 { grid-template-columns: 1fr; gap: 40px; }
             .prog-grid { grid-template-columns: 1fr; }
             .berita-item { grid-template-columns: 1fr; gap: 16px; padding: 30px 0; }
-            .hero-title { font-size: 36px; }
+            .hero-title { font-size: 32px; }
             .hero-bottom { min-height: 250px; }
             .foot-top { flex-direction: column; gap: 30px; }
             .foot-links { flex-direction: column; gap: 15px; }
@@ -185,16 +206,21 @@
         <a href="#" class="nav-brand">
             <img src="{{ asset('bumnag.png') }}" alt="Logo BUMNag" style="height: 48px; width: auto; object-fit: contain;">
         </a>
-        <ul class="nav-links">
-            <li><a href="#about">Tentang Kami</a></li>
-            <li><a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}">Tugas Pokok</a></li>
-            <li><a href="#program">Program</a></li>
-            <li><a href="#berita">Berita</a></li>
-        </ul>
-        <div>
-            <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}" class="nav-btn" style="margin-right: 15px; border:none;">Log Masuk</a>
-            <a href="https://nagariguguak.id" class="nav-btn">Portal Nagari</a>
+        <div class="nav-menu" id="navMenu">
+            <ul class="nav-links">
+                <li><a href="#about" onclick="toggleMenu()">Tentang Kami</a></li>
+                <li><a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}">Tugas Pokok</a></li>
+                <li><a href="#program" onclick="toggleMenu()">Program</a></li>
+                <li><a href="#berita" onclick="toggleMenu()">Berita</a></li>
+            </ul>
+            <div class="nav-buttons">
+                <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}" class="nav-btn" style="margin-right: 15px; border:none;">Log Masuk</a>
+                <a href="https://nagariguguak.id" class="nav-btn">Portal Nagari</a>
+            </div>
         </div>
+        <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+        </button>
     </nav>
 
     {{-- HERO --}}
@@ -332,5 +358,10 @@
         </div>
     </footer>
 
+    <script>
+        function toggleMenu() {
+            document.getElementById('navMenu').classList.toggle('active');
+        }
+    </script>
 </body>
 </html>

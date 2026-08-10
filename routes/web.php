@@ -29,7 +29,7 @@ use App\Models\Galeri;
 use App\Http\Controllers\LembagaSubdomainController;
 
 // SETUP SUBDOMAIN
-Route::domain('{lembaga}.localhost')->group(function () {
+Route::domain('{lembaga}.' . env('APP_DOMAIN', 'localhost'))->group(function () {
     // Halaman utama (frontend) lembaga
     Route::get('/', [LembagaSubdomainController::class, 'index'])->name('lembaga.beranda');
     
@@ -43,6 +43,9 @@ Route::domain('{lembaga}.localhost')->group(function () {
     // Halaman List & Detail Berita
     Route::get('/berita', [LembagaSubdomainController::class, 'beritaIndex'])->name('lembaga.berita.index');
     Route::get('/berita/{berita}', [LembagaSubdomainController::class, 'showBerita'])->name('lembaga.berita.show');
+
+    // Halaman Bayar Zakat Khusus UPZ
+    Route::get('/bayar-zakat', [LembagaSubdomainController::class, 'bayarZakat'])->name('lembaga.bayar-zakat');
 
     // Login & Logout Lembaga Admin
     Route::get('/login', [LembagaSubdomainController::class, 'showLogin'])->name('lembaga.login');
@@ -61,6 +64,9 @@ Route::domain('{lembaga}.localhost')->group(function () {
         Route::post('/admin/berita', [LembagaSubdomainController::class, 'storeBerita'])->name('lembaga.berita.store');
         Route::put('/admin/berita/{berita}', [LembagaSubdomainController::class, 'updateBerita'])->name('lembaga.berita.update');
         Route::delete('/admin/berita/{berita}', [LembagaSubdomainController::class, 'destroyBerita'])->name('lembaga.berita.destroy');
+        Route::post('/admin/rekening', [LembagaSubdomainController::class, 'storeRekening'])->name('lembaga.rekening.store');
+        Route::put('/admin/rekening/{rekening}', [LembagaSubdomainController::class, 'updateRekening'])->name('lembaga.rekening.update');
+        Route::delete('/admin/rekening/{rekening}', [LembagaSubdomainController::class, 'destroyRekening'])->name('lembaga.rekening.destroy');
         Route::put('/admin/profil', [LembagaSubdomainController::class, 'updateProfil'])->name('lembaga.profil.update');
     });
 });

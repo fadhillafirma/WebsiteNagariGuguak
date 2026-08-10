@@ -828,7 +828,7 @@
                         </div>
                         <div class="border-b border-slate-100 pb-4">
                             <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Domain Sistem</p>
-                            <p class="text-base font-semibold text-brand-600">{{ $subdomain }}.localhost</p>
+                            <p class="text-base font-semibold text-brand-600">{{ $subdomain }}.{{ env('APP_DOMAIN', 'localhost') }}</p>
                         </div>
                         <div class="border-b border-slate-100 pb-4">
                             <p class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Penanggung Jawab (Ketua)</p>

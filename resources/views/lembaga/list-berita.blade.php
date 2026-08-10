@@ -7,6 +7,13 @@
     <meta name="description" content="Berita dan kegiatan terbaru dari {{ $info['nama'] }} untuk masyarakat Nagari Guguak.">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&family=playfair-display:700" rel="stylesheet">
+    @if(isset($lembaga) && $lembaga->foto_lembaga)
+        <link rel="icon" type="image/png" href="{{ asset('storage/'.$lembaga->foto_lembaga) }}" />
+    @elseif(isset($subdomain) && $subdomain === 'upz')
+        <link rel="icon" type="image/png" href="{{ asset('baznas.png') }}" />
+    @else
+        <link rel="icon" type="image/png" href="{{ asset('logo_bpd.png') }}" />
+    @endif
     <style>
         :root {
             --green-dark: #004225;
@@ -319,7 +326,7 @@
             <li><a href="{{ route('lembaga.berita.index', ['lembaga' => $subdomain]) }}" class="active">Berita</a></li>
             @if($subdomain === 'upz')
             <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cara">Cara Berzakat</a></li>
-            <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Bayar Zakat</a></li>
+            <li><a href="{{ route('lembaga.bayar-zakat', ['lembaga' => $subdomain]) }}" class="nav-btn">Bayar Zakat</a></li>
             @else
             <li><a href="{{ route('lembaga.beranda', ['lembaga' => $subdomain]) }}#cta" class="nav-btn">Hubungi Kami</a></li>
             @endif
@@ -431,7 +438,10 @@
         </div>
         <div class="foot-bottom">
             <p>&copy; 2026 <span>UPZ Nagari Guguak</span>. Bagian dari ekosistem digital Nagari Guguak.</p>
-            <p>Dikelola oleh Pemerintah Nagari Guguak.</p>
+            <div style="display: flex; align-items: center; gap: 16px;">
+                <p>Dikelola oleh Pemerintah Nagari Guguak.</p>
+                <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain]) }}" style="padding: 4px 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); border-radius: 4px; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">Login Admin</a>
+            </div>
         </div>
     </footer>
 

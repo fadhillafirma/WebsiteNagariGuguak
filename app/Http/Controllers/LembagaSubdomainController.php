@@ -65,6 +65,24 @@ class LembagaSubdomainController extends Controller
         return view('lembaga.list-berita', compact('lembaga', 'beritas', 'info', 'subdomain'));
     }
 
+    public function bayarZakat($subdomain)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        
+        // Hanya untuk upz, jika diperlukan bisa dibatasi
+        if ($subdomain !== 'upz') {
+            return redirect()->route('lembaga.beranda', ['lembaga' => $subdomain]);
+        }
+
+        $info = $this->getThemeInfo($lembaga, $subdomain);
+        $rekenings = $lembaga->rekenings()->get();
+
+        if (view()->exists("{$subdomain}.bayar-zakat")) {
+            return view("{$subdomain}.bayar-zakat", compact('lembaga', 'info', 'subdomain', 'rekenings'));
+        }
+        return view('lembaga.bayar-zakat', compact('lembaga', 'info', 'subdomain', 'rekenings'));
+    }
+
     public function showProgram($subdomain, $slug)
     {
         $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
@@ -173,19 +191,55 @@ class LembagaSubdomainController extends Controller
     public function admin($subdomain)
     {
         $lembaga = $this->lembaga($subdomain);
+        $info = $this->getThemeInfo($lembaga, $subdomain);
 
         $programs = $lembaga->programs()->latest()->get();
         $beritas = $lembaga->beritas()->latest()->get();
         $semuaTugas = $lembaga->tugas()->latest()->get();
+        $semuaRekening = $lembaga->rekenings()->latest()->get();
 
         $editProgram = request('edit_program') ? $lembaga->programs()->find(request('edit_program')) : null;
         $editBerita = request('edit_berita') ? $lembaga->beritas()->find(request('edit_berita')) : null;
         $editTugas = request('edit_tugas') ? $lembaga->tugas()->find(request('edit_tugas')) : null;
+        $editRekening = request('edit_rekening') ? $lembaga->rekenings()->find(request('edit_rekening')) : null;
 
         if (view()->exists("{$subdomain}.admin")) {
-            return view("{$subdomain}.admin", compact('lembaga', 'programs', 'beritas', 'semuaTugas', 'subdomain', 'editProgram', 'editBerita', 'editTugas'));
+            return view("{$subdomain}.admin", compact('lembaga', 'info', 'programs', 'beritas', 'semuaTugas', 'semuaRekening', 'subdomain', 'editProgram', 'editBerita', 'editTugas', 'editRekening'));
         }
-        return view('lembaga.admin', compact('lembaga', 'programs', 'beritas', 'semuaTugas', 'subdomain', 'editProgram', 'editBerita', 'editTugas'));
+        return view('lembaga.admin', compact('lembaga', 'info', 'programs', 'beritas', 'semuaTugas', 'semuaRekening', 'subdomain', 'editProgram', 'editBerita', 'editTugas', 'editRekening'));
+    }
+
+    public function storeRekening(Request $request, $subdomain)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        $data = $request->validate([
+            'nama_bank' => 'required|string|max:255',
+            'nomor_rekening' => 'required|string|max:255',
+            'atas_nama' => 'required|string|max:255',
+        ]);
+        $lembaga->rekenings()->create($data);
+        return redirect()->route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'rekening'])->with('success', 'Rekening berhasil ditambahkan!');
+    }
+
+    public function updateRekening(Request $request, $subdomain, $rekeningId)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        $rekening = $lembaga->rekenings()->findOrFail($rekeningId);
+        $data = $request->validate([
+            'nama_bank' => 'required|string|max:255',
+            'nomor_rekening' => 'required|string|max:255',
+            'atas_nama' => 'required|string|max:255',
+        ]);
+        $rekening->update($data);
+        return redirect()->route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'rekening'])->with('success', 'Rekening berhasil diperbarui!');
+    }
+
+    public function destroyRekening($subdomain, $rekeningId)
+    {
+        $lembaga = Lembaga::where('subdomain', $subdomain)->firstOrFail();
+        $rekening = $lembaga->rekenings()->findOrFail($rekeningId);
+        $rekening->delete();
+        return redirect()->route('lembaga.admin', ['lembaga' => $subdomain, 'tab' => 'rekening'])->with('success', 'Rekening berhasil dihapus!');
     }
 
     public function storeTugas(Request $request, $subdomain)

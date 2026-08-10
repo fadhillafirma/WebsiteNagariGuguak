@@ -50,4 +50,12 @@ class Lembaga extends Model
     {
         return $this->hasMany(LembagaTugas::class, 'lembaga_id');
     }
+
+    /**
+     * Relasi: satu lembaga memiliki banyak rekening.
+     */
+    public function rekenings()
+    {
+        return $this->hasMany(LembagaRekening::class, 'lembaga_id');
+    }
 }

@@ -45,6 +45,8 @@
       <div class="flex space-x-4 mt-4 sm:mt-0">
         <a href="#" class="hover:text-greenDark">Privacy Policy</a>
         <a href="#" class="hover:text-greenDark">Terms</a>
+        <span class="text-gray-400">|</span>
+        <a href="{{ route('login') }}" class="hover:text-greenDark font-semibold">Login Admin</a>
       </div>
     </div>
   </div>
