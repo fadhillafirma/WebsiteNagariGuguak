@@ -196,6 +196,7 @@
             .hero-bottom { min-height: 250px; }
             .foot-top { flex-direction: column; gap: 30px; }
             .foot-links { flex-direction: column; gap: 15px; }
+            .btn-orange { width: 100%; text-align: center; display: block; box-sizing: border-box; }
         }
     </style>
 </head>
@@ -219,7 +220,7 @@
             </div>
         </div>
         <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 100%; height: 100%;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
     </nav>
 

@@ -124,9 +124,9 @@
         }
         .hero-inner {
             position:relative; z-index:2;
-            max-width:1240px; margin:0 auto;
+            max-width:800px; margin:0 auto;
             padding:130px 6% 90px;
-            display:grid; grid-template-columns:1.1fr 1fr; gap:70px; align-items:center;
+            display:flex; flex-direction:column; align-items:flex-start;
         }
         .hero-kicker {
             display:inline-flex; align-items:center; gap:10px;
@@ -495,10 +495,11 @@
 
         /* ====== RESPONSIVE (HP & TABLET) ====== */
         @media (max-width: 900px) {
-            .hero-inner { grid-template-columns: 1fr; padding-top: 110px; text-align: center; }
+            .hero-inner { padding-top: 110px; text-align: center; align-items: center; }
             .hero-kicker { margin: 0 auto 24px; }
             .hero-desc { margin: 0 auto 30px; }
             .hero-acts { justify-content: center; }
+            .berita-header { flex-direction: column; gap: 20px; align-items: flex-start; }
             .stats-card { grid-template-columns: 1fr 1fr; padding: 24px; }
             
             .prog-grid { grid-template-columns: 1fr 1fr; }
@@ -528,7 +529,7 @@
             
             .hero-title { font-size: 32px; }
             .hero-acts { flex-direction: column; width: 100%; }
-            .btn-gold, .btn-outline { width: 100%; text-align: center; }
+            .btn-gold, .btn-outline, .btn-green { width: 100%; text-align: center; display: block; }
             
             .stats-card { grid-template-columns: 1fr; gap: 10px; }
             
@@ -570,7 +571,7 @@
             </ul>
         </div>
         <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width: 100%; height: 100%;"><path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16"></path></svg>
         </button>
     </nav>
 
@@ -587,7 +588,7 @@
                 <p class="hero-desc">
                     {{ $info['deskripsi'] ?? 'Pusat informasi dan layanan publik '.$info['nama'].' Nagari Guguak.' }}
                 </p>
-                <div class="hero-acts">
+                <div class="hero-acts" style="width: 100%;">
                     @if($subdomain === 'upz')
                     <a href="#cta" class="btn-gold">Bayar Zakat Sekarang</a>
                     @else
@@ -597,16 +598,16 @@
                 </div>
 
                 @if(isset($lembaga->rekenings) && $lembaga->rekenings->count() > 0)
-                <div class="hero-rekening" style="margin-top: 40px; max-width: 500px; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); animation: fd-up 0.9s 0.4s ease both;">
+                <div class="hero-rekening" style="margin: 40px auto 0; max-width: 500px; width: 100%; text-align: left; background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; border: 1px solid rgba(255,255,255,0.2); animation: fd-up 0.9s 0.4s ease both;">
                     <h3 style="font-size: 13px; color: var(--gold-light); margin-bottom: 15px; text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Penyaluran Zakat / Donasi:</h3>
                     <div style="display: flex; flex-direction: column; gap: 12px;">
                         @foreach($lembaga->rekenings as $rek)
-                        <div style="display: flex; align-items: center; justify-content: space-between; background: rgba(0,0,0,0.25); padding: 12px 16px; border-radius: 8px;">
-                            <div>
-                                <div style="font-weight: 700; color: #fff; font-size: 15px; font-family: monospace; letter-spacing: 0.5px;">{{ $rek->nomor_rekening }}</div>
-                                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px;">{{ $rek->nama_bank }} - a.n {{ $rek->atas_nama }}</div>
+                        <div style="display: flex; align-items: center; justify-content: space-between; gap: 10px; background: rgba(0,0,0,0.25); padding: 12px 16px; border-radius: 8px;">
+                            <div style="min-width: 0;">
+                                <div style="font-weight: 700; color: #fff; font-size: 14px; font-family: monospace; letter-spacing: 0.5px; word-break: break-all;">{{ $rek->nomor_rekening }}</div>
+                                <div style="font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{ $rek->nama_bank }} - a.n {{ $rek->atas_nama }}</div>
                             </div>
-                            <button onclick="navigator.clipboard.writeText('{{ $rek->nomor_rekening }}'); alert('Nomor rekening {{ $rek->nama_bank }} disalin!');" style="background: var(--gold); color: var(--green-dark); border: none; padding: 6px 14px; border-radius: 4px; font-weight: 700; font-size: 11px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">SALIN</button>
+                            <button onclick="navigator.clipboard.writeText('{{ $rek->nomor_rekening }}'); alert('Nomor rekening {{ $rek->nama_bank }} disalin!');" style="flex-shrink: 0; background: var(--gold); color: var(--green-dark); border: none; padding: 8px 14px; border-radius: 4px; font-weight: 700; font-size: 11px; cursor: pointer; transition: background 0.2s;" onmouseover="this.style.background='var(--gold-light)'" onmouseout="this.style.background='var(--gold)'">SALIN</button>
                         </div>
                         @endforeach
                     </div>
