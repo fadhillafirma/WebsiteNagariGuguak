@@ -21,6 +21,7 @@
         </ul>
       </div>
 
+      
       <div>
         <h3 class="text-md font-semibold text-greenDark uppercase mb-4">Sosial Media</h3>
         <ul class="space-y-2 text-sm">
@@ -41,7 +42,7 @@
     <hr class="my-8 border-greenDark" />
 
     <div class="flex flex-col sm:flex-row items-center justify-between text-sm text-black">
-      <span>Â© {{ date('Y') }} Nagari Guguak. Powered by KKN Guguak Unand 2025.</span>
+      <span>© {{ date('Y') }} Nagari Guguak. Powered by KKN Guguak Unand 2025.</span>
       <div class="flex space-x-4 mt-4 sm:mt-0">
         <a href="#" class="hover:text-greenDark">Privacy Policy</a>
         <a href="#" class="hover:text-greenDark">Terms</a>
