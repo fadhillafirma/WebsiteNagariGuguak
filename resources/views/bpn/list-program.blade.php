@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Program Kerja – {{ $info['nama'] }}</title>
+    <title>Daftar Program Kerja â€“ {{ $info['nama'] }}</title>
     <meta name="description" content="Daftar program kerja {{ $info['nama'] }} untuk kesejahteraan masyarakat Nagari Guguak.">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&family=playfair-display:700" rel="stylesheet">
@@ -406,9 +406,9 @@
             <div>
                 <div class="foot-h">Kontak</div>
                 <ul class="foot-ul">
-                    <li><a href="#">Nagari Guguak, Kab. Lima Puluh Kota</a></li>
-                    <li><a href="#">Sumatera Barat, Indonesia</a></li>
-                    <li><a href="#">bpn@nagariguguaksijunjung.id</a></li>
+                    <li><a href="#">Jl. Raya Guguak No.01, Kec. Sijunjung</a></li>
+                    <li><a href="mailto:nagariguguak7@gmail.com">nagariguguak7@gmail.com</a></li>
+                    <li><a href="tel:085191064962">085191064962</a></li>
                 </ul>
             </div>
         </div>
@@ -433,6 +433,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 

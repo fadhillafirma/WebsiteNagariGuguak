@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $info['nama'] }} – Nagari Guguak</title>
+    <title>{{ $info['nama'] }} â€“ Nagari Guguak</title>
     <meta name="description" content="{{ $info['deskripsi'] }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     {{-- Font diselaraskan dengan web utama Nagari Guguak (Inter via fonts.bunny.net) --}}
@@ -722,9 +722,9 @@
             <div>
                 <div class="foot-h">Kontak</div>
                 <ul class="foot-ul">
-                    <li><a href="#">Nagari Guguak, Kab. Lima Puluh Kota</a></li>
-                    <li><a href="#">Sumatera Barat, Indonesia</a></li>
-                    <li><a href="#">upz@nagariguguaksijunjung.id</a></li>
+                    <li><a href="#">Jl. Raya Guguak No.01, Kec. Sijunjung</a></li>
+                    <li><a href="mailto:nagariguguak7@gmail.com">nagariguguak7@gmail.com</a></li>
+                    <li><a href="tel:085191064962">085191064962</a></li>
                 </ul>
             </div>
         </div>
@@ -764,3 +764,5 @@
     </script>
 </body>
 </html>
+
+

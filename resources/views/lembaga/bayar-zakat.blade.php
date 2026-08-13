@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bayar Zakat – {{ $info['nama'] }}</title>
+    <title>Bayar Zakat â€“ {{ $info['nama'] }}</title>
     <meta name="description" content="Informasi rekening dan layanan pembayaran zakat melalui {{ $info['nama'] }} Nagari Guguak.">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&family=playfair-display:700" rel="stylesheet">
@@ -219,14 +219,14 @@
                         </a>
 
                         <!-- Email -->
-                        <a href="mailto:upz@nagariguguaksijunjung.id" class="block group">
+                        <a href="mailto:nagariguguak7@gmail.com" class="block group">
                             <div class="border border-gray-200 rounded-md p-5 flex items-center gap-5 bg-white group-hover:border-gold transition-colors duration-200">
                                 <div class="w-12 h-12 bg-gray-50 text-gray-700 flex items-center justify-center shrink-0 border border-gray-100 rounded">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                                 </div>
                                 <div>
                                     <h5 class="text-lg font-bold text-gray-900">Email</h5>
-                                    <p class="text-gray-600 text-sm mt-0.5">upz@nagariguguaksijunjung.id</p>
+                                    <p class="text-gray-600 text-sm mt-0.5">nagariguguak7@gmail.com</p>
                                 </div>
                             </div>
                         </a>
@@ -275,9 +275,9 @@
             <div>1
                 <div class="foot-h">Kontak</div>
                 <ul class="foot-ul">
-                    <li><a href="#">Nagari Guguak, Kab. Sijunjung</a></li>
-                    <li><a href="#">Sumatera Barat, Indonesia</a></li>
-                    <li><a href="#">{{ strtolower($subdomain) }}@nagariguguaksijunjung.id</a></li>
+                    <li><a href="#">Jl. Raya Guguak No.01, Kec. Sijunjung</a></li>
+                    <li><a href="mailto:nagariguguak7@gmail.com">nagariguguak7@gmail.com</a></li>
+                    <li><a href="tel:085191064962">085191064962</a></li>
                 </ul>
             </div>
         </div>
@@ -309,3 +309,7 @@
     </script>
 </body>
 </html>
+
+
+
+
