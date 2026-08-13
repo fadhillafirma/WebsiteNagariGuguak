@@ -164,11 +164,12 @@
 
     <footer>
         <div style="display: flex; justify-content: space-between; align-items: center; max-width: 800px; margin: 0 auto; flex-wrap: wrap; gap: 10px;">
-            <p>&copy; 2025 UPZ Nagari Guguak. Dikelola oleh Pemerintah Nagari Guguak.</p>
+            <p>&copy; 2025 UPZ Nagari Guguak. Dikelola oleh Pemerintah Nagari Guguak. Powered by KKN Guguak 2026.</p>
             
         </div>
     </footer>
 
 </body>
 </html>
+
 

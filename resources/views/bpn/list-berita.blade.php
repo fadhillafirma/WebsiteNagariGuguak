@@ -422,7 +422,7 @@
         </div>
         <div class="foot-bottom">
             <p>&copy; 2026 <span>BPN Nagari Guguak</span>. Bagian dari ekosistem digital Nagari Guguak.</p>
-            <p>Dikelola oleh Pemerintah Nagari Guguak.</p>
+            <p>Dikelola oleh Pemerintah Nagari Guguak. Powered by KKN Guguak 2026.</p>
         </div>
     </footer>
 
@@ -441,6 +441,7 @@
     </script>
 </body>
 </html>
+
 
 
 

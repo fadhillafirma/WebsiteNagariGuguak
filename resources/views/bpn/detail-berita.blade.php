@@ -147,11 +147,12 @@
     </div>
 
     <footer>
-        <p>&copy; 2025 BPN Nagari Guguak. Dikelola oleh Pemerintah Nagari Guguak.</p>
+        <p>&copy; 2025 BPN Nagari Guguak. Dikelola oleh Pemerintah Nagari Guguak. Powered by KKN Guguak 2026.</p>
     </footer>
 
 </body>
 </html>
+
 
 
 

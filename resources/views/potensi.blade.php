@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8" />
@@ -57,7 +57,7 @@
     <footer class="bg-white pt-5 pb-5 shadow-md w-full">
         <div class="max-w-6xl mx-auto text-center">
             <p>2025 Nagari Guguak.</p>
-            <p>Powered by KKN Guguak Unand 2025.</p>
+            <p>Powered by KKN Guguak 2026.</p>
         </div>
     </footer>
 
@@ -88,3 +88,4 @@
     </script>
 </body>
 </html>
+

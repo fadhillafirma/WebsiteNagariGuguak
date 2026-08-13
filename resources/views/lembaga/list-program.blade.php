@@ -431,7 +431,7 @@
         <div class="foot-bottom">
             <p>&copy; 2025 <span>UPZ Nagari Guguak</span>. Bagian dari ekosistem digital Nagari Guguak.</p>
             <div style="display: flex; align-items: center; gap: 16px;">
-                <p>Dikelola oleh Pemerintah Nagari Guguak.</p>
+                <p>Dikelola oleh Pemerintah Nagari Guguak. Powered by KKN Guguak 2026.</p>
                 
             </div>
         </div>
@@ -457,6 +457,7 @@
     </script>
 </body>
 </html>
+
 
 
 

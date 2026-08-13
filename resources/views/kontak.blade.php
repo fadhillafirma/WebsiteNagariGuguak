@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -29,7 +29,7 @@
                    target="_blank" rel="noopener noreferrer"
                    class="absolute inset-0 z-10 flex items-end justify-end p-3">
                     <span class="bg-greenDark text-white px-4 py-2 rounded-lg shadow-md hover:bg-green-900 transition text-sm font-medium">
-                        Buka di Google Maps →
+                        Buka di Google Maps â†’
                     </span>
                 </a>
             </div>
@@ -73,7 +73,7 @@
      <section class="bg-white pt-5 pb-5 bottom-0 left-0 w-full shadow-md ">
                     <div class="max-w-6xl mx-auto text-center  justify-content-center">
                         <p>2025 Nagari Guguak.</p>
-                            <p>Powered by KKN Guguak Unand 2025.</p>
+                            <p>Powered by KKN Guguak 2026.</p>
                     </div>
         </section>
 
@@ -86,3 +86,4 @@
     </script>
 </body>
 </html>
+
