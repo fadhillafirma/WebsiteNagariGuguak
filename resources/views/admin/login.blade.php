@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -27,7 +27,7 @@
                     </div>
                 @endif
 
-                <form method="POST" action="{{ url('/32002guguak') }}" class="space-y-3">
+                <form method="POST" action="{{ route('login') }}" class="space-y-3">
                     @csrf
                     <div class="space-y-2">
                         <label for="email" class="block text-sm font-medium text-gray-700 ">Email</label>
@@ -66,3 +66,4 @@
     </div>
 </body>
 </html>
+

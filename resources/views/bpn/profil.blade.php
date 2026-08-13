@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $info['nama'] }} – Nagari Guguak</title>
+    <title>{{ $info['nama'] }} â€“ Nagari Guguak</title>
     <meta name="description" content="{{ $info['deskripsi'] }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700|playfair-display:600,700,800" rel="stylesheet">
@@ -418,7 +418,7 @@
             <li><a href="#tugas">Tugas Pokok</a></li>
             <li><a href="#program">Agenda BPN</a></li>
             <li><a href="#berita">Warta</a></li>
-            <li><a href="{{ route('lembaga.login', ['lembaga' => 'bpn']) }}">Admin Login</a></li>
+            
         </ul>
         <div class="foot-copy">
             &copy; 2026 Badan Permusyawaratan Nagari Guguak. Hak cipta dilindungi undang-undang.
@@ -437,3 +437,4 @@
     </script>
 </body>
 </html>
+

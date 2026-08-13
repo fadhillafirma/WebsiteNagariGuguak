@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -99,7 +99,7 @@
             <li><a href="{{ route('lembaga.berita.index', ['lembaga' => 'bumnag']) }}" class="{{ request()->routeIs('lembaga.berita.*') ? 'active' : '' }}">Berita</a></li>
         </ul>
         <div>
-            <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}" class="nav-btn" style="margin-right: 15px; border:none;">Masuk</a>
+            
             <a href="https://nagariguguaksijunjung.id" class="nav-btn">Portal Nagari</a>
         </div>
     </nav>
@@ -114,7 +114,7 @@
                 <a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}">Tujuan</a>
                 <a href="{{ route('lembaga.program.index', ['lembaga' => 'bumnag']) }}">Program</a>
                 <a href="{{ route('lembaga.berita.index', ['lembaga' => 'bumnag']) }}">Berita</a>
-                <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}">Portal Admin</a>
+                
             </div>
         </div>
         <div class="foot-bottom">
@@ -124,3 +124,4 @@
     </footer>
 </body>
 </html>
+

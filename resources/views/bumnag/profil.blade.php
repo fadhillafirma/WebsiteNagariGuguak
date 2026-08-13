@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $info['nama'] }} – Nagari Guguak</title>
+    <title>{{ $info['nama'] }} â€“ Nagari Guguak</title>
     <meta name="description" content="{{ $info['deskripsi'] }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,600,700|lora:400,500,600,700" rel="stylesheet">
@@ -216,7 +216,7 @@
                 <li><a href="#berita" onclick="toggleMenu()">Berita</a></li>
             </ul>
             <div class="nav-buttons">
-                <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}" class="nav-btn" style="margin-right: 15px; border:none;">Log Masuk</a>
+                
                 <a href="https://nagariguguaksijunjung.id" class="nav-btn">Portal Nagari</a>
             </div>
         </div>
@@ -351,7 +351,7 @@
                 <a href="#about">Tentang Kami</a>
                 <a href="#program">Layanan</a>
                 <a href="#berita">Warta</a>
-                <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}">Portal Admin</a>
+                
             </div>
         </div>
         <div class="foot-bottom">
@@ -367,3 +367,4 @@
     </script>
 </body>
 </html>
+

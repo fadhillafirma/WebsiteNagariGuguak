@@ -1,4 +1,4 @@
-<footer class="bg-greenVill/50 border-t text-black">
+﻿<footer class="bg-greenVill/50 border-t text-black">
   <div class="max-w-7xl mx-auto px-6 py-12">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
@@ -41,13 +41,14 @@
     <hr class="my-8 border-greenDark" />
 
     <div class="flex flex-col sm:flex-row items-center justify-between text-sm text-black">
-      <span>© {{ date('Y') }} Nagari Guguak. Powered by KKN Guguak Unand 2025.</span>
+      <span>Â© {{ date('Y') }} Nagari Guguak. Powered by KKN Guguak Unand 2025.</span>
       <div class="flex space-x-4 mt-4 sm:mt-0">
         <a href="#" class="hover:text-greenDark">Privacy Policy</a>
         <a href="#" class="hover:text-greenDark">Terms</a>
         <span class="text-gray-400">|</span>
-        <a href="{{ route('login') }}" class="hover:text-greenDark font-semibold">Login Admin</a>
+        
       </div>
     </div>
   </div>
 </footer>
+

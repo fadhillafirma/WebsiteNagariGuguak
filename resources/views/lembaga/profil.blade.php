@@ -812,7 +812,7 @@
             <p>&copy; 2025 <span>{{ $info['nama'] }} Nagari Guguak</span>. Bagian dari ekosistem digital Nagari Guguak.</p>
             <div style="display: flex; align-items: center; gap: 16px;">
                 <p>Dikelola oleh Pemerintah Nagari Guguak.</p>
-                <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain]) }}" style="padding: 4px 12px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: var(--white); border-radius: 4px; text-decoration: none; transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">Login Admin</a>
+                
             </div>
         </div>
     </footer>
@@ -851,5 +851,6 @@
     </script>
 </body>
 </html>
+
 
 

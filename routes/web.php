@@ -48,26 +48,26 @@ Route::domain('{lembaga}.' . env('APP_DOMAIN', 'localhost'))->group(function () 
     Route::get('/bayar-zakat', [LembagaSubdomainController::class, 'bayarZakat'])->name('lembaga.bayar-zakat');
 
     // Login & Logout Lembaga Admin
-    Route::get('/login', [LembagaSubdomainController::class, 'showLogin'])->name('lembaga.login');
-    Route::post('/login', [LembagaSubdomainController::class, 'login'])->name('lembaga.login.submit');
-    Route::post('/logout', [LembagaSubdomainController::class, 'logout'])->name('lembaga.logout');
+    Route::get('/guguakadmin/login', [LembagaSubdomainController::class, 'showLogin'])->name('lembaga.login');
+    Route::post('/guguakadmin/login', [LembagaSubdomainController::class, 'login'])->name('lembaga.login.submit');
+    Route::post('/guguakadmin/logout', [LembagaSubdomainController::class, 'logout'])->name('lembaga.logout');
 
     // Halaman Admin Panel lembaga (dilindungi ownership middleware)
     Route::middleware(['lembaga_owner'])->group(function() {
-        Route::get('/admin', [LembagaSubdomainController::class, 'admin'])->name('lembaga.admin');
-        Route::post('/admin/tugas', [LembagaSubdomainController::class, 'storeTugas'])->name('lembaga.tugas.store');
-        Route::put('/admin/tugas/{tugas}', [LembagaSubdomainController::class, 'updateTugas'])->name('lembaga.tugas.update');
-        Route::delete('/admin/tugas/{tugas}', [LembagaSubdomainController::class, 'destroyTugas'])->name('lembaga.tugas.destroy');
-        Route::post('/admin/program', [LembagaSubdomainController::class, 'storeProgram'])->name('lembaga.program.store');
-        Route::put('/admin/program/{program}', [LembagaSubdomainController::class, 'updateProgram'])->name('lembaga.program.update');
-        Route::delete('/admin/program/{program}', [LembagaSubdomainController::class, 'destroyProgram'])->name('lembaga.program.destroy');
-        Route::post('/admin/berita', [LembagaSubdomainController::class, 'storeBerita'])->name('lembaga.berita.store');
-        Route::put('/admin/berita/{berita}', [LembagaSubdomainController::class, 'updateBerita'])->name('lembaga.berita.update');
-        Route::delete('/admin/berita/{berita}', [LembagaSubdomainController::class, 'destroyBerita'])->name('lembaga.berita.destroy');
-        Route::post('/admin/rekening', [LembagaSubdomainController::class, 'storeRekening'])->name('lembaga.rekening.store');
-        Route::put('/admin/rekening/{rekening}', [LembagaSubdomainController::class, 'updateRekening'])->name('lembaga.rekening.update');
-        Route::delete('/admin/rekening/{rekening}', [LembagaSubdomainController::class, 'destroyRekening'])->name('lembaga.rekening.destroy');
-        Route::put('/admin/profil', [LembagaSubdomainController::class, 'updateProfil'])->name('lembaga.profil.update');
+        Route::get('/guguakadmin', [LembagaSubdomainController::class, 'admin'])->name('lembaga.admin');
+        Route::post('/guguakadmin/tugas', [LembagaSubdomainController::class, 'storeTugas'])->name('lembaga.tugas.store');
+        Route::put('/guguakadmin/tugas/{tugas}', [LembagaSubdomainController::class, 'updateTugas'])->name('lembaga.tugas.update');
+        Route::delete('/guguakadmin/tugas/{tugas}', [LembagaSubdomainController::class, 'destroyTugas'])->name('lembaga.tugas.destroy');
+        Route::post('/guguakadmin/program', [LembagaSubdomainController::class, 'storeProgram'])->name('lembaga.program.store');
+        Route::put('/guguakadmin/program/{program}', [LembagaSubdomainController::class, 'updateProgram'])->name('lembaga.program.update');
+        Route::delete('/guguakadmin/program/{program}', [LembagaSubdomainController::class, 'destroyProgram'])->name('lembaga.program.destroy');
+        Route::post('/guguakadmin/berita', [LembagaSubdomainController::class, 'storeBerita'])->name('lembaga.berita.store');
+        Route::put('/guguakadmin/berita/{berita}', [LembagaSubdomainController::class, 'updateBerita'])->name('lembaga.berita.update');
+        Route::delete('/guguakadmin/berita/{berita}', [LembagaSubdomainController::class, 'destroyBerita'])->name('lembaga.berita.destroy');
+        Route::post('/guguakadmin/rekening', [LembagaSubdomainController::class, 'storeRekening'])->name('lembaga.rekening.store');
+        Route::put('/guguakadmin/rekening/{rekening}', [LembagaSubdomainController::class, 'updateRekening'])->name('lembaga.rekening.update');
+        Route::delete('/guguakadmin/rekening/{rekening}', [LembagaSubdomainController::class, 'destroyRekening'])->name('lembaga.rekening.destroy');
+        Route::put('/guguakadmin/profil', [LembagaSubdomainController::class, 'updateProfil'])->name('lembaga.profil.update');
     });
 });
 
@@ -97,8 +97,8 @@ Route::get('/lembagaNagari/{id}', [LandingController::class, 'lembagaShow'])->na
 Route::get('/situsLembaga', [LandingController::class, 'situsLembaga'])->name('landing.situs_lembaga');
 
 // Login & Logout
-Route::get('/32002guguak', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/32002guguak', [AuthController::class, 'login']);
+Route::get('/guguakadmin', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/guguakadmin', [AuthController::class, 'login']);
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Admin area (butuh login)
