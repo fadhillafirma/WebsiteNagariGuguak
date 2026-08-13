@@ -1,5 +1,5 @@
 @extends('bumnag.layout')
-@section('title', 'Tugas Pokok - BUMNag Nagari Guguak')
+@section('title', 'Tujuan - BUMNag Nagari Guguak')
 @section('extra_css')
 <style>
     .tugas-list { display: flex; flex-direction: column; gap: 40px; margin-top: 40px; }
@@ -16,7 +16,7 @@
 
 @section('content')
 <header class="page-header">
-    <h1 class="page-title">Tugas Pokok</h1>
+    <h1 class="page-title">Tujuan</h1>
     <p class="page-desc">Tugas, fungsi, dan peranan utama Badan Usaha Milik Nagari (BUMNag) Guguak dalam memajukan perekonomian desa secara berkelanjutan.</p>
 </header>
 
@@ -28,7 +28,7 @@
             <p>{{ $t->deskripsi }}</p>
         </div>
         @empty
-        <p>Belum ada data tugas pokok yang dipublikasikan.</p>
+        <p>Belum ada data tujuan yang dipublikasikan.</p>
         @endforelse
     </div>
 </div>

@@ -211,7 +211,7 @@
         <div class="nav-menu" id="navMenu">
             <ul class="nav-links">
                 <li><a href="#about" onclick="toggleMenu()">Tentang Kami</a></li>
-                <li><a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}">Tugas Pokok</a></li>
+                <li><a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}">Tujuan</a></li>
                 <li><a href="#program" onclick="toggleMenu()">Program</a></li>
                 <li><a href="#berita" onclick="toggleMenu()">Berita</a></li>
             </ul>
@@ -245,7 +245,7 @@
         </div>
     </section>
 
-    {{-- ABOUT US & TUGAS POKOK --}}
+    {{-- ABOUT US & TUJUAN --}}
     <section id="about" class="section-padding">
         <div class="grid-2">
             <div>
@@ -261,12 +261,12 @@
                     <p>{{ $t->deskripsi }}</p>
                 </div>
                 @empty
-                <p>Belum ada data tugas pokok.</p>
+                <p>Belum ada data tujuan.</p>
                 @endforelse
                 
                 @if($tugas->count() > 0)
                 <a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}" class="prog-link" style="margin-top: 10px;">
-                    Lihat Semua Tugas Pokok
+                    Lihat Semua Tujuan
                     <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path></svg>
                 </a>
                 @endif

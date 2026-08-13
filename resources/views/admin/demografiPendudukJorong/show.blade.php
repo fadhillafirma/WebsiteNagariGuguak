@@ -2,8 +2,8 @@
 @section('title', 'Detail Penduduk Jorong')
 
 @section('content')
-<div class="max-w-md mx-auto px-4 py-10">
-    <div class="bg-white p-6 rounded-lg shadow">
+<div class="max-w-md mx-auto px-4 py-6 md:py-10">
+    <div class="bg-white p-4 md:p-6 rounded-lg shadow">
         <h1 class="text-2xl font-bold mb-4">
             {{ $row->jorong?->nama_jorong ?? '-' }} ({{ $row->tahun }})
         </h1>

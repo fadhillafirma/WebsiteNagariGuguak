@@ -3,11 +3,11 @@
 @section('title', 'Edit Publikasi')
 
 @section('content')
-<div class="max-w-4xl mx-auto px-4 py-10">
+<div class="max-w-4xl mx-auto px-4 py-6 md:py-10">
     <h1 class="text-2xl font-bold mb-6">Edit Publikasi</h1>
 
     <form action="{{ route('publikasi.update', $publikasi->id_artikel) }}" method="POST" enctype="multipart/form-data"
-          class="space-y-5 bg-white p-6 rounded-lg shadow">
+          class="space-y-5 bg-white p-4 md:p-6 rounded-lg shadow">
         @csrf @method('PUT')
 
         <div>

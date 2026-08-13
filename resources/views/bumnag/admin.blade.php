@@ -107,14 +107,14 @@
                 <span>Warta Publikasi</span>
             </button>
 
-            <!-- 3b. Tugas Pokok -->
+            <!-- 3b. Tujuan -->
             <button @click="activeTab = 'tugas'; if(!{{ $editTugas ? 'true' : 'false' }}) showTugasForm = false" 
                :class="activeTab === 'tugas' ? 'bg-brand-50/60 text-brand-700 border-r-4 border-brand-600 font-semibold' : 'text-slate-600 hover:bg-slate-50 hover:text-slate-900 border-r-4 border-transparent'"
                class="w-full flex items-center gap-x-3 py-3 px-6 text-sm transition-all duration-200 text-left group">
                 <svg class="w-5 h-5 flex-shrink-0 transition-colors" :class="activeTab === 'tugas' ? 'text-brand-600' : 'text-slate-400 group-hover:text-slate-600'" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/>
                 </svg>
-                <span>Tugas Pokok</span>
+                <span>Tujuan</span>
             </button>
 
             <!-- 4. Profil UPZ -->
@@ -642,7 +642,7 @@
                 </div>
             </div>
 
-            <!-- TAB 3b: DATA TUGAS POKOK -->
+            <!-- TAB 3b: DATA TUJUAN -->
             <div x-show="activeTab === 'tugas'" x-cloak class="space-y-6">
 
                 <!-- FORM TAMBAH / EDIT TUGAS -->
@@ -650,7 +650,7 @@
                     <div class="flex items-center justify-between border-b border-slate-100 pb-4">
                         <div>
                             <h2 class="text-xl font-bold text-slate-900">
-                                {{ isset($editTugas) && $editTugas ? 'Ubah Tugas Pokok' : 'Entri Tugas Pokok Baru' }}
+                                {{ isset($editTugas) && $editTugas ? 'Ubah Tujuan' : 'Entri Tujuan Baru' }}
                             </h2>
                             <p class="text-xs text-slate-500 mt-1">Lengkapi formulir di bawah ini.</p>
                         </div>
@@ -670,13 +670,13 @@
                         @if(isset($editTugas) && $editTugas) @method('PUT') @endif
 
                         <div>
-                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Judul Tugas Pokok <span class="text-red-500">*</span></label>
+                            <label class="block text-xs font-semibold text-slate-700 mb-1.5">Judul Tujuan <span class="text-red-500">*</span></label>
                             <input type="text" name="judul" value="{{ old('judul', $editTugas->judul ?? '') }}" required placeholder="Contoh: Pemberdayaan Ekonomi" class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">
                         </div>
 
                         <div>
                             <label class="block text-xs font-semibold text-slate-700 mb-1.5">Deskripsi Singkat <span class="text-red-500">*</span></label>
-                            <textarea name="deskripsi" rows="3" required placeholder="Jelaskan deskripsi tugas pokok ini..." class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">{{ old('deskripsi', $editTugas->deskripsi ?? '') }}</textarea>
+                            <textarea name="deskripsi" rows="3" required placeholder="Jelaskan deskripsi tujuan ini..." class="w-full border border-slate-300 rounded-lg px-3.5 py-2.5 text-sm text-slate-800 focus:outline-none focus:ring-2 focus:ring-brand-500/20 focus:border-brand-600 transition">{{ old('deskripsi', $editTugas->deskripsi ?? '') }}</textarea>
                         </div>
 
                         <div class="flex items-center justify-end gap-3 pt-5 border-t border-slate-100">
@@ -691,7 +691,7 @@
                             @endif
 
                             <button type="submit" class="px-6 py-2.5 text-sm font-medium text-white bg-slate-900 hover:bg-slate-800 rounded-lg transition">
-                                {{ isset($editTugas) && $editTugas ? 'Simpan Perubahan' : 'Tambah Tugas Pokok' }}
+                                {{ isset($editTugas) && $editTugas ? 'Simpan Perubahan' : 'Tambah Tujuan' }}
                             </button>
                         </div>
                     </form>
@@ -701,12 +701,12 @@
                 <div x-show="!showTugasForm" class="space-y-4">
                     <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                         <div>
-                            <h2 class="text-xl font-bold text-slate-900">Daftar Tugas Pokok</h2>
-                            <p class="text-xs text-slate-500 mt-0.5">Kelola fungsi dan tugas pokok BUMNag.</p>
+                            <h2 class="text-xl font-bold text-slate-900">Daftar Tujuan</h2>
+                            <p class="text-xs text-slate-500 mt-0.5">Kelola fungsi dan tujuan BUMNag.</p>
                         </div>
                         <button @click="showTugasForm = true" class="px-4 py-2.5 rounded-lg text-white bg-slate-900 hover:bg-slate-800 font-medium text-xs transition-colors inline-flex items-center gap-2">
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"/></svg>
-                            Tambah Tugas Pokok
+                            Tambah Tujuan
                         </button>
                     </div>
 
@@ -714,7 +714,7 @@
                         @if(isset($semuaTugas) && $semuaTugas->count() === 0)
                             <div class="p-12 text-center">
                                 <svg class="w-10 h-10 mx-auto text-slate-300 mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
-                                <p class="font-medium text-slate-900 text-sm">Tidak ada data tugas pokok</p>
+                                <p class="font-medium text-slate-900 text-sm">Tidak ada data tujuan</p>
                             </div>
                         @else
                             <div class="overflow-x-auto">
@@ -739,7 +739,7 @@
                                                         <a href="{{ route('lembaga.admin', ['lembaga' => $subdomain, 'edit_tugas' => $tugas->id]) }}?tab=tugas" class="px-2.5 py-1.5 rounded text-blue-600 hover:text-blue-900 hover:bg-blue-50 text-xs font-medium transition" title="Edit">
                                                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                                                         </a>
-                                                        <form action="{{ route('lembaga.tugas.destroy', ['lembaga' => $subdomain, 'tugas' => $tugas->id]) }}" method="POST" onsubmit="return confirm('Hapus tugas pokok ini?')">
+                                                        <form action="{{ route('lembaga.tugas.destroy', ['lembaga' => $subdomain, 'tugas' => $tugas->id]) }}" method="POST" onsubmit="return confirm('Hapus tujuan ini?')">
                                                             @csrf @method('DELETE')
                                                             <button type="submit" class="px-2.5 py-1.5 rounded text-red-500 hover:text-red-700 hover:bg-red-50 text-xs font-medium transition" title="Hapus">
                                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"/></svg>

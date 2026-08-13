@@ -94,7 +94,7 @@
         </a>
         <ul class="nav-links">
             <li><a href="{{ route('lembaga.beranda', ['lembaga' => 'bumnag']) }}">Beranda</a></li>
-            <li><a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}" class="{{ request()->routeIs('lembaga.tugas.*') ? 'active' : '' }}">Tugas Pokok</a></li>
+            <li><a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}" class="{{ request()->routeIs('lembaga.tugas.*') ? 'active' : '' }}">Tujuan</a></li>
             <li><a href="{{ route('lembaga.program.index', ['lembaga' => 'bumnag']) }}" class="{{ request()->routeIs('lembaga.program.*') ? 'active' : '' }}">Program & Layanan</a></li>
             <li><a href="{{ route('lembaga.berita.index', ['lembaga' => 'bumnag']) }}" class="{{ request()->routeIs('lembaga.berita.*') ? 'active' : '' }}">Berita</a></li>
         </ul>
@@ -111,7 +111,7 @@
             <div class="foot-brand">BUMNag<em>.</em> Nagari Guguak</div>
             <div class="foot-links">
                 <a href="{{ route('lembaga.beranda', ['lembaga' => 'bumnag']) }}">Beranda</a>
-                <a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}">Tugas Pokok</a>
+                <a href="{{ route('lembaga.tugas.index', ['lembaga' => 'bumnag']) }}">Tujuan</a>
                 <a href="{{ route('lembaga.program.index', ['lembaga' => 'bumnag']) }}">Program</a>
                 <a href="{{ route('lembaga.berita.index', ['lembaga' => 'bumnag']) }}">Berita</a>
                 <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}">Portal Admin</a>

@@ -2,7 +2,7 @@
 @section('title', 'Tambah Penduduk Jorong')
 
 @section('content')
-<div class="max-w-3xl mx-auto px-4 py-10">
+<div class="max-w-3xl mx-auto px-4 py-6 md:py-10">
     <h1 class="text-2xl font-bold mb-6">Tambah Penduduk per Jorong</h1>
 
     @if ($errors->any())
@@ -16,7 +16,7 @@
     @endif
 
     <form action="{{ route('demografi-penduduk-jorong.store') }}" method="POST"
-          class="bg-white p-6 rounded-lg shadow space-y-5">
+          class="bg-white p-4 md:p-6 rounded-lg shadow space-y-5">
         @csrf
         @include('admin.demografiPendudukJorong._fields', ['row' => null, 'jorongList' => $jorongList])
         <div class="flex justify-end gap-3 pt-4">

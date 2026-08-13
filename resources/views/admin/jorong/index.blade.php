@@ -3,8 +3,8 @@
 @section('title', 'Data Jorong')
 
 @section('content')
-<div class="max-w-6xl mx-auto px-4 py-10">
-    <div class="flex items-center justify-between mb-6">
+<div class="max-w-6xl mx-auto px-4 py-6 md:py-10">
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6">
         <h1 class="text-2xl font-bold text-gray-800">Data Jorong</h1>
         <a href="{{ route('jorong.create') }}"
            class="px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition">
@@ -22,7 +22,7 @@
         @if($jorongs->count() === 0)
             <p class="p-4 text-gray-500">Belum ada data jorong.</p>
         @else
-        <table class="w-full text-sm text-left text-gray-500">
+        <table class="w-full text-sm text-left text-gray-500 whitespace-nowrap">
             <thead class="text-xs text-gray-700 uppercase bg-gray-50">
                 <tr>
                     <th class="px-6 py-3">#</th>

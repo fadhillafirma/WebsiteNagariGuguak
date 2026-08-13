@@ -2,8 +2,8 @@
 @section('title', 'Detail Demografi Pekerjaan')
 
 @section('content')
-<div class="max-w-3xl mx-auto px-4 py-10">
-    <div class="bg-white p-6 rounded-lg shadow">
+<div class="max-w-3xl mx-auto px-4 py-6 md:py-10">
+    <div class="bg-white p-4 md:p-6 rounded-lg shadow">
         <h1 class="text-2xl font-bold mb-4">Demografi Pekerjaan Tahun {{ $row->tahun }}</h1>
 
         <table class="w-full text-sm text-gray-600">

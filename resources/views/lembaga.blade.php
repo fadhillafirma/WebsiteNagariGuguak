@@ -29,12 +29,9 @@
                     <div class="p-5">
                         <h5 class="mb-2 text-xl font-bold tracking-tight text-gray-900">{{ $item->nama_lembaga }}</h5>
                         <p class="text-sm text-gray-500 mb-3">{{ \Illuminate\Support\Str::limit($item->deskripsi, 100) }}</p>
-                        @if ($item->struktur_organisasi)
-                           <a href="{{ url('/lembagaNagari/' . $item->id) }}">
-
-                                <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-white border-2 bg-greenDark rounded-lg hover:bg-white hover:text-greenDark hover:border-greenDark transition-all">Lihat Detail</button>
-                            </a>
-                        @endif
+                        <a href="{{ url('/lembagaNagari/' . $item->id) }}">
+                             <button class="inline-flex items-center px-3 py-2 text-sm font-medium text-white border-2 bg-greenDark rounded-lg hover:bg-white hover:text-greenDark hover:border-greenDark transition-all">Lihat Detail</button>
+                         </a>
                     </div>
                 </div>
             @endforeach

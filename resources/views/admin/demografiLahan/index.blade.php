@@ -3,8 +3,8 @@
 @section('title', 'Demografi Lahan') {{-- Tambahkan title section jika layout Anda mendukung --}}
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 py-10"> {{-- max-w-7xl mx-auto untuk lebar konten dan centering --}}
-    <div class="flex items-center justify-between mb-6"> {{-- Flexbox untuk judul dan tombol --}}
+<div class="max-w-7xl mx-auto px-4 py-6 md:py-10"> {{-- max-w-7xl mx-auto untuk lebar konten dan centering --}}
+    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6"> {{-- Flexbox untuk judul dan tombol --}}
         <h1 class="text-2xl font-bold text-gray-800">Data Demografi Lahan</h1>
         <a href="{{ route('demografi-lahan.create') }}"
            class="px-4 py-2 rounded-lg text-white bg-blue-600 hover:bg-blue-700 transition"> {{-- Tombol Tailwind --}}
@@ -28,7 +28,7 @@
             <p class="p-4 text-gray-500">Tidak ada data lahan yang tersedia.</p> {{-- Pesan jika data kosong --}}
         @else
         
-        <table class="w-full text-sm text-left text-gray-500"> {{-- Tabel penuh lebar --}}
+        <table class="w-full text-sm text-left text-gray-500 whitespace-nowrap"> {{-- Tabel penuh lebar --}}
             <thead class="text-xs text-gray-700 uppercase bg-gray-50"> {{-- Header tabel Tailwind --}}
                 <tr>
                     <th class="px-4 py-3">No.</th>

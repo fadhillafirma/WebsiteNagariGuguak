@@ -3,7 +3,7 @@
 @section('title', 'Edit Situs Lembaga')
 
 @section('content')
-<div class="max-w-4xl mx-auto px-4 py-10">
+<div class="max-w-4xl mx-auto px-4 py-6 md:py-10">
     <div class="mb-6">
         <a href="{{ route('situs-lembaga.index') }}" class="text-blue-600 hover:underline flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
@@ -22,7 +22,7 @@
         </div>
     @endif
 
-    <form action="{{ route('situs-lembaga.update', $situs_lembaga->id) }}" method="POST" enctype="multipart/form-data" class="bg-white p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
+    <form action="{{ route('situs-lembaga.update', $situs_lembaga->id) }}" method="POST" enctype="multipart/form-data" class="bg-white p-4 md:p-6 rounded-lg shadow-sm border border-gray-100 space-y-6">
         @csrf
         @method('PUT')
 
