@@ -280,7 +280,7 @@
             <li><a href="#program">Program</a></li>
             <li><a href="#berita">Berita</a></li>
         </ul>
-        <a href="https://nagariguguak.id" class="nav-btn">Portal Nagari</a>
+        <a href="https://nagariguguaksijunjung.id" class="nav-btn">Portal Nagari</a>
     </nav>
 
     {{-- HERO --}}
@@ -407,7 +407,7 @@
         <div class="cta-content">
             <h2>Kawal Pembangunan Nagari</h2>
             <p>Sampaikan aspirasi dan gagasan Anda untuk mewujudkan Nagari Guguak yang lebih sejahtera, transparan, dan berbudaya bersama BPN.</p>
-            <a href="https://nagariguguak.id/kontak" class="btn-primary" style="background:var(--white); color:var(--maroon-dark);">Hubungi Kami</a>
+            <a href="https://nagariguguaksijunjung.id/kontak" class="btn-primary" style="background:var(--white); color:var(--maroon-dark);">Hubungi Kami</a>
         </div>
     </div>
 

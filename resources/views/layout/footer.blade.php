@@ -33,7 +33,7 @@
       <div>
         <h3 class="text-md font-semibold text-greenDark uppercase mb-4">Kontak</h3>
         <p class="text-sm">Jl. Raya Guguak No.01<br/>Kec. Sijunjung, Sumbar</p>
-        <p class="mt-2 text-sm">Email: info@nagariguguak.id</p>
+        <p class="mt-2 text-sm">Email: info@nagariguguaksijunjung.id</p>
         <p class="text-sm">Telepon: (0751) 123456</p>
       </div>
     </div>

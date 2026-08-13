@@ -217,7 +217,7 @@
             </ul>
             <div class="nav-buttons">
                 <a href="{{ route('lembaga.login', ['lembaga' => 'bumnag']) }}" class="nav-btn" style="margin-right: 15px; border:none;">Log Masuk</a>
-                <a href="https://nagariguguak.id" class="nav-btn">Portal Nagari</a>
+                <a href="https://nagariguguaksijunjung.id" class="nav-btn">Portal Nagari</a>
             </div>
         </div>
         <button class="menu-toggle" onclick="toggleMenu()" aria-label="Toggle Menu">

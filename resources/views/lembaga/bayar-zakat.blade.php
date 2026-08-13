@@ -219,14 +219,14 @@
                         </a>
 
                         <!-- Email -->
-                        <a href="mailto:upz@nagariguguak.id" class="block group">
+                        <a href="mailto:upz@nagariguguaksijunjung.id" class="block group">
                             <div class="border border-gray-200 rounded-md p-5 flex items-center gap-5 bg-white group-hover:border-gold transition-colors duration-200">
                                 <div class="w-12 h-12 bg-gray-50 text-gray-700 flex items-center justify-center shrink-0 border border-gray-100 rounded">
                                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2"><path stroke-linecap="round" stroke-linejoin="round" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
                                 </div>
                                 <div>
                                     <h5 class="text-lg font-bold text-gray-900">Email</h5>
-                                    <p class="text-gray-600 text-sm mt-0.5">upz@nagariguguak.id</p>
+                                    <p class="text-gray-600 text-sm mt-0.5">upz@nagariguguaksijunjung.id</p>
                                 </div>
                             </div>
                         </a>
@@ -269,7 +269,7 @@
                 <ul class="foot-ul">
                     <li><a href="#">Laporan Keuangan</a></li>
                     <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="https://nagariguguak.id">Portal Nagari Guguak</a></li>
+                    <li><a href="https://nagariguguaksijunjung.id">Portal Nagari Guguak</a></li>
                 </ul>
             </div>
             <div>1
@@ -277,7 +277,7 @@
                 <ul class="foot-ul">
                     <li><a href="#">Nagari Guguak, Kab. Sijunjung</a></li>
                     <li><a href="#">Sumatera Barat, Indonesia</a></li>
-                    <li><a href="#">{{ strtolower($subdomain) }}@nagariguguak.id</a></li>
+                    <li><a href="#">{{ strtolower($subdomain) }}@nagariguguaksijunjung.id</a></li>
                 </ul>
             </div>
         </div>

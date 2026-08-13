@@ -422,7 +422,7 @@
                             name="email"
                             id="email"
                             class="form-input"
-                            placeholder="admin@nagariguguak.id"
+                            placeholder="admin@nagariguguaksijunjung.id"
                             value="{{ old('email') }}"
                             required
                             autocomplete="email"

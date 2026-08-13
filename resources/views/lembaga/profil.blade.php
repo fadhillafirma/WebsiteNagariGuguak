@@ -598,7 +598,7 @@
                     @else
                     <a href="#program" class="btn-gold">Lihat Program Kerja</a>
                     @endif
-                    <a href="https://nagariguguak.id" class="btn-outline">Kembali ke Web Nagari</a>
+                    <a href="https://nagariguguaksijunjung.id" class="btn-outline">Kembali ke Web Nagari</a>
                 </div>
 
                 @if(isset($lembaga->rekenings) && $lembaga->rekenings->count() > 0)
@@ -761,14 +761,14 @@
             <p class="cta-desc reveal">Zakat bukan sekadar kewajiban, melainkan investasi terbaik untuk keberkahan hidup Anda dan kesejahteraan sesama. Percayakan kepada kami.</p>
             <div class="cta-row reveal">
                 <a href="{{ route('lembaga.bayar-zakat', ['lembaga' => $subdomain]) }}" class="btn-gold">Bayar Zakat Sekarang</a>
-                <a href="https://nagariguguak.id" class="btn-ghost">Kembali ke Portal Nagari</a>
+                <a href="https://nagariguguaksijunjung.id" class="btn-ghost">Kembali ke Portal Nagari</a>
             </div>
             @else
             <h2 class="cta-title reveal">Mari Berkolaborasi Bersama<br>{{ $info['nama'] }}</h2>
             <p class="cta-desc reveal">Hubungi kami untuk informasi lebih lanjut mengenai program kerja dan kegiatan yang sedang berlangsung di Nagari Guguak.</p>
             <div class="cta-row reveal">
-                <a href="https://nagariguguak.id/kontak" class="btn-gold">Hubungi Kami</a>
-                <a href="https://nagariguguak.id" class="btn-ghost">Kembali ke Portal Nagari</a>
+                <a href="https://nagariguguaksijunjung.id/kontak" class="btn-gold">Hubungi Kami</a>
+                <a href="https://nagariguguaksijunjung.id" class="btn-ghost">Kembali ke Portal Nagari</a>
             </div>
             @endif
         </div>
@@ -796,7 +796,7 @@
                 <ul class="foot-ul">
                     <li><a href="#">Laporan Keuangan</a></li>
                     <li><a href="#">Tentang Kami</a></li>
-                    <li><a href="https://nagariguguak.id">Portal Nagari Guguak</a></li>
+                    <li><a href="https://nagariguguaksijunjung.id">Portal Nagari Guguak</a></li>
                 </ul>
             </div>
             <div>
@@ -804,7 +804,7 @@
                 <ul class="foot-ul">
                     <li><a href="#">Nagari Guguak, Kab. Sijunjung</a></li>
                     <li><a href="#">Sumatera Barat, Indonesia</a></li>
-                    <li><a href="#">{{ strtolower($subdomain) }}@nagariguguak.id</a></li>
+                    <li><a href="#">{{ strtolower($subdomain) }}@nagariguguaksijunjung.id</a></li>
                 </ul>
             </div>
         </div>
