@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="id">
 <head>
     <meta charset="UTF-8">
@@ -406,7 +406,7 @@
             <div>
                 <div class="foot-h">Kontak</div>
                 <ul class="foot-ul">
-                    <li><a href="#">Jl. Raya Guguak No.01, Kec. Sijunjung</a></li>
+                    <li><a href="#">Guguk, Koto VII, Kabupaten Sijunjung, Sumatera Barat 27563</a></li>
                     <li><a href="mailto:nagariguguak7@gmail.com">nagariguguak7@gmail.com</a></li>
                     <li><a href="tel:085191064962">085191064962</a></li>
                 </ul>

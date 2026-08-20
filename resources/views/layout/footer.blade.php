@@ -1,4 +1,4 @@
-﻿<footer class="bg-greenVill/50 border-t text-black">
+<footer class="bg-greenVill/50 border-t text-black">
   <div class="max-w-7xl mx-auto px-6 py-12">
     <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
       <div>
@@ -33,7 +33,7 @@
 
       <div>
         <h3 class="text-md font-semibold text-greenDark uppercase mb-4">Kontak</h3>
-        <p class="text-sm">Jl. Raya Guguak No.01<br/>Kec. Sijunjung, Sumbar</p>
+        <p class="text-sm">Guguk, Koto VII, Kabupaten Sijunjung, Sumatera Barat 27563</p>
         <p class="mt-2 text-sm">Email: info@nagariguguaksijunjung.id</p>
         <p class="text-sm">Telepon: (0751) 123456</p>
       </div>
