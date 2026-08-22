@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fungsi & Wewenang â€“ {{ $info['nama'] }}</title>
+    <title>Fungsi & Wewenang - {{ $info['nama'] }}</title>
     <meta name="description" content="Daftar fungsi dan wewenang {{ $info['nama'] }} untuk kesejahteraan masyarakat Nagari Guguak.">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:300,400,500,600,700,800&family=playfair-display:700" rel="stylesheet">

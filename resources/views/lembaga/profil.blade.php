@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $info['nama'] }} â€“ Nagari Guguak</title>
+    <title>{{ $info['nama'] }} - Nagari Guguak</title>
     <meta name="description" content="{{ $info['deskripsi'] }}">
     <link rel="preconnect" href="https://fonts.bunny.net">
     {{-- Font diselaraskan dengan web utama Nagari Guguak (Inter via fonts.bunny.net) --}}
